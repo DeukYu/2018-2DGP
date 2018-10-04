@@ -22,9 +22,10 @@ def handle_events():
 
 def move_point(p):
     global frame
+    global way
     clear_canvas()
     kpu_ground.draw(KPU_WIDTH // 2, KPU_HEIGHT // 2)
-    character.clip_draw(frame * 100, 100 * 0, 100, 100, p[0], p[1])
+    character.clip_draw(frame * 100, 100 * way, 100, 100, p[0], p[1])
     update_canvas()
     frame = (frame + 1) % 8
     delay(0.05)
@@ -50,11 +51,19 @@ def draw_middle(p1, p2, p3, p4, near, far):
 
 
 def draw_curve_11_points(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11):
-
+    global way
     # draw p1-p2
+    if p1[0] < p2[0]:
+        way = 1
+    elif p1[0] > p2[0]:
+        way = 0
     draw_start_end(p1, p2, p3, 0, 50)
 
     # draw p2-p3
+    if p2[0] < p3[0]:
+        way = 1
+    elif p2[0] > p3[0]:
+        way = 0
     draw_middle(p1, p2, p3, p4, 0, 100)
 
     # draw p3-p4
@@ -88,8 +97,10 @@ character = load_image('animation_sheet.png')
 running = True
 charx, chary = KPU_WIDTH // 2, KPU_HEIGHT // 2
 frame = 0
+way = 1
 
 while running:
     draw_curve_11_points(point[0], point[1], point[2], point[3], point[4], point[5], point[6], point[7], point[8], point[9], point[0])
+    handle_events()
 
 close_canvas()
