@@ -1,10 +1,11 @@
 from pico2d import *
 import random
-import turtle
 
 KPU_WIDTH, KPU_HEIGHT = 800, 600
 
 point = [(random.randint(0, 800), random.randint(0, 600)) for i in range(10)]
+
+global way
 
 
 def handle_events():
@@ -30,56 +31,54 @@ def move_point(p):
     handle_events()
 
 
-def draw_curve_11_points(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11):
-
-    # draw p1-p2
-    for i in range(0, 50, 2):
+def draw_start_end(p1, p2, p3, near, far):
+    for i in range(near, far, 2):
         t = i / 100
-        x = (2*t**2-3*t+1)*p1[0]+(-4*t**2+4*t)*p2[0]+(2*t**2-t)*p3[0]
-        y = (2*t**2-3*t+1)*p1[1]+(-4*t**2+4*t)*p2[1]+(2*t**2-t)*p3[1]
+        x = (2 * t ** 2 - 3 * t + 1) * p1[0] + (-4 * t ** 2 + 4 * t) * p2[0] + (2 * t ** 2 - t) * p3[0]
+        y = (2 * t ** 2 - 3 * t + 1) * p1[1] + (-4 * t ** 2 + 4 * t) * p2[1] + (2 * t ** 2 - t) * p3[1]
         move_point((x, y))
 
-    # draw p2-p3
-    for i in range(0, 100, 2):
-        t = i % 100
+
+def draw_middle(p1, p2, p3, p4, near, far):
+    for i in range(near, far, 2):
+        t = i / 100
         x = ((-t ** 3 + 2 * t ** 2 - t) * p1[0] + (3 * t ** 3 - 5 * t ** 2 + 2) * p2[0] + (-3 * t ** 3 + 4 * t ** 2 + t)
              * p3[0] + (t ** 3 - t ** 2) * p4[0]) / 2
         y = ((-t ** 3 + 2 * t ** 2 - t) * p1[1] + (3 * t ** 3 - 5 * t ** 2 + 2) * p2[1] + (-3 * t ** 3 + 4 * t ** 2 + t)
              * p3[1] + (t ** 3 - t ** 2) * p4[1]) / 2
         move_point((x, y))
 
+
+def draw_curve_11_points(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11):
+
+    # draw p1-p2
+    draw_start_end(p1, p2, p3, 0, 50)
+
+    # draw p2-p3
+    draw_middle(p1, p2, p3, p4, 0, 100)
+
     # draw p3-p4
-    for i in range(0, 100, 2):
-        t = i % 100
-        x = ((-t ** 3 + 2 * t ** 2 - t) * p2[0] + (3 * t ** 3 - 5 * t ** 2 + 2) * p3[0] + (
-                    -3 * t ** 3 + 4 * t ** 2 + t) * p4[0] + (t ** 3 - t ** 2) * p5[0]) / 2
-        y = ((-t ** 3 + 2 * t ** 2 - t) * p2[1] + (3 * t ** 3 - 5 * t ** 2 + 2) * p3[1] + (
-                    -3 * t ** 3 + 4 * t ** 2 + t) * p4[1] + (t ** 3 - t ** 2) * p5[1]) / 2
-        move_point((x, y))
+    draw_middle(p2, p3, p4, p5, 0, 100)
 
     # draw p4-p5
-    for i in range(50, 100, 2):
-        t = i % 100
-        x = ((-t ** 3 + 2 * t ** 2 - t) * p3[0] + (3 * t ** 3 - 5 * t ** 2 + 2) * p4[0] + (
-                -3 * t ** 3 + 4 * t ** 2 + t) * p5[0] + (t ** 3 - t ** 2) * p6[0]) / 2
-        y = ((-t ** 3 + 2 * t ** 2 - t) * p2[1] + (3 * t ** 3 - 5 * t ** 2 + 2) * p3[1] + (
-                -3 * t ** 3 + 4 * t ** 2 + t) * p4[1] + (t ** 3 - t ** 2) * p5[1]) / 2
-        move_point((x, y))
+    draw_middle(p3, p4, p5, p6, 0, 100)
+
     # draw p5-p6
-    for i in range(50, 100, 2):
-        t = i % 100
-        x = (2 * t ** 2 - 3 * t + 1) * p1[0] + (-4 * t ** 2 + 4 * t) * p2[0] + (2 * t ** 2 - t) * p3[0]
-        y = (2 * t ** 2 - 3 * t + 1) * p1[1] + (-4 * t ** 2 + 4 * t) * p2[1] + (2 * t ** 2 - t) * p3[1]
-        move_point((x, y))
+    draw_middle(p4, p5, p6, p7, 0, 100)
+
     # draw p6-p7
+    draw_middle(p5, p6, p7, p8, 0, 100)
 
     # draw p7-p8
+    draw_middle(p6, p7, p8, p9, 0, 100)
 
     # draw p8-p9
-
+    draw_middle(p7, p8, p9, p10, 0, 100)
     # draw p9-p10
+    draw_middle(p8, p9, p10, p11, 0, 100)
 
     # draw p10-p11
+    draw_start_end(p9, p10, p11, 50, 100)
 
 
 open_canvas(KPU_WIDTH, KPU_HEIGHT)
