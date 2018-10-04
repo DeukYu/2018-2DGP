@@ -3,7 +3,7 @@ import random
 
 KPU_WIDTH, KPU_HEIGHT = 800, 600
 
-point = [(random.randint(0, 800), random.randint(0, 600)) for i in range(10)]
+point = [(random.randint(50, 750), random.randint(50, 550)) for i in range(10)]
 
 global way
 
@@ -22,7 +22,6 @@ def handle_events():
 
 def move_point(p):
     global frame
-    global way
     clear_canvas()
     kpu_ground.draw(KPU_WIDTH // 2, KPU_HEIGHT // 2)
     character.clip_draw(frame * 100, 100 * way, 100, 100, p[0], p[1])
@@ -41,6 +40,8 @@ def draw_start_end(p1, p2, p3, near, far):
 
 
 def draw_middle(p1, p2, p3, p4, near, far):
+    direct_character(p2, p3)
+
     for i in range(near, far, 2):
         t = i / 100
         x = ((-t ** 3 + 2 * t ** 2 - t) * p1[0] + (3 * t ** 3 - 5 * t ** 2 + 2) * p2[0] + (-3 * t ** 3 + 4 * t ** 2 + t)
@@ -50,20 +51,22 @@ def draw_middle(p1, p2, p3, p4, near, far):
         move_point((x, y))
 
 
-def draw_curve_11_points(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11):
+def direct_character(p1, p2):
     global way
-    # draw p1-p2
+
     if p1[0] < p2[0]:
         way = 1
     elif p1[0] > p2[0]:
         way = 0
-    draw_start_end(p1, p2, p3, 0, 50)
 
+
+def draw_curve_11_points(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10):
+    global way
+    # draw p1-p2
+    #direct_character(p1, p2)
+    #draw_start_end(p1, p2, p3, 0, 50)
+    draw_middle(p10, p1, p2, p3, 0, 100)
     # draw p2-p3
-    if p2[0] < p3[0]:
-        way = 1
-    elif p2[0] > p3[0]:
-        way = 0
     draw_middle(p1, p2, p3, p4, 0, 100)
 
     # draw p3-p4
@@ -83,11 +86,14 @@ def draw_curve_11_points(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11):
 
     # draw p8-p9
     draw_middle(p7, p8, p9, p10, 0, 100)
+
     # draw p9-p10
-    draw_middle(p8, p9, p10, p11, 0, 100)
+    draw_middle(p8, p9, p10, p1, 0, 100)
 
     # draw p10-p11
-    draw_start_end(p9, p10, p11, 50, 100)
+    #direct_character(p10, p11)
+    #draw_start_end(p9, p10, p11, 50, 100)
+    draw_middle(p9, p10, p1, p2, 0, 100)
 
 
 open_canvas(KPU_WIDTH, KPU_HEIGHT)
@@ -100,7 +106,7 @@ frame = 0
 way = 1
 
 while running:
-    draw_curve_11_points(point[0], point[1], point[2], point[3], point[4], point[5], point[6], point[7], point[8], point[9], point[0])
+    draw_curve_11_points(point[0], point[1], point[2], point[3], point[4], point[5], point[6], point[7], point[8], point[9])
     handle_events()
 
 close_canvas()
