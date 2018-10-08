@@ -29,22 +29,22 @@ class Boy:
 class Ball:
     def __init__(self):
         self.x, self.y = random.randint(10, 790), 700
-        self.size = random.randint(0, 1)
+        self.ball_size = random.randint(0, 1)
         self.speed = random.randint(5, 20)
-        if self.size == 0:
+        if self.ball_size == 0:
             self.image = load_image('ball21x21.png')
-        elif self.size == 1:
+        elif self.ball_size == 1:
             self.image = load_image('ball41x41.png')
 
     def update(self):
-        if self.size == 0:
-            if self.y <= 65:
-                self.y = 65
+        if self.ball_size == 0:
+            if self.y <= 64:
+                self.y = 64
             else:
                 self.y -= self.speed
-        elif self.size == 1:
-            if self.y <= 75:
-                self.y = 75
+        elif self.ball_size == 1:
+            if self.y <= 74:
+                self.y = 74
             else:
                 self.y -= self.speed
 
@@ -67,8 +67,6 @@ def handle_events():
 
 open_canvas()
 
-boy = Boy()
-ball = Ball()
 team = [Boy() for i in range(11)]
 balls = [Ball() for j in range(20)]
 grass = Grass()
