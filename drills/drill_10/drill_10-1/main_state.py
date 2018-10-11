@@ -6,18 +6,16 @@ from pico2d import *
 
 import game_framework
 import title_state
-
-
+import pause_state
 
 name = "MainState"
 
 boy = None
 grass = None
-stop = None
 font = None
 
 
-class Stop:
+class Font:
     def __init__(self):
         self.image = load_image('paused.png')
 
@@ -53,17 +51,15 @@ class Boy:
 
 
 def enter():
-    global boy, grass, stop
+    global boy, grass
     boy = Boy()
     grass = Grass()
-    stop = Stop()
 
 
 def exit():
-    global boy, grass, stop
+    global boy, grass
     del(boy)
     del(grass)
-    del(stop)
 
 
 def pause():
@@ -81,7 +77,9 @@ def handle_events():
            game_framework.quit()
        elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
            game_framework.change_state(title_state)
-       #elif event.type == SDL_KEYDOWN and event.key == 'p':
+       elif event.type == SDL_KEYDOWN and event.key == SDLK_p:
+            game_framework.push_state(pause_state)
+
 
 
 def update():
@@ -92,7 +90,6 @@ def draw():
     clear_canvas()
     grass.draw()
     boy.draw()
-    stop.draw()
     update_canvas()
 
 
