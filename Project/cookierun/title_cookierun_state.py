@@ -1,6 +1,6 @@
 import game_framework
 from pico2d import *
-import main_state
+import main_lobby
 
 
 name = "title_cookierun"
@@ -9,7 +9,7 @@ image = None
 
 def enter():
     global image
-    image = load_image('cookieRun.png')
+    image = load_image('title_cookieRun.png')
 
 
 def exit():
@@ -26,7 +26,7 @@ def handle_events():
             if (event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
                 game_framework.quit()
             elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):
-                game_framework.change_state(main_state)
+                game_framework.change_state(main_lobby)
 
 def draw():
     clear_canvas()

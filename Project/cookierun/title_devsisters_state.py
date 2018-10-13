@@ -6,7 +6,7 @@ import title_cookierun_state
 
 name = "title_devsisters"
 image = None
-devisiters_time = 0.0
+devsisters_time = 0.0
 
 
 def enter():
@@ -25,6 +25,8 @@ def update():
     if devsisters_time > 1.0:
         devsisters_time = 0
         game_framework.change_state(title_cookierun_state)
+    delay(0.01)
+    devsisters_time += 0.01
 
 
 def draw():
