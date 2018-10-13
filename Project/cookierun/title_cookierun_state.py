@@ -3,13 +3,13 @@ from pico2d import *
 import main_state
 
 
-name = "TitleState"
+name = "title_cookierun"
 image = None
 
 
 def enter():
     global image
-    image = load_image('title.png')
+    image = load_image('cookieRun.png')
 
 
 def exit():
