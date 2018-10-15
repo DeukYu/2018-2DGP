@@ -6,6 +6,8 @@ name = "main_lobby"
 
 lobby = None
 start = None
+cookie = None
+pet = None
 
 
 class Lobby:
@@ -13,7 +15,7 @@ class Lobby:
         self.image = load_image('main_lobby.png')
 
     def draw(self):
-        self.image.draw(400, 300)
+        self.image.draw(400, 250)
 
 
 class Start_button:
@@ -21,19 +23,39 @@ class Start_button:
         self.image = load_image('start_button.png')
 
     def draw(self):
-        self.image.draw(100, 100)
+        self.image.draw(400, 90)
+
+
+class Cookie_selectbutton:
+    def __init__(self):
+        self.image = load_image('cookie_select.png')
+
+    def draw(self):
+        self.image.draw(200, 100)
+
+
+class Pet_selectbutton:
+    def __init__(self):
+        self.image = load_image('pet_select.png')
+
+    def draw(self):
+        self.image.draw(300, 100)
 
 
 def enter():
-    global lobby, start
+    global lobby, start, cookie, pet
     lobby = Lobby()
     start = Start_button()
+    cookie = Cookie_selectbutton()
+    pet = Pet_selectbutton()
 
 
 def exit():
-    global lobby, start
+    global lobby, start, cookie, pet
     del(lobby)
     del(start)
+    del(cookie)
+    del(pet)
 
 
 def handle_events():
@@ -49,6 +71,8 @@ def draw():
     clear_canvas()
     lobby.draw()
     start.draw()
+    cookie.draw()
+    pet.draw()
     update_canvas()
 
 
