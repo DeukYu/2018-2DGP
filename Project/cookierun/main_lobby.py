@@ -23,7 +23,7 @@ class Start_button:
         self.image = load_image('start_button.png')
 
     def draw(self):
-        self.image.draw(400, 90)
+        self.image.draw(600, 40)
 
 
 class Cookie_selectbutton:
@@ -31,7 +31,7 @@ class Cookie_selectbutton:
         self.image = load_image('cookie_select.png')
 
     def draw(self):
-        self.image.draw(200, 100)
+        self.image.draw(615, 120)
 
 
 class Pet_selectbutton:
@@ -39,7 +39,7 @@ class Pet_selectbutton:
         self.image = load_image('pet_select.png')
 
     def draw(self):
-        self.image.draw(300, 100)
+        self.image.draw(625, 200)
 
 
 def enter():
