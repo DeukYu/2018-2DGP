@@ -19,14 +19,12 @@ class Lobby:
 
 
 class StartButton:
-    SelectSB = 0
-
     def __init__(self):
             self.image = load_image('start_button.png')
+            self.motion = 0
 
     def draw(self):
-        if SelectSB == 0:
-            self.image.draw(600, 40)
+            self.image.clip_draw(150 * self.motion, 0, 150, 50, 600, 40)
 
 
 class CookieSelectButton:
@@ -50,7 +48,7 @@ def enter():
     imageLobby = Lobby()
     imageStartButton = StartButton()
     imageCookieButton = CookieSelectButton()
-    pet = PetSelectButton()
+    imagePetButton = PetSelectButton()
 
 
 def exit():
@@ -69,8 +67,12 @@ def handle_events():
             game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             game_framework.quit()
-        elif event.type == SDL_MOUSEMOTION:
+        if event.type == SDL_MOUSEMOTION:
             x, y = event.x, 500 - event.y - 1
+            if 600 - 75 <= x <= 600 + 75 and 40 - 25 <= y <= 40 + 25:
+                imageStartButton.motion = 1
+            else:
+                imageStartButton.motion = 0
 
 
 x, y = 0, 0
