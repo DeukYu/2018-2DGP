@@ -1,6 +1,7 @@
 from pico2d import *
 
 import game_framework
+import main_state
 
 name = "main_lobby"
 
@@ -30,17 +31,19 @@ class StartButton:
 class CookieSelectButton:
     def __init__(self):
         self.image = load_image('cookie_select.png')
+        self.motion = 0
 
     def draw(self):
-        self.image.draw(615, 120)
+        self.image.clip_draw(125 * self.motion, 0, 125, 50, 615, 120)
 
 
 class PetSelectButton:
     def __init__(self):
         self.image = load_image('pet_select.png')
+        self.motion = 0
 
     def draw(self):
-        self.image.draw(625, 200)
+        self.image.clip_draw(105 * self.motion, 0, 105, 50, 625, 200)
 
 
 def enter():
@@ -73,6 +76,17 @@ def handle_events():
                 imageStartButton.motion = 1
             else:
                 imageStartButton.motion = 0
+            if 625 - 55 <= x <= 625 + 55 and 200 - 25 <= y <= 200 + 25:
+                imagePetButton.motion = 1
+            else:
+                imagePetButton.motion = 0
+            if 615 - 120 <= x <= 615 + 120 and 120 - 25 <= y <= 120 + 25:
+                imageCookieButton.motion = 1
+            else:
+                imageCookieButton.motion = 0
+        if event.type == SDL_MOUSEBUTTONDOWN and event.button == SDL_BUTTON_LEFT:
+            if imageStartButton.motion == 1:
+                game_framework.change_state(main_state)
 
 
 x, y = 0, 0
