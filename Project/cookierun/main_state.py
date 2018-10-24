@@ -3,35 +3,24 @@ from pico2d import *
 import game_framework
 
 from cookie import Cookie
+from background import Background
 
 name = "MainState"
 
 cookie = None
-grass = None
-
-class Grass:
-    def __init__(self):
-        self.image = load_image('grass.png')
-
-    def draw(self):
-        self.image.draw(400, 30)
-
-class Pet:
-    def __init__(self):
-        self.x, self.y = 80, 100
-
+background = None
 
 
 def enter():
-    global cookie, grass
+    global cookie, background
     cookie = Cookie()
-    grass = Grass()
+    background = Background()
 
 
 def exit():
-    global cookie, grass
-    del(cookie)
-    del(grass)
+    global cookie, background
+    del cookie
+    del background
 
 
 def handle_events():
@@ -51,7 +40,7 @@ def update():
 
 def draw():
     clear_canvas()
-    #grass.draw()
+    background.draw()
     cookie.draw()
     update_canvas()
 

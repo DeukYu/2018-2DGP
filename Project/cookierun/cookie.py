@@ -25,17 +25,23 @@ next_state_table = {
 class Cookie:
     def __init__(self):
         self.event_que = []
-        self.x, self.y = 800 // 2, 90
+        self.x, self.y = 800 // 4, 102
         self.count = 0
-        if interface_state.CharChoice == 0:
-            self.imageRun = load_image('BraveCookie_Move.png')
-            self.imageSlide = load_image('BraveCookie_Slide.png')
-            self.imageJump = load_image('BraveCookie_Jump.png')
         self.cur_state = RUN
         self.velocity = 0
         self.acceleration = 0.05
         self.speed = 0
         self.enter_state[RUN](self)
+        if interface_state.CharChoice == 0:
+            self.imageRun = load_image('BraveCookie_Move.png')
+            self.imageSlide = load_image('BraveCookie_Slide.png')
+            self.imageJump = load_image('BraveCookie_Jump.png')
+        elif interface_state.CharChoice == 1:
+            pass
+        elif interface_state.CharChoice == 2:
+            pass
+        elif interface_state.CharChoice == 3:
+            pass
 
     def gravity(self):
         self.y += self.speed
@@ -55,8 +61,8 @@ class Cookie:
 
     def draw_RUN(self):
         if self.velocity == 0:
-            self.imageRun.clip_draw(self.frame * 128, 0, 128, 145, self.x, self.y)
-            draw_rectangle(self.x - 64, self.y + 72.5, self.x + 64, self.y - 72.5)
+            self.imageRun.clip_draw(self.frame * 64, 0, 64, 72, self.x, self.y)
+            draw_rectangle(self.x - 32, self.y + 36, self.x + 32, self.y - 36)
 
     # SLIDE state functions
     def enter_SLIDE(self):
@@ -75,8 +81,8 @@ class Cookie:
 
     def draw_SLIDE(self):
         if self.velocity == -1:
-            self.imageSlide.clip_draw(self.frame * 175, 0, 175, 70, self.x, self.y)
-            draw_rectangle(self.x - 87.5, self.y + 35, self.x + 87.5, self.y - 35)
+            self.imageSlide.clip_draw(self.frame * 88, 0, 88, 36, self.x, self.y)
+            draw_rectangle(self.x - 44, self.y + 18, self.x + 44, self.y - 18)
 
     # JUMP state functions
     def enter_JUMP(self):
@@ -92,8 +98,8 @@ class Cookie:
 
     def draw_JUMP(self):
         if self.velocity == 1:
-            self.imageJump.clip_draw(self.frame * 128, 0, 128, 120, self.x, self.y)
-            draw_rectangle(self.x - 64, self.y + 60, self.x + 64, self.y - 60)
+            self.imageJump.clip_draw(self.frame * 64, 0, 64, 60, self.x, self.y)
+            draw_rectangle(self.x - 32, self.y + 30, self.x + 32, self.y - 30)
 
     def add_event(self, event):
         self.event_que.insert(0, event)
@@ -109,11 +115,11 @@ class Cookie:
     draw_state = {RUN: draw_RUN, SLIDE: draw_SLIDE, JUMP: draw_JUMP}
 
     def update(self):
-        if 0 <= self.velocity:
-            self.gravity()
-            if self.y < 90:
-                self.y = 90
-                self.velocity = 0
+        #if 0 <= self.velocity:
+        #    self.gravity()
+        #    if self.y < 170:
+        #        self.y = 170
+        #        self.velocity = 0
         self.do_state[self.cur_state](self)
         if len(self.event_que) > 0:
             event = self.event_que.pop()
@@ -127,10 +133,10 @@ class Cookie:
             key_event = key_event_table[(event.type, event.key)]
             if key_event == DOWN_DOWN:
                 self.velocity -= 1
-                self.y -= 37.5
+                self.y -= 18
             elif key_event == DOWN_UP:
                 self.velocity += 1
-                self.y += 37.5
+                self.y += 18
             if key_event == UP_DOWN:
                 self.velocity += 1
                 self.jump_now()
