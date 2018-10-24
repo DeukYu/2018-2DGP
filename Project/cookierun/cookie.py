@@ -3,7 +3,7 @@ from pico2d import *
 import interface_state
 
 # Cookie State
-RUN, SLIDE, JUMP = range(3)
+RUN, SLIDE, JUMP, DOUBLEJUMP = range(4)
 
 # Cookie Event
 DOWN_DOWN, DOWN_UP, UP_DOWN, UP_UP = range(4)
@@ -18,7 +18,7 @@ key_event_table = {
 next_state_table = {
     RUN: {DOWN_DOWN: SLIDE, DOWN_UP: SLIDE, UP_DOWN: JUMP, UP_UP: JUMP},
     SLIDE: {DOWN_DOWN: RUN, DOWN_UP: RUN},
-    JUMP: {UP_DOWN: JUMP, UP_UP: RUN}
+    JUMP: {UP_DOWN: JUMP, UP_UP: JUMP}
 }
 
 
@@ -29,23 +29,20 @@ class Cookie:
         self.count = 0
         self.cur_state = RUN
         self.velocity = 0
-        self.acceleration = 0.05
+        self.acceleration = 0.03
         self.speed = 0
         self.enter_state[RUN](self)
         if interface_state.CharChoice == 0:
             self.imageRun = load_image('BraveCookie_Move.png')
             self.imageSlide = load_image('BraveCookie_Slide.png')
             self.imageJump = load_image('BraveCookie_Jump.png')
+            self.imageDoubleJump = load_image('BraveCookie_DoubleJump.png')
         elif interface_state.CharChoice == 1:
             pass
         elif interface_state.CharChoice == 2:
             pass
         elif interface_state.CharChoice == 3:
             pass
-
-    def gravity(self):
-        self.y += self.speed
-        self.speed -= self.acceleration
 
     # RUN state functions
     def enter_RUN(self):
@@ -69,7 +66,7 @@ class Cookie:
         self.frame = 0
 
     def jump_now(self):
-        self.speed = 5
+        self.speed = 3
 
     def exit_SLIDE(self):
         pass
@@ -101,6 +98,22 @@ class Cookie:
             self.imageJump.clip_draw(self.frame * 64, 0, 64, 60, self.x, self.y)
             draw_rectangle(self.x - 32, self.y + 30, self.x + 32, self.y - 30)
 
+    def enter_DOUBLEJUMP(self):
+        self.frame = 0
+
+    def exit_DOUBLEJUMP(self):
+        pass
+
+    def do_DOUBLEJUMP(self):
+        self.count = (self.count + 1) % 18
+        if self.count == 0:
+            self.frame = (self.frame + 1) % 7
+
+    def draw_DOUBLEJUMP(self):
+        if self.velocity == 2:
+            self.imageDoubleJump.clip_draw(self.frame * 64, 0, 64, 76, self.x, self.y)
+            draw_rectangle(self.x - 32, self.y + 38, self.x + 32, self.y - 38)
+
     def add_event(self, event):
         self.event_que.insert(0, event)
 
@@ -114,12 +127,16 @@ class Cookie:
     do_state = {RUN: do_RUN, SLIDE: do_SLIDE, JUMP: do_JUMP}
     draw_state = {RUN: draw_RUN, SLIDE: draw_SLIDE, JUMP: draw_JUMP}
 
+    def gravity(self):
+        self.y += self.speed
+        self.speed -= self.acceleration
+
     def update(self):
-        #if 0 <= self.velocity:
-        #    self.gravity()
-        #    if self.y < 170:
-        #        self.y = 170
-        #        self.velocity = 0
+        if 0 <= self.velocity:
+            self.gravity()
+            if self.y < 102:
+                self.y = 102
+                self.velocity = 0
         self.do_state[self.cur_state](self)
         if len(self.event_que) > 0:
             event = self.event_que.pop()
@@ -138,9 +155,15 @@ class Cookie:
                 self.velocity += 1
                 self.y += 18
             if key_event == UP_DOWN:
-                self.velocity += 1
+                if self.velocity == 0:
+                    self.velocity = 1
+                elif self.velocity == 1:
+                    self.velocity = 2
                 self.jump_now()
             elif key_event == UP_UP:
-                self.velocity -= 1
+                if self.velocity == 1:
+                    self.velocity = 1
+                elif self.velocity == 2:
+                    self.velocity = 2
             self.add_event(key_event)
 
