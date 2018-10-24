@@ -2,20 +2,12 @@ from pico2d import *
 
 import game_framework
 
+from cookie import Cookie
+
 name = "MainState"
 
-char = None
+cookie = None
 grass = None
-font = None
-
-
-class Font:
-    def __init__(self):
-        self.image = load_image('paused.png')
-
-    def draw(self):
-        self.image.draw(400, 300)
-
 
 class Grass:
     def __init__(self):
@@ -24,21 +16,6 @@ class Grass:
     def draw(self):
         self.image.draw(400, 30)
 
-
-class Character:
-    def __init__(self):
-        self.x, self.y = 100, 90
-        self.frame = 0
-        self.image = load_image('cookie_run.png')
-
-    def update(self):
-        self.frame = (self.frame + 1) % 6
-        delay(0.02)
-
-    def draw(self):
-        self.image.clip_draw(self.frame * 75, 0, 75, 87, self.x, self.y)
-
-
 class Pet:
     def __init__(self):
         self.x, self.y = 80, 100
@@ -46,23 +23,15 @@ class Pet:
 
 
 def enter():
-    global char, grass
-    char = Character()
+    global cookie, grass
+    cookie = Cookie()
     grass = Grass()
 
 
 def exit():
-    global char, grass
-    del(char)
+    global cookie, grass
+    del(cookie)
     del(grass)
-
-
-def pause():
-    pass
-
-
-def resume():
-    pass
 
 
 def handle_events():
@@ -70,16 +39,20 @@ def handle_events():
    for event in events:
        if event.type == SDL_QUIT:
            game_framework.quit()
+       elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
+           game_framework.quit()
+       else:
+           cookie.handle_event(event)
 
 
 def update():
-    char.update()
+    cookie.update()
 
 
 def draw():
     clear_canvas()
-    grass.draw()
-    char.draw()
+    #grass.draw()
+    cookie.draw()
     update_canvas()
 
 
