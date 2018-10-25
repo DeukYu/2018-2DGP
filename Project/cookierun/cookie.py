@@ -3,22 +3,21 @@ from pico2d import *
 import interface_state
 
 # Cookie State
-RUN, SLIDE, JUMP, DOUBLEJUMP = range(4)
+RUN, SLIDE, JUMP = range(3)
 
 # Cookie Event
-DOWN_DOWN, DOWN_UP, UP_DOWN, UP_UP = range(4)
+DOWN_DOWN, DOWN_UP, UP_DOWN, UP_UP, GROUND_IN = range(5)
 
 key_event_table = {
     (SDL_KEYDOWN, SDLK_DOWN): DOWN_DOWN,
-    (SDL_KEYDOWN, SDLK_UP): UP_DOWN,
     (SDL_KEYUP, SDLK_DOWN): DOWN_UP,
-    (SDL_KEYUP, SDLK_UP): UP_UP
+    (SDL_KEYDOWN, SDLK_UP): UP_DOWN
 }
 
 next_state_table = {
-    RUN: {DOWN_DOWN: SLIDE, DOWN_UP: SLIDE, UP_DOWN: JUMP, UP_UP: JUMP},
+    RUN: {DOWN_DOWN: SLIDE, DOWN_UP: SLIDE, UP_DOWN: JUMP},
     SLIDE: {DOWN_DOWN: RUN, DOWN_UP: RUN},
-    JUMP: {UP_DOWN: JUMP, UP_UP: JUMP}
+    JUMP: {UP_DOWN: RUN, UP_UP: JUMP, GROUND_IN: RUN}
 }
 
 
@@ -28,9 +27,10 @@ class Cookie:
         self.x, self.y = 800 // 4, 102
         self.count = 0
         self.cur_state = RUN
-        self.velocity = 0
+        self.motion = 0
         self.acceleration = 0.03
         self.speed = 0
+        self.frame = 0
         self.enter_state[RUN](self)
         if interface_state.CharChoice == 0:
             self.imageRun = load_image('BraveCookie_Move.png')
@@ -57,7 +57,7 @@ class Cookie:
             self.frame = (self.frame + 1) % 4
 
     def draw_RUN(self):
-        if self.velocity == 0:
+        if self.motion == 0:
             self.imageRun.clip_draw(self.frame * 64, 0, 64, 72, self.x, self.y)
             draw_rectangle(self.x - 32, self.y + 36, self.x + 32, self.y - 36)
 
@@ -77,7 +77,7 @@ class Cookie:
             self.frame = (self.frame + 1) % 2
 
     def draw_SLIDE(self):
-        if self.velocity == -1:
+        if self.motion == -1:
             self.imageSlide.clip_draw(self.frame * 88, 0, 88, 36, self.x, self.y)
             draw_rectangle(self.x - 44, self.y + 18, self.x + 44, self.y - 18)
 
@@ -90,27 +90,22 @@ class Cookie:
 
     def do_JUMP(self):
         self.count = (self.count + 1) % 18
-        if self.count == 0:
-            self.frame = (self.frame + 1) % 2
+        if self.motion == 1:
+            if self.count == 0:
+                self.frame = (self.frame + 1) % 2
+            if self.y < 105:
+                self.add_event(GROUND_IN)
+        elif self.motion == 2:
+            if self.count == 0:
+                self.frame = (self.frame + 1) % 7
+            if self.y < 105:
+                self.add_event(GROUND_IN)
 
     def draw_JUMP(self):
-        if self.velocity == 1:
+        if self.motion == 1:
             self.imageJump.clip_draw(self.frame * 64, 0, 64, 60, self.x, self.y)
             draw_rectangle(self.x - 32, self.y + 30, self.x + 32, self.y - 30)
-
-    def enter_DOUBLEJUMP(self):
-        self.frame = 0
-
-    def exit_DOUBLEJUMP(self):
-        pass
-
-    def do_DOUBLEJUMP(self):
-        self.count = (self.count + 1) % 18
-        if self.count == 0:
-            self.frame = (self.frame + 1) % 7
-
-    def draw_DOUBLEJUMP(self):
-        if self.velocity == 2:
+        elif self.motion == 2:
             self.imageDoubleJump.clip_draw(self.frame * 64, 0, 64, 76, self.x, self.y)
             draw_rectangle(self.x - 32, self.y + 38, self.x + 32, self.y - 38)
 
@@ -132,11 +127,12 @@ class Cookie:
         self.speed -= self.acceleration
 
     def update(self):
-        if 0 <= self.velocity:
+        if 0 <= self.motion:
             self.gravity()
             if self.y < 102:
                 self.y = 102
-                self.velocity = 0
+                self.speed = 0
+                self.motion = 0
         self.do_state[self.cur_state](self)
         if len(self.event_que) > 0:
             event = self.event_que.pop()
@@ -149,21 +145,19 @@ class Cookie:
         if (event.type, event.key) in key_event_table:
             key_event = key_event_table[(event.type, event.key)]
             if key_event == DOWN_DOWN:
-                self.velocity -= 1
+                self.motion -= 1
                 self.y -= 18
+                self.add_event(DOWN_DOWN)
             elif key_event == DOWN_UP:
-                self.velocity += 1
+                self.motion += 1
                 self.y += 18
-            if key_event == UP_DOWN:
-                if self.velocity == 0:
-                    self.velocity = 1
-                elif self.velocity == 1:
-                    self.velocity = 2
-                self.jump_now()
-            elif key_event == UP_UP:
-                if self.velocity == 1:
-                    self.velocity = 1
-                elif self.velocity == 2:
-                    self.velocity = 2
-            self.add_event(key_event)
+                self.add_event(DOWN_UP)
+            elif key_event == UP_DOWN:
+                if self.motion < 2:
+                    if self.motion == 1:
+                        self.add_event(UP_UP)
+                    else:
+                        self.add_event(UP_DOWN)
+                    self.motion += 1
+                    self.jump_now()
 
