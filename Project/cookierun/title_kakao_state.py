@@ -10,7 +10,7 @@ kakao_time = 0.0
 
 def enter():
     global image
-    image = load_image('resouce/title/title_kakao.png')
+    image = load_image('resource/title/title_kakao.png')
 
 
 def exit():

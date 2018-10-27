@@ -1,6 +1,7 @@
 import game_framework
-from pico2d import *
+
 import interface_state
+from pico2d import *
 
 
 name = "title_cookierun"
@@ -9,7 +10,7 @@ image = None
 
 def enter():
     global image
-    image = load_image('resouce/title/title_cookieRun.png')
+    image = load_image('resource/title/title_cookieRun.png')
 
 
 def exit():

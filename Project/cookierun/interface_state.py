@@ -1,11 +1,13 @@
 from pico2d import *
 
+import os
+
 import game_framework
 import main_state
 
 name = "interface_state"
 
-imageLobby = None
+imageBackground = None
 imageStartButton = None
 imageCookieButton = None
 imagePetButton = None
@@ -15,9 +17,9 @@ imageShowPet = None
 imagePetSelection = None
 
 
-class Lobby:
+class Background:
     def __init__(self):
-        self.image = load_image('resouce/interface/interface_background.png')
+        self.image = load_image('resource/interface/interface_background.png')
 
     def draw(self):
         self.image.draw(400, 250)
@@ -25,7 +27,7 @@ class Lobby:
 
 class StartButton:
     def __init__(self):
-            self.image = load_image('resouce/interface/interface_startbutton.png')
+            self.image = load_image('resource/interface/interface_startbutton.png')
             self.motion = 0
 
     def draw(self):
@@ -34,7 +36,7 @@ class StartButton:
 
 class CookieSelectButton:
     def __init__(self):
-        self.image = load_image('resouce/interface/interfcae_cookieselectbutton.png')
+        self.image = load_image('resource/interface/interface_cookieselectbutton.png')
         self.motion = 0
 
     def draw(self):
@@ -43,8 +45,8 @@ class CookieSelectButton:
 
 class CookieSelectWindow:
     def __init__(self):
-        self.image = load_image('resouce/interface/interface_cookieselect.png')
-        self.imageExit = load_image('interface_exit.png')
+        self.image = load_image('resource/interface/interface_cookieselect.png')
+        self.imageExit = load_image('resource/interface/interface_exit.png')
         self.ExitMotion = 0
         self.Exit = 0
 
@@ -57,7 +59,7 @@ class CookieSelectWindow:
 
 class PetSelectButton:
     def __init__(self):
-        self.image = load_image('resouce/interface/interface_petselectbutton.png')
+        self.image = load_image('resource/interface/interface_petselectbutton.png')
         self.motion = 0
 
     def draw(self):
@@ -66,8 +68,8 @@ class PetSelectButton:
 
 class PetSelectWindow:
     def __init__(self):
-        self.image = load_image('resouce/interface/interface_petselect.png')
-        self.imageExit = load_image('resouce/interface/interface_exit.png')
+        self.image = load_image('resource/interface/interface_petselect.png')
+        self.imageExit = load_image('resource/interface/interface_exit.png')
         self.ExitMotion = 0
         self.Exit = 0
 
@@ -80,7 +82,7 @@ class PetSelectWindow:
 
 class ShowCookie:
     def __init__(self):
-        self.image = load_image('resouce/interface/interface_character.png')
+        self.image = load_image('resource/interface/interface_character.png')
 
     def draw(self):
             self.image.clip_draw(150 * CharChoice, 0, 150, 150, 150, 100)
@@ -88,16 +90,16 @@ class ShowCookie:
 
 class ShowPet:
     def __init__(self):
-        self.image = load_image('resouce/interface/interface_pet.png')
+        self.image = load_image('resource/interface/interface_pet.png')
 
     def draw(self):
         self.image.clip_draw(80 * PetChoice, 0, 80, 80, 60, 100)
 
 
 def enter():
-    global imageLobby, imageStartButton, imageCookieButton, imagePetButton, imageCookieSelection, imageShowCookie
+    global imageBackground, imageStartButton, imageCookieButton, imagePetButton, imageCookieSelection, imageShowCookie
     global imagePetSelection, imageShowPet
-    imageLobby = Lobby()
+    imageBackground = Background()
     imageStartButton = StartButton()
     imageCookieButton = CookieSelectButton()
     imagePetButton = PetSelectButton()
@@ -108,9 +110,9 @@ def enter():
 
 
 def exit():
-    global imageLobby, imageStartButton, imageCookieButton, imagePetButton, imageCookieSelection, imageShowCookie
+    global imageBackground, imageStartButton, imageCookieButton, imagePetButton, imageCookieSelection, imageShowCookie
     global imagePetSelection, imageShowPet
-    del imageLobby
+    del imageBackground
     del imageStartButton
     del imageCookieButton
     del imagePetButton
@@ -130,7 +132,7 @@ def handle_events():
             game_framework.quit()
         if event.type == SDL_MOUSEMOTION:
             x, y = event.x, 500 - event.y - 1
-            if Click == 0: # Lobby
+            if Click == 0: #Lobby
                 if 600 - 75 <= x <= 600 + 75 and 40 - 25 <= y <= 40 + 25:
                     imageStartButton.motion = 1
                 else:
@@ -208,7 +210,7 @@ Click, CharChoice, PetChoice = 0, 0, 0
 
 def draw():
     clear_canvas()
-    imageLobby.draw()
+    imageBackground.draw()
     imageStartButton.draw()
     imageCookieButton.draw()
     imagePetButton.draw()

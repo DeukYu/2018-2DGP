@@ -9,6 +9,7 @@ class GameState:
         self.draw = state.draw
 
 
+
 class TestGameState:
 
     def __init__(self, name):
@@ -36,13 +37,14 @@ class TestGameState:
         print("State [%s] draw" % self.name)
 
 
+
 running = None
 stack = None
 
 
 def change_state(state):
     global stack
-    if len(stack) > 0:
+    if (len(stack) > 0):
         # execute the current state's exit function
         stack[-1].exit()
         # remove the current state
@@ -51,25 +53,28 @@ def change_state(state):
     state.enter()
 
 
+
 def push_state(state):
     global stack
-    if len(stack) > 0:
+    if (len(stack) > 0):
         stack[-1].pause()
     stack.append(state)
     state.enter()
 
 
+
 def pop_state():
     global stack
-    if len(stack) > 0:
+    if (len(stack) > 0):
         # execute the current state's exit function
         stack[-1].exit()
         # remove the current state
         stack.pop()
 
     # execute resume function of the previous state
-    if len(stack) > 0:
+    if (len(stack) > 0):
         stack[-1].resume()
+
 
 
 def quit():
@@ -82,12 +87,12 @@ def run(start_state):
     running = True
     stack = [start_state]
     start_state.enter()
-    while running:
+    while (running):
         stack[-1].handle_events()
         stack[-1].update()
         stack[-1].draw()
     # repeatedly delete the top of the stack
-    while len(stack) > 0:
+    while (len(stack) > 0):
         stack[-1].exit()
         stack.pop()
 
@@ -95,6 +100,7 @@ def run(start_state):
 def test_game_framework():
     start_state = TestGameState('StartState')
     run(start_state)
+
 
 
 if __name__ == '__main__':

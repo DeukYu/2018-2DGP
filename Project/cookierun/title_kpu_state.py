@@ -10,7 +10,7 @@ kpu_time = 0.0
 
 def enter():
     global image
-    image = load_image('resouce/title/title_kpu.png')
+    image = load_image('resource/title/title_kpu.png')
 
 
 def exit():

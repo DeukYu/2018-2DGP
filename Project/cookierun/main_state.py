@@ -1,6 +1,10 @@
-from pico2d import *
+import random
+import json
+import os
 
+from pico2d import *
 import game_framework
+import game_world
 
 from cookie import Cookie
 from background import Background
@@ -15,12 +19,12 @@ def enter():
     global cookie, background
     cookie = Cookie()
     background = Background()
+    game_world.add_object(background, 0)
+    game_world.add_object(cookie, 1)
 
 
 def exit():
-    global cookie, background
-    del cookie
-    del background
+    game_world.clear()
 
 
 def handle_events():
@@ -35,13 +39,14 @@ def handle_events():
 
 
 def update():
-    cookie.update()
+    for game_object in game_world.all_objects():
+        game_object.update()
 
 
 def draw():
     clear_canvas()
-    background.draw()
-    cookie.draw()
+    for game_object in game_world.all_objects():
+        game_object.draw()
     update_canvas()
 
 

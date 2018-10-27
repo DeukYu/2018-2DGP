@@ -1,6 +1,5 @@
 import game_framework
 from pico2d import *
-import main_state
 import title_cookierun_state
 
 
@@ -11,7 +10,7 @@ devsisters_time = 0.0
 
 def enter():
     global image
-    image = load_image('resouce/title/title_devsisters.png')
+    image = load_image('resource/title/title_devsisters.png')
 
 
 def exit():
