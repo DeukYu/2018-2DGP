@@ -9,12 +9,12 @@ image = None
 
 def enter():
     global image
-    image = load_image('title_cookieRun.png')
+    image = load_image('resouce/title/title_cookieRun.png')
 
 
 def exit():
     global image
-    del(image)
+    del image
 
 
 def handle_events():

@@ -11,7 +11,7 @@ devsisters_time = 0.0
 
 def enter():
     global image
-    image = load_image('title_devsisters.png')
+    image = load_image('resouce/title/title_devsisters.png')
 
 
 def exit():

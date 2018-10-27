@@ -17,7 +17,7 @@ imagePetSelection = None
 
 class Lobby:
     def __init__(self):
-        self.image = load_image('interface_bg.png')
+        self.image = load_image('resouce/interface/interface_background.png')
 
     def draw(self):
         self.image.draw(400, 250)
@@ -25,7 +25,7 @@ class Lobby:
 
 class StartButton:
     def __init__(self):
-            self.image = load_image('start_button.png')
+            self.image = load_image('resouce/interface/interface_startbutton.png')
             self.motion = 0
 
     def draw(self):
@@ -34,7 +34,7 @@ class StartButton:
 
 class CookieSelectButton:
     def __init__(self):
-        self.image = load_image('cookie_select.png')
+        self.image = load_image('resouce/interface/interfcae_cookieselectbutton.png')
         self.motion = 0
 
     def draw(self):
@@ -43,7 +43,7 @@ class CookieSelectButton:
 
 class CookieSelectWindow:
     def __init__(self):
-        self.image = load_image('interface_cookieselect.png')
+        self.image = load_image('resouce/interface/interface_cookieselect.png')
         self.imageExit = load_image('interface_exit.png')
         self.ExitMotion = 0
         self.Exit = 0
@@ -54,9 +54,10 @@ class CookieSelectWindow:
             if self.ExitMotion == 1:
                 self.imageExit.draw(585, 335)
 
+
 class PetSelectButton:
     def __init__(self):
-        self.image = load_image('pet_select.png')
+        self.image = load_image('resouce/interface/interface_petselectbutton.png')
         self.motion = 0
 
     def draw(self):
@@ -65,8 +66,8 @@ class PetSelectButton:
 
 class PetSelectWindow:
     def __init__(self):
-        self.image = load_image('interface_petselect.png')
-        self.imageExit = load_image('interface_exit.png')
+        self.image = load_image('resouce/interface/interface_petselect.png')
+        self.imageExit = load_image('resouce/interface/interface_exit.png')
         self.ExitMotion = 0
         self.Exit = 0
 
@@ -79,7 +80,7 @@ class PetSelectWindow:
 
 class ShowCookie:
     def __init__(self):
-        self.image = load_image('interface_character.png')
+        self.image = load_image('resouce/interface/interface_character.png')
 
     def draw(self):
             self.image.clip_draw(150 * CharChoice, 0, 150, 150, 150, 100)
@@ -87,7 +88,7 @@ class ShowCookie:
 
 class ShowPet:
     def __init__(self):
-        self.image = load_image('interface_pet.png')
+        self.image = load_image('resouce/interface/interface_pet.png')
 
     def draw(self):
         self.image.clip_draw(80 * PetChoice, 0, 80, 80, 60, 100)
