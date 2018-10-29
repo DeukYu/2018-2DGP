@@ -11,16 +11,18 @@ key_event_table = {
     (SDL_KEYDOWN, SDLK_SPACE): SPACE
 }
 
-#Cookie State
 
+#Cookie State
 class RunState:
 
     @staticmethod
     def enter(cookie, event):
         if event == DOWN_DOWN:
             cookie.motion = -1
+            cookie.y = 30
         elif event == SPACE:
             cookie.motion = 1
+            cookie.jump_now()
         elif event == DOWN_UP:
             cookie.motion = 0
         cookie.timer = 0
@@ -49,7 +51,8 @@ class SlideState:
         if event == DOWN_DOWN:
             cookie.motion = -1
         elif event == SPACE:
-            cookie.motion = 0
+            cookie.motion = 1
+            cookie.jump_now()
         elif event == DOWN_UP:
             cookie.motion = 0
 
@@ -79,6 +82,7 @@ class JumpState:
             cookie.motion = 1
         elif event == SPACE:
             cookie.motion = 2
+            cookie.jump_now()
         elif event == DOWN_UP:
             cookie.motion = 0
 
@@ -91,6 +95,11 @@ class JumpState:
         cookie.timer = (cookie.timer + 1) % 18
         if cookie.timer == 0:
             cookie.frame = (cookie.frame + 1) % 2
+        if cookie.jump_check:
+            cookie.gravity()
+            if cookie.y <= 102:
+                cookie.jump_check = False
+                cookie.y = 102
 
     @staticmethod
     def draw(cookie):
@@ -145,6 +154,7 @@ class Cookie:
         self.acceleration = 0.03
         self.speed = 0
         self.frame = 0
+        self.jump_check = False
         if interface_state.CharChoice == 0:
             self.imageRun = load_image('resource/character/BraveCookie_Move.png')
             self.imageSlide = load_image('resource/character/BraveCookie_Slide.png')

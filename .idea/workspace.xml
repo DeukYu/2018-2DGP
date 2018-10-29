@@ -2,40 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef134d47-7927-429a-97cb-73939b19c763" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cookierun/background.py" beforeDir="false" afterPath="$PROJECT_DIR$/cookierun/background.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cookierun/cookie.py" beforeDir="false" afterPath="$PROJECT_DIR$/cookierun/cookie.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cookierun/game_framework.py" beforeDir="false" afterPath="$PROJECT_DIR$/cookierun/game_framework.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/interface_state.py" beforeDir="false" afterPath="$PROJECT_DIR$/cookierun/interface_state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/main_state.py" beforeDir="false" afterPath="$PROJECT_DIR$/cookierun/main_state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resouce/character/BraveCookie_DoubleJump.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resouce/character/BraveCookie_DoubleJump_Big.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resouce/character/BraveCookie_Fast_Big.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resouce/character/BraveCookie_Jump.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resouce/character/BraveCookie_Jump_Big.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resouce/character/BraveCookie_Move.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resouce/character/BraveCookie_Move_Big.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resouce/character/BraveCookie_Slide.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resouce/character/BraveCookie_Slide_Big.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resouce/interface/interface_background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resouce/interface/interface_character.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resouce/interface/interface_cookieselect.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resouce/interface/interface_cookieselectbutton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resouce/interface/interface_exit.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resouce/interface/interface_pet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resouce/interface/interface_petselect.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resouce/interface/interface_petselectbutton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resouce/interface/interface_startbutton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resouce/stage/First_Background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resouce/stage/First_ground.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resouce/title/title_cookieRun.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resouce/title/title_devsisters.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resouce/title/title_kakao.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resouce/title/title_kpu.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/title_cookierun_state.py" beforeDir="false" afterPath="$PROJECT_DIR$/cookierun/title_cookierun_state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/title_devsisters_state.py" beforeDir="false" afterPath="$PROJECT_DIR$/cookierun/title_devsisters_state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/title_kakao_state.py" beforeDir="false" afterPath="$PROJECT_DIR$/cookierun/title_kakao_state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/title_kpu_state.py" beforeDir="false" afterPath="$PROJECT_DIR$/cookierun/title_kpu_state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drills/drill_11/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../drills/drill_11/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -77,17 +47,46 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="1898257797">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="py" value="747" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Python" value="747" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="png" value="1" />
+          <entry key="py" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Image" value="1" />
+          <entry key="Python" value="3" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cookierun/cookie.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2052">
-              <caret line="129" column="75" selection-start-line="129" selection-start-column="66" selection-end-line="129" selection-end-column="75" />
+            <state relative-caret-position="216">
+              <caret line="136" lean-forward="true" selection-start-line="136" selection-end-line="136" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
-                <marker date="1540666915770" expanded="true" signature="2483:3627" ph="..." />
               </folding>
             </state>
           </provider>
@@ -96,8 +95,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cookierun/title_cookierun_state.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
+            <state relative-caret-position="152">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -118,31 +117,27 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://C:/Program Files/Python37/Lib/site-packages/pico2d/pico2d.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="339" selection-start-line="339" selection-end-line="339" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/cookierun/asd.png">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cookierun/background.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="6" column="58" selection-start-line="6" selection-start-column="58" selection-end-line="6" selection-end-column="58" />
+            <state relative-caret-position="589">
+              <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cookierun/interface_state.py">
+        <entry file="file://$PROJECT_DIR$/cookierun/game_framework.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="48" column="43" selection-start-line="48" selection-start-column="43" selection-end-line="48" selection-end-column="43" />
-              <folding>
-                <element signature="e#0#20#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1824">
+              <caret line="96" column="34" selection-start-line="96" selection-start-column="34" selection-end-line="96" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -150,8 +145,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cookierun/mygame.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="152">
+              <caret line="8" column="13" lean-forward="true" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -162,7 +157,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cookierun/title_kpu_state.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
+            <state relative-caret-position="190">
               <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
@@ -174,7 +169,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cookierun/title_kakao_state.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
+            <state relative-caret-position="190">
               <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
@@ -203,12 +198,11 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/cookierun/game_framework.py" />
         <option value="$PROJECT_DIR$/cookierun/main_state.py" />
         <option value="$PROJECT_DIR$/cookierun/title_kpu_state.py" />
         <option value="$PROJECT_DIR$/cookierun/title_kakao_state.py" />
@@ -216,12 +210,13 @@
         <option value="$PROJECT_DIR$/cookierun/title_cookierun_state.py" />
         <option value="$PROJECT_DIR$/cookierun/interface_state.py" />
         <option value="$PROJECT_DIR$/cookierun/cookie.py" />
+        <option value="$PROJECT_DIR$/cookierun/game_framework.py" />
         <option value="$PROJECT_DIR$/cookierun/background.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="952" />
     <option name="width" value="977" />
     <option name="height" value="1038" />
   </component>
@@ -231,27 +226,27 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="CookieRun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CookieRun" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="CookieRun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CookieRun" type="462c0819:PsiDirectoryNode" />
               <item name="cookierun" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../drills/drill_11" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../2018_2DGP/drills/drill_12" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -333,15 +328,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="762" y="0" width="781" height="830" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15994713" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20295699" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3252841" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32902297" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -362,33 +357,35 @@
     <entry file="file://$PROJECT_DIR$/cookierun/title_kpu.png" />
     <entry file="file://$PROJECT_DIR$/cookierun/grass.png" />
     <entry file="file://$PROJECT_DIR$/cookierun/pause.png" />
-    <entry file="file://$PROJECT_DIR$/cookierun/First_ground.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cookierun/First_Background.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cookierun/cookie_run_slide.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/cookierun/First_ground.png" />
+    <entry file="file://$PROJECT_DIR$/cookierun/First_Background.png" />
+    <entry file="file://$PROJECT_DIR$/cookierun/cookie_run_slide.png" />
     <entry file="file://$PROJECT_DIR$/cookierun/cookie_select.png" />
     <entry file="file://$PROJECT_DIR$/cookierun/start_button.png" />
     <entry file="file://$PROJECT_DIR$/cookierun/pet_select.png" />
     <entry file="file://$PROJECT_DIR$/cookierun/interface_petselect.png" />
     <entry file="file://$PROJECT_DIR$/cookierun/interface_cookieselect.png" />
-    <entry file="file://$PROJECT_DIR$/cookierun/cookie_run.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cookierun/game_framework.py">
+    <entry file="file://$PROJECT_DIR$/cookierun/cookie_run.png" />
+    <entry file="file://C:/Program Files/Python37/Lib/site-packages/pico2d/pico2d.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
+        <state relative-caret-position="6232">
+          <caret line="339" selection-start-line="339" selection-end-line="339" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cookierun/interface_state.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="817">
+          <caret line="48" column="43" selection-start-line="48" selection-start-column="43" selection-end-line="48" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cookierun/title_kpu_state.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
+        <state relative-caret-position="190">
           <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
@@ -398,8 +395,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cookierun/title_kakao_state.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
+        <state relative-caret-position="190">
           <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cookierun/asd.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cookierun/main_state.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="46" column="18" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cookierun/mygame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="13" lean-forward="true" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
@@ -418,65 +438,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cookierun/title_cookierun_state.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
+        <state relative-caret-position="152">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cookierun/mygame.py">
+    <entry file="file://$PROJECT_DIR$/cookierun/game_framework.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cookierun/main_state.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="46" column="18" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cookierun/interface_state.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="48" column="43" selection-start-line="48" selection-start-column="43" selection-end-line="48" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files/Python37/Lib/site-packages/pico2d/pico2d.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="339" selection-start-line="339" selection-end-line="339" />
+        <state relative-caret-position="1824">
+          <caret line="96" column="34" selection-start-line="96" selection-start-column="34" selection-end-line="96" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cookierun/background.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="58" selection-start-line="6" selection-start-column="58" selection-end-line="6" selection-end-column="58" />
+        <state relative-caret-position="589">
+          <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cookierun/cookie.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2052">
-          <caret line="129" column="75" selection-start-line="129" selection-start-column="66" selection-end-line="129" selection-end-column="75" />
+        <state relative-caret-position="216">
+          <caret line="136" lean-forward="true" selection-start-line="136" selection-end-line="136" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
-            <marker date="1540666915770" expanded="true" signature="2483:3627" ph="..." />
           </folding>
         </state>
       </provider>
