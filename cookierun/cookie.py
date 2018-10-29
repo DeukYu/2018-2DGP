@@ -1,6 +1,11 @@
 from pico2d import *
 
 import interface_state
+import game_framework
+
+TIME_PER_ACTION = 0.5
+ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
+FRAMES_PER_ACTION = 8
 
 # Cookie Event
 DOWN_DOWN, DOWN_UP, SPACE, GROUND_IN = range(4)
@@ -8,9 +13,9 @@ DOWN_DOWN, DOWN_UP, SPACE, GROUND_IN = range(4)
 key_event_table = {
     (SDL_KEYDOWN, SDLK_DOWN): DOWN_DOWN,
     (SDL_KEYUP, SDLK_DOWN): DOWN_UP,
-    (SDL_KEYDOWN, SDLK_SPACE): SPACE
+    (SDL_KEYDOWN, SDLK_SPACE): SPACE,
+    #(SDL_KEYUP, SDLK_SPACE): SPACE
 }
-
 
 #Cookie State
 class RunState:
@@ -19,13 +24,12 @@ class RunState:
     def enter(cookie, event):
         if event == DOWN_DOWN:
             cookie.motion = -1
-            cookie.y = 30
         elif event == SPACE:
             cookie.motion = 1
+            cookie.jump_check = True
             cookie.jump_now()
         elif event == DOWN_UP:
             cookie.motion = 0
-        cookie.timer = 0
 
     @staticmethod
     def exit(cookie, event):
@@ -33,14 +37,12 @@ class RunState:
 
     @staticmethod
     def do(cookie):
-        cookie.timer = (cookie.timer + 1) % 18
-        if cookie.timer == 0:
-            cookie.frame = (cookie.frame + 1) % 4
+        cookie.frame = (cookie.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
 
     @staticmethod
     def draw(cookie):
         if cookie.motion == 0:
-            cookie.imageRun.clip_draw(cookie.frame * 64, 0, 64, 72, cookie.x, cookie.y)
+            cookie.imageRun.clip_draw(int(cookie.frame) * 64, 0, 64, 72, cookie.x, cookie.y)
             draw_rectangle(cookie.x - 32, cookie.y + 36, cookie.x + 32, cookie.y - 36)
 
 
@@ -63,14 +65,12 @@ class SlideState:
 
     @staticmethod
     def do(cookie):
-        cookie.timer = (cookie.timer + 1) % 18
-        if cookie.timer == 0:
-            cookie.frame = (cookie.frame + 1) % 2
+        cookie.frame = (cookie.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 2
 
     @staticmethod
     def draw(cookie):
         if cookie.motion == -1:
-            cookie.imageSlide.clip_draw(cookie.frame * 88, 0, 88, 36, cookie.x, cookie.y)
+            cookie.imageSlide.clip_draw(int(cookie.frame) * 88, 0, 88, 36, cookie.x, cookie.y)
             draw_rectangle(cookie.x - 44, cookie.y + 18, cookie.x + 44, cookie.y - 18)
 
 
@@ -92,9 +92,7 @@ class JumpState:
 
     @staticmethod
     def do(cookie):
-        cookie.timer = (cookie.timer + 1) % 18
-        if cookie.timer == 0:
-            cookie.frame = (cookie.frame + 1) % 2
+        cookie.frame = (cookie.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 2
         if cookie.jump_check:
             cookie.gravity()
             if cookie.y <= 102:
@@ -103,8 +101,8 @@ class JumpState:
 
     @staticmethod
     def draw(cookie):
-        if cookie.motion == 1:
-            cookie.imageJump.clip_draw(cookie.frame * 64, 0, 64, 60, cookie.x, cookie.y)
+        #if cookie.motion == 1:
+            cookie.imageJump.clip_draw(int(cookie.frame) * 64, 0, 64, 60, cookie.x, cookie.y)
             draw_rectangle(cookie.x - 32, cookie.y + 30, cookie.x + 32, cookie.y - 30)
 
 
@@ -124,14 +122,12 @@ class AirJumpState:
 
     @staticmethod
     def do(cookie):
-        cookie.timer = (cookie.timer + 1) % 18
-        if cookie.timer == 0:
-            cookie.frame = (cookie.frame + 1) % 2
+        cookie.frame = (cookie.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 2
 
     @staticmethod
     def draw(cookie):
         if cookie.motion == 2:
-            cookie.imageAirJump.clip_draw(cookie.frame * 64, 0, 64, 76, cookie.x, cookie.y)
+            cookie.imageAirJump.clip_draw(int(cookie.frame) * 64, 0, 64, 76, cookie.x, cookie.y)
             draw_rectangle(cookie.x - 32, cookie.y + 38, cookie.x + 32, cookie.y - 38)
 
 
@@ -155,6 +151,7 @@ class Cookie:
         self.speed = 0
         self.frame = 0
         self.jump_check = False
+        self.frame = 0
         if interface_state.CharChoice == 0:
             self.imageRun = load_image('resource/character/BraveCookie_Move.png')
             self.imageSlide = load_image('resource/character/BraveCookie_Slide.png')
