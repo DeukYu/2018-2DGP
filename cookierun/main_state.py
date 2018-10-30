@@ -8,19 +8,23 @@ import game_world
 
 from cookie import Cookie
 from background import Background
+from pet import Pet
 
 name = "MainState"
 
 cookie = None
 background = None
+pet = None
 
 
 def enter():
-    global cookie, background
+    global cookie, background, pet
     cookie = Cookie()
     background = Background()
+    pet = Pet()
     game_world.add_object(background, 0)
     game_world.add_object(cookie, 1)
+    game_world.add_object(pet, 0)
 
 
 def exit():
