@@ -122,13 +122,13 @@ class AirJumpState:
 
     @staticmethod
     def do(cookie):
-        cookie.frame = (cookie.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 7
+        cookie.frame = (cookie.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time / 3.8) % 7
         cookie.ground_in()
 
     @staticmethod
     def draw(cookie):
-        cookie.imageAirJump.clip_draw(int(cookie.frame) * 64, 0, 64, 76, cookie.x, cookie.y)
-        draw_rectangle(cookie.x - 32, cookie.y + 38, cookie.x + 32, cookie.y - 38)
+        cookie.imageAirJump.clip_draw(int(cookie.frame) * 72, 0, 72, 80, cookie.x, cookie.y)
+        draw_rectangle(cookie.x - 36, cookie.y + 40, cookie.x + 36, cookie.y - 40)
 
 
 next_state_table = {
@@ -157,7 +157,7 @@ class Cookie:
             self.imageRun = load_image('resource/character/BraveCookie_Move.png')
             self.imageSlide = load_image('resource/character/BraveCookie_Slide.png')
             self.imageJump = load_image('resource/character/BraveCookie_Jump.png')
-            self.imageAirJump = load_image('resource/character/BraveCookie_DoubleJump.png')
+            self.imageAirJump = load_image('resource/character/BraveCookie_AirJump.png')
         elif interface_state.CharChoice == 1:
             pass
         elif interface_state.CharChoice == 2:
