@@ -25,6 +25,6 @@ class Pet:
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
 
     def draw(self):
-        self.image.clip_draw(int(self.frame) * 96, 0, 96, 64, self.x, self.y)
-        draw_rectangle(self.x - 48, self.y + 32, self.x + 48, self.y - 32)
+        self.image.clip_draw(int(self.frame) * 48, 0, 48, 32, self.x, self.y)
+        draw_rectangle(self.x - 24, self.y + 16, self.x + 24, self.y - 16)
 
