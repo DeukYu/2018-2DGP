@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ef134d47-7927-429a-97cb-73939b19c763" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/cookierun/cookie.py" beforeDir="false" afterPath="$PROJECT_DIR$/cookierun/cookie.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/pet.py" beforeDir="false" afterPath="$PROJECT_DIR$/cookierun/pet.py" afterDir="false" />
-    </list>
+    <list default="true" id="ef134d47-7927-429a-97cb-73939b19c763" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +45,7 @@
     <session id="1898257797">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.21" value="1" />
           <entry key="project.opened" value="2" />
@@ -96,8 +93,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cookierun/pet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
+            <state relative-caret-position="437">
+              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
                 <marker date="1540937735554" expanded="true" signature="184:185" ph="..." />
@@ -344,14 +341,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09980172" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.09980172" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4990086" visible="true" weight="0.3252841" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4990086" weight="0.3252841" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39914772" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -506,8 +502,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cookierun/pet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
+        <state relative-caret-position="437">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
             <marker date="1540937735554" expanded="true" signature="184:185" ph="..." />
