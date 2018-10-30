@@ -108,7 +108,9 @@ class AirJumpState:
         if event == DOWN_DOWN:
             pass
         elif event == SPACE_DOWN:
-            cookie.jump_now()
+            if cookie.AirJump_Check == False:
+                cookie.AirJump_Check = True
+                cookie.speed = 3
         elif event == DOWN_UP:
             pass
         elif event == SPACE_UP:
@@ -149,6 +151,7 @@ class Cookie:
         self.speed = 0
         self.frame = 0
         self.jump_saveY = 102
+        self.AirJump_Check = False
         self.frame = 0
         if interface_state.CharChoice == 0:
             self.imageRun = load_image('resource/character/BraveCookie_Move.png')
@@ -164,7 +167,7 @@ class Cookie:
 
     def jump_now(self):
         print("jump_now")
-        self.speed += 3
+        self.speed = 2.5
 
     def gravity(self):
         self.y += self.speed
@@ -176,6 +179,7 @@ class Cookie:
         if self.y <= self.jump_saveY:
             self.y = self.jump_saveY
             self.speed = 0
+            self.AirJump_Check = False
             self.add_event(GROUND_IN)
 
     def add_event(self, event):
