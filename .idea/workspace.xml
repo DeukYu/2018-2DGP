@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef134d47-7927-429a-97cb-73939b19c763" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/cookierun/cookie.py" beforeDir="false" afterPath="$PROJECT_DIR$/cookierun/cookie.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resource/character/BraveCookie_DoubleJump.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resource/character/BraveCookie_DoubleJump_Big.png" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/cookierun/wkddoanf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,39 +54,48 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1608" />
+          <entry key="py" value="1623" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1608" />
+          <entry key="Python" value="1623" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="png" value="1" />
-          <entry key="py" value="6" />
+          <entry key="py" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Image" value="1" />
-          <entry key="Python" value="6" />
+          <entry key="Python" value="7" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cookierun/cookie.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="124" column="108" selection-start-line="124" selection-start-column="108" selection-end-line="124" selection-end-column="108" />
+            <state relative-caret-position="216">
+              <caret line="117" lean-forward="true" selection-start-line="117" selection-end-line="117" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
-                <marker date="1540895077184" expanded="true" signature="5129:5337" ph="..." />
+                <marker date="1540895205852" expanded="true" signature="5129:5337" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cookierun/wkddoanf.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="14" column="36" lean-forward="true" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -118,18 +126,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="403">
               <caret line="283" selection-start-line="283" selection-end-line="283" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cookierun/title_devsisters_state.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -210,6 +206,7 @@
         <option value="$PROJECT_DIR$/cookierun/background.py" />
         <option value="$PROJECT_DIR$/cookierun/game_framework.py" />
         <option value="$PROJECT_DIR$/cookierun/cookie.py" />
+        <option value="$PROJECT_DIR$/cookierun/wkddoanf.py" />
       </list>
     </option>
   </component>
@@ -245,6 +242,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../2018_2DGP/drills/drill_12" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\GitHub\CookieRun\cookierun" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -473,12 +475,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cookierun/cookie.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="124" column="108" selection-start-line="124" selection-start-column="108" selection-end-line="124" selection-end-column="108" />
+        <state relative-caret-position="216">
+          <caret line="117" lean-forward="true" selection-start-line="117" selection-end-line="117" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
-            <marker date="1540895077184" expanded="true" signature="5129:5337" ph="..." />
+            <marker date="1540895205852" expanded="true" signature="5129:5337" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cookierun/wkddoanf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="14" column="36" lean-forward="true" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
         </state>
       </provider>
     </entry>
