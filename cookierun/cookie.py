@@ -166,12 +166,10 @@ class Cookie:
             pass
 
     def jump_now(self):
-        print("jump_now")
         self.speed = 2.5
 
     def gravity(self):
         self.y += self.speed
-        print(self.y)
         self.speed -= self.acceleration
 
     def ground_in(self):

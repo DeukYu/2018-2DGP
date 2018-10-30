@@ -2,6 +2,8 @@ from pico2d import *
 
 import interface_state
 import game_framework
+import main_state
+import cookie
 
 TIME_PER_ACTION = 0.5
 ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
@@ -23,6 +25,7 @@ class Pet:
 
     def update(self):
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
+        self.y = main_state.cookie.y
 
     def draw(self):
         self.image.clip_draw(int(self.frame) * 48, 0, 48, 32, self.x, self.y)
