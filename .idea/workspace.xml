@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ef134d47-7927-429a-97cb-73939b19c763" name="Default Changelist" comment="" />
+    <list default="true" id="ef134d47-7927-429a-97cb-73939b19c763" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cookierun/cookie.py" beforeDir="false" afterPath="$PROJECT_DIR$/cookierun/cookie.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cookierun/game_framework.py" beforeDir="false" afterPath="$PROJECT_DIR$/cookierun/game_framework.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,12 +55,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="854" />
+          <entry key="py" value="1427" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="854" />
+          <entry key="Python" value="1427" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -78,10 +82,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cookierun/cookie.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="16" column="35" lean-forward="true" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+            <state relative-caret-position="312">
+              <caret line="135" column="65" selection-start-line="135" selection-start-column="65" selection-end-line="135" selection-end-column="65" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
+                <marker date="1540891035989" expanded="true" signature="4999:5168" ph="..." />
               </folding>
             </state>
           </provider>
@@ -144,8 +149,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cookierun/game_framework.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="93" selection-start-line="93" selection-end-line="93" />
+            <state relative-caret-position="335">
+              <caret line="112" column="25" lean-forward="true" selection-start-line="112" selection-start-column="25" selection-end-line="112" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -185,6 +190,9 @@
     <findStrings>
       <find>iterface_state</find>
       <find>==</find>
+      <find>ground_in</find>
+      <find>y</find>
+      <find>jump_saveY</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -199,13 +207,13 @@
         <option value="$PROJECT_DIR$/cookierun/title_devsisters_state.py" />
         <option value="$PROJECT_DIR$/cookierun/title_cookierun_state.py" />
         <option value="$PROJECT_DIR$/cookierun/interface_state.py" />
-        <option value="$PROJECT_DIR$/cookierun/game_framework.py" />
         <option value="$PROJECT_DIR$/cookierun/background.py" />
+        <option value="$PROJECT_DIR$/cookierun/game_framework.py" />
         <option value="$PROJECT_DIR$/cookierun/cookie.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="width" value="977" />
     <option name="height" value="1038" />
@@ -321,12 +329,12 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.09980172" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09980172" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3252841" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3252841" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39914772" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -458,17 +466,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cookierun/game_framework.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="93" selection-start-line="93" selection-end-line="93" />
+        <state relative-caret-position="335">
+          <caret line="112" column="25" lean-forward="true" selection-start-line="112" selection-start-column="25" selection-end-line="112" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cookierun/cookie.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="16" column="35" lean-forward="true" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+        <state relative-caret-position="312">
+          <caret line="135" column="65" selection-start-line="135" selection-start-column="65" selection-end-line="135" selection-end-column="65" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
+            <marker date="1540891035989" expanded="true" signature="4999:5168" ph="..." />
           </folding>
         </state>
       </provider>
