@@ -27,17 +27,21 @@ class Pet:
     def update(self):
         if interface_state.PetChoice == 0 or 1:
             self.frame = (self.frame + STAR_FLOWER_FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
-        elif interface_state.PetChoice == 3:
+
+        if interface_state.PetChoice == 3:
             self.frame = (self.frame + GHOST_FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 3
-        self.y = main_state.cookie.y + 10
+
+        self.y = main_state.cookie.y + 15
 
     def draw(self):
         if interface_state.PetChoice == 0:
-            self.image.clip_draw(int(self.frame) * 96, 0, 96, 64, self.x, self.y)
-            draw_rectangle(self.x - 48, self.y + 32, self.x + 48, self.y - 32)
-        elif interface_state.PetChoice == 1:
+            self.image.clip_draw(int(self.frame) * 48, 0, 48, 32, self.x, self.y)
+            draw_rectangle(self.x - 24, self.y + 16, self.x + 24, self.y - 16)
+
+        if interface_state.PetChoice == 1:
             self.image.clip_draw(int(self.frame) * 48, 0, 48, 64, self.x, self.y)
             draw_rectangle(self.x - 24, self.y + 32, self.x + 24, self.y - 32)
-        elif interface_state.PetChoice == 3:
+
+        if interface_state.PetChoice == 3:
             self.image.clip_draw(int(self.frame) * 48, 0, 48, 48, self.x, self.y)
             draw_rectangle(self.x - 24, self.y + 24, self.x + 24, self.y - 24)
