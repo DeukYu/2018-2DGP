@@ -5,15 +5,18 @@ from pico2d import *
 class Background:
     def __init__(self):
         self.imageGround = load_image('resource/stage/First_ground.png')
-        self.imageBackground = load_image('resource/stage/First_Background.png')
+        self.imageFrontGround = load_image('resource/stage/First_Frontground.png')
+        self.imageBackGround = load_image('resource/stage/First_Background.png')
         self.Gx1 = 400
         self.Gx2 = 1200
+        self.Fx = 800
         self.Bx1 = 400
         self.Bx2 = 1200
 
     def draw(self):
-        self.imageBackground.clip_draw(0, 0, 800, 500, self.Gx1, 250, 800, 500)
-        self.imageBackground.clip_draw(0, 0, 800, 500, self.Gx2, 250, 800, 500)
+        self.imageBackGround.clip_draw(0, 0, 800, 500, self.Gx1, 250, 800, 500)
+        self.imageBackGround.clip_draw(0, 0, 800, 500, self.Gx2, 250, 800, 500)
+        self.imageFrontGround.clip_draw(0, 0, 1600, 500, self.Fx, 250, 1600, 500)
         self.imageGround.clip_draw(0, 0, 800, 500, self.Bx1, 250, 800, 500)
         self.imageGround.clip_draw(0, 0, 800, 500, self.Bx2, 250, 800, 500)
 
@@ -30,3 +33,6 @@ class Background:
         self.Bx2 -= 200 * game_framework.frame_time
         if self.Bx2 <= -400:
             self.Bx2 = 1200
+        self.Fx -= 100 * game_framework.frame_time
+        if self.Fx <= - 800:
+            self.Fx = 800
