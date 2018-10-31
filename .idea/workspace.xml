@@ -4,7 +4,8 @@
     <list default="true" id="ef134d47-7927-429a-97cb-73939b19c763" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cookierun/pet.py" beforeDir="false" afterPath="$PROJECT_DIR$/cookierun/pet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookierun/resource/pet/pet_anglestar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cookierun/resource/pet/flower_idle.png" beforeDir="false" afterPath="$PROJECT_DIR$/cookierun/resource/pet/flower_idle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cookierun/resource/pet/starofangle_idle.png" beforeDir="false" afterPath="$PROJECT_DIR$/cookierun/resource/pet/starofangle_idle.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,12 +59,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="2370" />
+          <entry key="py" value="2557" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="2370" />
+          <entry key="Python" value="2557" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -98,12 +99,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cookierun/pet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="31" column="71" selection-start-line="31" selection-start-column="71" selection-end-line="31" selection-end-column="71" />
+            <state relative-caret-position="114">
+              <caret line="30" column="113" selection-start-line="30" selection-start-column="113" selection-end-line="30" selection-end-column="113" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
-                <marker date="1540955327709" expanded="true" signature="218:219" ph="..." />
-                <marker date="1540955327709" expanded="true" signature="229:234" ph="..." />
+                <marker date="1540958304715" expanded="true" signature="224:225" ph="..." />
+                <marker date="1540958304715" expanded="true" signature="235:240" ph="..." />
               </folding>
             </state>
           </provider>
@@ -112,8 +113,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cookierun/interface_state.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3591">
-              <caret line="194" selection-start-line="194" selection-end-line="194" />
+            <state relative-caret-position="-144">
+              <caret line="136" selection-start-line="136" selection-end-line="136" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -157,7 +158,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cookierun/game_framework.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1748">
+            <state relative-caret-position="19">
               <caret line="92" selection-start-line="92" selection-end-line="92" />
             </state>
           </provider>
@@ -426,16 +427,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cookierun/interface_state.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3591">
-          <caret line="194" selection-start-line="194" selection-end-line="194" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cookierun/title_cookierun_state.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -460,13 +451,6 @@
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cookierun/game_framework.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1748">
-          <caret line="92" selection-start-line="92" selection-end-line="92" />
         </state>
       </provider>
     </entry>
@@ -497,14 +481,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cookierun/pet.py">
+    <entry file="file://$PROJECT_DIR$/cookierun/game_framework.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="31" column="71" selection-start-line="31" selection-start-column="71" selection-end-line="31" selection-end-column="71" />
+        <state relative-caret-position="19">
+          <caret line="92" selection-start-line="92" selection-end-line="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cookierun/interface_state.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-144">
+          <caret line="136" selection-start-line="136" selection-end-line="136" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
-            <marker date="1540955327709" expanded="true" signature="218:219" ph="..." />
-            <marker date="1540955327709" expanded="true" signature="229:234" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cookierun/pet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="30" column="113" selection-start-line="30" selection-start-column="113" selection-end-line="30" selection-end-column="113" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+            <marker date="1540958304715" expanded="true" signature="224:225" ph="..." />
+            <marker date="1540958304715" expanded="true" signature="235:240" ph="..." />
           </folding>
         </state>
       </provider>
