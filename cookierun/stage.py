@@ -2,7 +2,7 @@ import game_framework
 from pico2d import *
 
 
-class Background:
+class Stage:
     def __init__(self):
         self.imageGround = load_image('resource/stage/First_ground.png')
         self.imageFrontGround = load_image('resource/stage/First_Frontground.png')
