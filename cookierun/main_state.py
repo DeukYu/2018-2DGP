@@ -7,7 +7,7 @@ import game_framework
 import game_world
 
 from cookie import Cookie
-from background import Background
+from stage import Stage
 from pet import Pet
 
 name = "MainState"
@@ -18,9 +18,9 @@ pet = None
 
 
 def enter():
-    global cookie, background, pet
+    global cookie, stage, pet
     cookie = Cookie()
-    background = Background()
+    stage = Stage()
     pet = Pet()
     game_world.add_object(background, 0)
     game_world.add_object(cookie, 1)
