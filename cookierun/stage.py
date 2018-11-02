@@ -61,9 +61,9 @@ class Stage:
 
         if (get_time() - self.timer) % 1 < 0.00001:
             if self.ob_creat == False:
-                obstacle = obstacles.Obstacles(random.randint(0, 5))
+                obstacle = obstacles.Obstacles(random.randint(0, 4))
                 game_world.add_object(obstacle, 1)
                 self.ob_creat = True
 
-        if (get_time() - self.Creat_timer) % 10:
+        if (get_time() - self.Creat_timer) % 10 > 9:
             self.ob_creat = False
