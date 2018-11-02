@@ -3,6 +3,7 @@ import main_state
 import game_world
 import obstacles
 import random
+import items
 import time
 
 from pico2d import *
@@ -21,6 +22,8 @@ class Stage:
         self.timer = get_time()
         self.Creat_timer = get_time()
         self.ob_creat = False
+
+        self.item_timer = get_time()
 
 
     def draw(self):
@@ -65,5 +68,9 @@ class Stage:
                 game_world.add_object(obstacle, 1)
                 self.ob_creat = True
 
-        if (get_time() - self.Creat_timer) % 10 > 9:
+        if (get_time() - self.Creat_timer) % 10 > 9.5:
             self.ob_creat = False
+
+        if (get_time() - self.item_timer) % 1 < 0.01:
+            item = items.Items(random.randint(0, 2))
+            game_world.add_object(item, 1)

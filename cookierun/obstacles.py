@@ -63,10 +63,8 @@ class Obstacles:
             self.image.clip_draw(0, 0, 80, 164, self.x, self.y, 80, 164)
             draw_rectangle(*self.get_bb())
         elif self.select == 3:
-            print(self.y)
             self.image.clip_draw(0, 0, 120, 334, self.x, self.y, 120, 334)
             draw_rectangle(*self.get_bb())
         elif self.select == 4:
-            print(self.y)
             self.image.clip_draw(0, 0, 120, 334, self.x, self.y, 120, 334)
             draw_rectangle(*self.get_bb())
