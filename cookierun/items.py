@@ -31,6 +31,9 @@ class Items:
             self.Left_Right = 16
             self.Up_Down = 16
 
+        elif self.select == 3:
+            self.image = load_image('')
+
     def get_bb(self):
         return self.x - self.Left_Right, self.y - self.Up_Down, self.x + self.Left_Right, self.y + self.Up_Down
 
