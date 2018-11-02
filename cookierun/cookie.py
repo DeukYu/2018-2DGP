@@ -5,7 +5,10 @@ import game_framework
 
 TIME_PER_ACTION = 0.5
 ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
-FRAMES_PER_ACTION = 8
+FRAMES_PER_ACTION2 = 2
+FRAMES_PER_ACTION4 = 4
+FRAMES_PER_ACTION7 = 7
+FRAMES_PER_ACTION8 = 8
 
 # Cookie Event
 DOWN_DOWN, DOWN_UP, SPACE_DOWN, SPACE_UP, GROUND_IN = range(5)
@@ -30,6 +33,7 @@ class RunState:
             cookie.jump_now()
         elif event == DOWN_UP:
             cookie.change_run_bb()
+            cookie.y += 40
         elif event == SPACE_UP:
             pass
 
@@ -39,11 +43,11 @@ class RunState:
 
     @staticmethod
     def do(cookie):
-        cookie.frame = (cookie.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
+        cookie.frame = (cookie.frame + FRAMES_PER_ACTION4 * ACTION_PER_TIME * game_framework.frame_time) % 4
 
     @staticmethod
     def draw(cookie):
-        cookie.imageRun.clip_draw(int(cookie.frame) * 64, 0, 64, 72, cookie.x, cookie.y)
+        cookie.imageRun.clip_draw(int(cookie.frame) * 128, 0, 128, 145, cookie.x, cookie.y)
         cookie.draw_bb()
 
 
@@ -53,6 +57,7 @@ class SlideState:
     def enter(cookie, event):
         if event == DOWN_DOWN:
             cookie.change_slide_bb()
+            cookie.y -= 40
         elif event == SPACE_DOWN:
             pass
         elif event == DOWN_UP:
@@ -67,11 +72,11 @@ class SlideState:
 
     @staticmethod
     def do(cookie):
-        cookie.frame = (cookie.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 2
+        cookie.frame = (cookie.frame + FRAMES_PER_ACTION2 * ACTION_PER_TIME * game_framework.frame_time) % 2
 
     @staticmethod
     def draw(cookie):
-        cookie.imageSlide.clip_draw(int(cookie.frame) * 88, 0, 88, 36, cookie.x, cookie.y)
+        cookie.imageSlide.clip_draw(int(cookie.frame) * 176, 0, 176, 72, cookie.x, cookie.y)
         cookie.draw_bb()
 
 
@@ -94,12 +99,12 @@ class JumpState:
 
     @staticmethod
     def do(cookie):
-        cookie.frame = (cookie.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 2
+        cookie.frame = (cookie.frame + FRAMES_PER_ACTION2 * ACTION_PER_TIME * game_framework.frame_time) % 2
         cookie.ground_in()
 
     @staticmethod
     def draw(cookie):
-        cookie.imageJump.clip_draw(int(cookie.frame) * 64, 0, 64, 60, cookie.x, cookie.y)
+        cookie.imageJump.clip_draw(int(cookie.frame) * 128, 0, 128, 120, cookie.x, cookie.y)
         cookie.draw_bb()
 
 
@@ -124,12 +129,12 @@ class AirJumpState:
 
     @staticmethod
     def do(cookie):
-        cookie.frame = (cookie.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time / 3.8) % 7
+        cookie.frame = (cookie.frame + FRAMES_PER_ACTION7 * ACTION_PER_TIME * game_framework.frame_time / 3.8) % 7
         cookie.ground_in()
 
     @staticmethod
     def draw(cookie):
-        cookie.imageAirJump.clip_draw(int(cookie.frame) * 72, 0, 72, 80, cookie.x, cookie.y)
+        cookie.imageAirJump.clip_draw(int(cookie.frame) * 144, 0, 144, 160, cookie.x, cookie.y)
         cookie.draw_bb()
 
 
@@ -144,7 +149,7 @@ next_state_table = {
 class Cookie:
     def __init__(self):
         self.event_que = []
-        self.x, self.y = 200, 110
+        self.x, self.y = 200, 145
         self.count = 0
         self.cur_state = RunState
         self.cur_state.enter(self, None)
@@ -152,11 +157,11 @@ class Cookie:
         self.acceleration = 0.03
         self.speed = 0
         self.frame = 0
-        self.jump_saveY = 110
+        self.jump_saveY = 145
         self.AirJump_Check = False
         self.frame = 0
-        self.Left_Right = 32
-        self.Up_Down = 36
+        self.Left_Right = 64
+        self.Up_Down = 72
         if interface_state.CharChoice == 0:
             self.imageRun = load_image('resource/character/BraveCookie_Move.png')
             self.imageSlide = load_image('resource/character/BraveCookie_Slide.png')
@@ -176,16 +181,16 @@ class Cookie:
         draw_rectangle(*self.get_bb())
 
     def change_run_bb(self):
-        self.Left_Right, self.Up_Down = 32, 36
+        self.Left_Right, self.Up_Down = 64, 72
 
     def change_slide_bb(self):
-        self.Left_Right, self.Up_Down = 44, 18
+        self.Left_Right, self.Up_Down = 88, 36
 
     def change_jump_bb(self):
-        self.Left_Right, self.Up_Down = 32, 30
+        self.Left_Right, self.Up_Down = 64, 60
 
     def change_airjump_bb(self):
-        self.Left_Right, self.Up_Down = 36, 40
+        self.Left_Right, self.Up_Down = 72, 80
 
     def jump_now(self):
         self.speed = 2.5
