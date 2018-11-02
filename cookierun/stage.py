@@ -7,7 +7,6 @@ import time
 
 from pico2d import *
 
-
 class Stage:
     def __init__(self):
         self.image_Stage2_BackGround = load_image('resource/stage/Second_Background.png')
@@ -31,11 +30,6 @@ class Stage:
         self.image_Stage2_FrontGround.clip_draw(0, 0, 1400, 500, self.Fx1_2, 250, 1400, 500)
         self.image_Stage2_BottomGround.clip_draw(0, 0, 800, 500, self.Bottomx1_1, 250, 800, 500)
         self.image_Stage2_BottomGround.clip_draw(0, 0, 800, 500, self.Bottomx1_2, 250, 800, 500)
-
-    def show_obstacles(self):
-        obstacle = obstacles.Obstacles(random.randint(0, 5))
-        game_world.add_object(obstacle, 0)
-        self.ob_creat = True
 
     def update(self):
         if self.Bx1_1 <= - 400:
@@ -65,10 +59,11 @@ class Stage:
         self.Bottomx1_1 -= 100 * game_framework.frame_time
         self.Bottomx1_2 -= 100 * game_framework.frame_time
 
-        print((get_time() - self.timer) % 1)
         if (get_time() - self.timer) % 1 < 0.00001:
             if self.ob_creat == False:
-                self.show_obstacles()
+                obstacle = obstacles.Obstacles(random.randint(0, 5))
+                game_world.add_object(obstacle, 1)
+                self.ob_creat = True
+
         if (get_time() - self.Creat_timer) % 10:
             self.ob_creat = False
-
