@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5585ec85-eab6-4fe9-9e4a-f62496120097" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obstacles.py" beforeDir="false" afterPath="$PROJECT_DIR$/obstacles.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/items/Gold_Coin.png" beforeDir="false" afterPath="$PROJECT_DIR$/resource/items/Gold_Coin.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/items/Jelly.png" beforeDir="false" afterPath="$PROJECT_DIR$/resource/items/Jelly.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/items/Silver_Coin.png" beforeDir="false" afterPath="$PROJECT_DIR$/resource/items/Silver_Coin.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/pause/Pause.png" beforeDir="false" afterPath="$PROJECT_DIR$/resource/pause/Pause.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stage.py" beforeDir="false" afterPath="$PROJECT_DIR$/stage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/items.py" beforeDir="false" afterPath="$PROJECT_DIR$/items.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -77,22 +71,22 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="9" />
+          <entry key="py" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="9" />
+          <entry key="Python" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="2945" />
+          <entry key="py" value="3085" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="2945" />
+          <entry key="Python" value="3085" />
         </counts>
       </usages-collector>
     </session>
@@ -127,13 +121,34 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/items.py">
+        <entry file="file://$PROJECT_DIR$/cookie.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="27" column="44" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="44" />
+            <state relative-caret-position="228">
+              <caret line="45" column="108" lean-forward="true" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="108" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/items.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="346">
+              <caret line="56" column="48" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://C:/Program Files/Python37/Lib/site-packages/pico2d/sdl2/rect.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="41" selection-start-line="41" selection-end-line="41" />
             </state>
           </provider>
         </entry>
@@ -150,42 +165,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://C:/Program Files/Python37/Lib/site-packages/pico2d/pico2d.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="339" selection-start-line="339" selection-end-line="339" />
+            <state relative-caret-position="140">
+              <caret line="283" selection-start-line="283" selection-end-line="283" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pet.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-129">
-              <folding>
-                <element signature="e#0#20#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/stage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
+            <state relative-caret-position="1406">
+              <caret line="74" column="52" lean-forward="true" selection-start-line="74" selection-start-column="52" selection-end-line="74" selection-end-column="52" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
                 <marker date="1541172711487" expanded="true" signature="1326:1332" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pause_state.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -242,8 +235,8 @@
         <option value="$PROJECT_DIR$/cookie.py" />
         <option value="$PROJECT_DIR$/game_world.py" />
         <option value="$PROJECT_DIR$/obstacles.py" />
-        <option value="$PROJECT_DIR$/items.py" />
         <option value="$PROJECT_DIR$/stage.py" />
+        <option value="$PROJECT_DIR$/items.py" />
       </list>
     </option>
   </component>
@@ -483,7 +476,6 @@
     <entry file="file://$PROJECT_DIR$/cookie_run.png" />
     <entry file="file://$PROJECT_DIR$/grass.png" />
     <entry file="file://$PROJECT_DIR$/BraveCookie_DoubleJump_Big.png" />
-    <entry file="file://C:/Program Files/Python37/Lib/site-packages/pico2d/sdl2/rect.py" />
     <entry file="file://$PROJECT_DIR$/background.py" />
     <entry file="file://$PROJECT_DIR$/cookie_select.png" />
     <entry file="file://$PROJECT_DIR$/title_devsisters_state.py">
@@ -497,16 +489,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="97" column="34" selection-start-line="97" selection-start-column="34" selection-end-line="97" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cookie.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="35" column="26" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -578,13 +560,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Program Files/Python37/Lib/site-packages/pico2d/pico2d.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="339" selection-start-line="339" selection-end-line="339" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/title_cookierun_state.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
@@ -592,23 +567,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/items.py">
+    <entry file="file://$PROJECT_DIR$/stage.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="27" column="44" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="44" />
+        <state relative-caret-position="1406">
+          <caret line="74" column="52" lean-forward="true" selection-start-line="74" selection-start-column="52" selection-end-line="74" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+            <marker date="1541172711487" expanded="true" signature="1326:1332" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cookie.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="45" column="108" lean-forward="true" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="108" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stage.py">
+    <entry file="file://C:/Program Files/Python37/Lib/site-packages/pico2d/sdl2/rect.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
+        <state relative-caret-position="140">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Python37/Lib/site-packages/pico2d/pico2d.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="283" selection-start-line="283" selection-end-line="283" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/items.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="56" column="48" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
-            <marker date="1541172711487" expanded="true" signature="1326:1332" ph="..." />
+            <element signature="e#0#20#0" expanded="true" />
           </folding>
         </state>
       </provider>
