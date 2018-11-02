@@ -32,7 +32,16 @@ class Items:
             self.Up_Down = 16
 
         elif self.select == 3:
-            self.image = load_image('')
+            self.image = load_image('resource/items/Power_Up.png')
+            self.y = 250
+            self.Left_Right = 25
+            self.Up_Down = 25
+
+        elif self.select == 4:
+            self.image = load_image('resource/items/Hp_Up.png')
+            self.y = 250
+            self.Left_Right = 25
+            self.Up_Down = 25
 
     def get_bb(self):
         return self.x - self.Left_Right, self.y - self.Up_Down, self.x + self.Left_Right, self.y + self.Up_Down
@@ -43,7 +52,7 @@ class Items:
     def update(self):
         self.x -= 100 * game_framework.frame_time
 
-        if self.select == 1 or self.select == 2:
+        if self.select == 1 or self.select == 2 or self.select == 3 or self.select == 4:
             self.frame = (self.frame + cookie.FRAMES_PER_ACTION4 * cookie.ACTION_PER_TIME * game_framework.frame_time) % 4
 
         if self.x + self.Left_Right < 0:
@@ -53,9 +62,9 @@ class Items:
         if self.select == 0:
             self.image.clip_draw(self.frame * 0, 0, 24, 32, self.x, self.y, 24, 32)
             draw_rectangle(*self.get_bb())
-        elif self.select == 1:
+        elif self.select == 1 or self.select == 2:
             self.image.clip_draw(int(self.frame) * 32, 0, 32, 32, self.x, self.y, 32, 32)
             draw_rectangle(*self.get_bb())
-        elif self.select == 2:
-            self.image.clip_draw(int(self.frame) * 32, 0, 32, 32, self.x, self.y, 32, 32)
+        elif self.select == 3 or self.select == 4:
+            self.image.clip_draw(int(self.frame) * 50, 0, 50, 50, self.x, self.y, 50, 50)
             draw_rectangle(*self.get_bb())

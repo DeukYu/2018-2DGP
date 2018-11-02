@@ -74,3 +74,7 @@ class Stage:
         if (get_time() - self.item_timer) % 1 < 0.01:
             item = items.Items(random.randint(0, 2))
             game_world.add_object(item, 1)
+
+        if (get_time() - self.item_timer) % 1 < 0.00001:
+            item = items.Items(random.randint(3, 4))
+            game_world.add_object(item, 1)
