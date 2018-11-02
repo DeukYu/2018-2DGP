@@ -23,6 +23,13 @@ class Stage:
         self.image_Stage2_BottomGround.clip_draw(0, 0, 800, 500, self.Bottomx1_1, 250, 800, 500)
         self.image_Stage2_BottomGround.clip_draw(0, 0, 800, 500, self.Bottomx1_2, 250, 800, 500)
 
+    def fire_ball():
+        ball = Obstacle(500,self.y)
+        add_object(ball)
+
+        for i in range(3):
+            bal = obstacle(500,sefl.y+ i*50)
+
     def update(self):
         if self.Bx1_1 <= - 400:
             self.Bx1_1 = 1200

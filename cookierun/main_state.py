@@ -10,7 +10,7 @@ import pause_state
 from cookie import Cookie
 from stage import Stage
 from pet import Pet
-from obstacles import Obstacle
+from obstacles import Obstacles
 
 name = "MainState"
 
@@ -18,19 +18,19 @@ cookie = None
 background = None
 pet = None
 game_timer = None
-obstacle = None
+obstacles = None
 
 def enter():
-    global cookie, stage, pet, game_timer, obstacle
+    global cookie, stage, pet, game_timer, obstacles
     cookie = Cookie()
     stage = Stage()
     pet = Pet()
-    obstacle = Obstacle()
     game_timer = get_time()
+    obstacles = Obstacles()
     game_world.add_object(stage, 0)
     game_world.add_object(cookie, 1)
     game_world.add_object(pet, 2)
-    game_world.add_object(obstacle, 3)
+    game_world.add_object(obstacles, 3)
 
 
 def exit():
