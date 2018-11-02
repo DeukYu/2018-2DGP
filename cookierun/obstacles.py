@@ -47,7 +47,7 @@ class Obstacles:
         pass
 
     def update(self):
-        self.x -= 100 * game_framework.frame_time
+        self.x -= 250 * game_framework.frame_time
 
         if self.x + self.Left_Right < 0:
             game_world.remove_object(self)

@@ -16,7 +16,7 @@ class Stage:
         self.Bx1_1 = 400
         self.Bx1_2 = 1200
         self.Fx1_1 = 700
-        self.Fx1_2 = 2100
+        self.Fx1_2 = 2095
         self.Bottomx1_1 = 400
         self.Bottomx1_2 = 1200
         self.timer = get_time()
@@ -42,10 +42,10 @@ class Stage:
             self.Bx1_2 = 1200
 
         if self.Fx1_1 <= - 700:
-            self.Fx1_1 = 2100
+            self.Fx1_1 = 2095
 
         if self.Fx1_2 <= - 700:
-            self.Fx1_2 = 2100
+            self.Fx1_2 = 2095
 
         if self.Bottomx1_1 <= - 400:
             self.Bottomx1_1 = 1200
@@ -56,11 +56,11 @@ class Stage:
         self.Bx1_1 -= 10 * game_framework.frame_time
         self.Bx1_2 -= 10 * game_framework.frame_time
 
-        self.Fx1_1 -= 100 * game_framework.frame_time
-        self.Fx1_2 -= 100 * game_framework.frame_time
+        self.Fx1_1 -= 250 * game_framework.frame_time
+        self.Fx1_2 -= 250 * game_framework.frame_time
 
-        self.Bottomx1_1 -= 100 * game_framework.frame_time
-        self.Bottomx1_2 -= 100 * game_framework.frame_time
+        self.Bottomx1_1 -= 250 * game_framework.frame_time
+        self.Bottomx1_2 -= 250 * game_framework.frame_time
 
         if (get_time() - self.timer) % 1 < 0.00001:
             if self.ob_creat == False:

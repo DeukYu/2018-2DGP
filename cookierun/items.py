@@ -50,10 +50,10 @@ class Items:
         pass
 
     def update(self):
-        self.x -= 100 * game_framework.frame_time
+        self.x -= 250 * game_framework.frame_time
 
         if self.select == 1 or self.select == 2 or self.select == 3 or self.select == 4:
-            self.frame = (self.frame + cookie.FRAMES_PER_ACTION4 * cookie.ACTION_PER_TIME * game_framework.frame_time) % 4
+            self.frame = (self.frame + cookie.FRAMES_PER_ACTION4 * cookie.ACTION_PER_TIME1 * game_framework.frame_time) % 4
 
         if self.x + self.Left_Right < 0:
             game_world.remove_object(self)

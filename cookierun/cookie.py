@@ -3,8 +3,10 @@ from pico2d import *
 import interface_state
 import game_framework
 
-TIME_PER_ACTION = 0.5
-ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
+TIME_PER_ACTION1 = 0.3
+TIME_PER_ACTION2 = 0.5
+ACTION_PER_TIME1 = 1.0 / TIME_PER_ACTION1
+ACTION_PER_TIME2 = 1.0 / TIME_PER_ACTION2
 FRAMES_PER_ACTION2 = 2
 FRAMES_PER_ACTION4 = 4
 FRAMES_PER_ACTION7 = 7
@@ -43,7 +45,7 @@ class RunState:
 
     @staticmethod
     def do(cookie):
-        cookie.frame = (cookie.frame + FRAMES_PER_ACTION4 * ACTION_PER_TIME * game_framework.frame_time) % 4
+        cookie.frame = (cookie.frame + FRAMES_PER_ACTION4 * ACTION_PER_TIME1 * game_framework.frame_time) % 4
 
     @staticmethod
     def draw(cookie):
@@ -72,7 +74,7 @@ class SlideState:
 
     @staticmethod
     def do(cookie):
-        cookie.frame = (cookie.frame + FRAMES_PER_ACTION2 * ACTION_PER_TIME * game_framework.frame_time) % 2
+        cookie.frame = (cookie.frame + FRAMES_PER_ACTION2 * ACTION_PER_TIME1 * game_framework.frame_time) % 2
 
     @staticmethod
     def draw(cookie):
@@ -99,7 +101,7 @@ class JumpState:
 
     @staticmethod
     def do(cookie):
-        cookie.frame = (cookie.frame + FRAMES_PER_ACTION2 * ACTION_PER_TIME * game_framework.frame_time) % 2
+        cookie.frame = (cookie.frame + FRAMES_PER_ACTION2 * ACTION_PER_TIME1 * game_framework.frame_time) % 2
         cookie.ground_in()
 
     @staticmethod
@@ -129,7 +131,7 @@ class AirJumpState:
 
     @staticmethod
     def do(cookie):
-        cookie.frame = (cookie.frame + FRAMES_PER_ACTION7 * ACTION_PER_TIME * game_framework.frame_time / 3.8) % 7
+        cookie.frame = (cookie.frame + FRAMES_PER_ACTION7 * ACTION_PER_TIME2 * game_framework.frame_time / 3.8) % 7
         cookie.ground_in()
 
     @staticmethod
@@ -149,7 +151,7 @@ next_state_table = {
 class Cookie:
     def __init__(self):
         self.event_que = []
-        self.x, self.y = 200, 145
+        self.x, self.y = 250, 145
         self.count = 0
         self.cur_state = RunState
         self.cur_state.enter(self, None)
@@ -193,7 +195,7 @@ class Cookie:
         self.Left_Right, self.Up_Down = 72, 80
 
     def jump_now(self):
-        self.speed = 2.5
+        self.speed = 3
 
     def gravity(self):
         self.y += self.speed
