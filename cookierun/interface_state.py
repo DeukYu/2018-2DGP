@@ -15,6 +15,7 @@ imageCookieSelection = None
 imageShowCookie = None
 imageShowPet = None
 imagePetSelection = None
+imageSelectButton = None
 
 
 class Background:
@@ -80,6 +81,20 @@ class PetSelectWindow:
                 self.imageExit.draw(585, 335)
 
 
+class SelectButton:
+    def __init__(self):
+        self.image = load_image('resource/interface/interface_selectbutton.png')
+        self.motion = 0
+    def draw(self):
+        if self.motion == 1:
+            self.image.draw(252.5, 171)
+        elif self.motion == 2:
+            self.image.draw(351, 171)
+        elif self.motion == 3:
+            self.image.draw(449, 171)
+        elif self.motion == 4:
+            self.image.draw(550, 171)
+
 class ShowCookie:
     def __init__(self):
         self.image = load_image('resource/interface/interface_character.png')
@@ -98,7 +113,7 @@ class ShowPet:
 
 def enter():
     global imageBackground, imageStartButton, imageCookieButton, imagePetButton, imageCookieSelection, imageShowCookie
-    global imagePetSelection, imageShowPet
+    global imagePetSelection, imageShowPet, imageSelectButton
     imageBackground = Background()
     imageStartButton = StartButton()
     imageCookieButton = CookieSelectButton()
@@ -107,11 +122,12 @@ def enter():
     imageShowCookie = ShowCookie()
     imageShowPet = ShowPet()
     imagePetSelection = PetSelectWindow()
+    imageSelectButton = SelectButton()
 
 
 def exit():
     global imageBackground, imageStartButton, imageCookieButton, imagePetButton, imageCookieSelection, imageShowCookie
-    global imagePetSelection, imageShowPet
+    global imagePetSelection, imageShowPet, imageSelectButton
     del imageBackground
     del imageStartButton
     del imageCookieButton
@@ -120,7 +136,7 @@ def exit():
     del imageShowCookie
     del imageShowPet
     del imagePetSelection
-
+    del imageSelectButton
 
 def handle_events():
     global x, y, Click, CharChoice, PetChoice
@@ -153,18 +169,23 @@ def handle_events():
                     if 200 + 15 <= x <= 200 + 90:
                         PetChoice = 0
                         imagePetSelection.Exit = 1
+                        imageSelectButton.motion = 1
                     elif 200 + 113 <= x <= 200 + 188:
                         PetChoice = 1
                         imagePetSelection.Exit = 1
+                        imageSelectButton.motion = 2
                     elif 200 + 211 <= x <= 200 + 286:
                         PetChoice = 2
                         imagePetSelection.Exit = 1
+                        imageSelectButton.motion = 3
                     elif 200 + 310 <= x <= 200 + 385:
                         PetChoice = 3
                         imagePetSelection.Exit = 1
+                        imageSelectButton.motion = 4
                 else:
                     imagePetSelection.Exit = 0
                     imagePetSelection.ExitMotion = 0
+                    imageSelectButton.motion = 0
             elif Click == 2: # Cookie
                 if 600 - 25 <= x <= 600 - 5 and 350 - 25 <= y <= 350 - 5:
                     imageCookieSelection.Exit = 1
@@ -173,18 +194,23 @@ def handle_events():
                     if 200 + 15 <= x <= 200 + 90:
                         CharChoice = 0
                         imageCookieSelection.Exit = 1
+                        imageSelectButton.motion = 1
                     elif 200 + 113 <= x <= 200 + 188:
                         CharChoice = 1
                         imageCookieSelection.Exit = 1
+                        imageSelectButton.motion = 2
                     elif 200 + 211 <= x <= 200 + 286:
                         CharChoice = 2
+                        imageSelectButton.motion = 3
                         imageCookieSelection.Exit = 1
                     elif 200 + 310 <= x <= 200 + 385:
                         CharChoice = 3
                         imageCookieSelection.Exit = 1
+                        imageSelectButton.motion = 4
                 else:
                     imageCookieSelection.Exit = 0
                     imageCookieSelection.ExitMotion = 0
+                    imageSelectButton.motion = 0
         if event.type == SDL_MOUSEBUTTONDOWN and event.button == SDL_BUTTON_LEFT:
             if Click == 0:
                 if imagePetButton.motion == 1:
@@ -197,10 +223,12 @@ def handle_events():
                 if imagePetSelection.Exit == 1:
                     Click = 0
                     imagePetSelection.Exit = 0
+                    imageSelectButton.motion = 0
             elif Click == 2:
                 if imageCookieSelection.Exit == 1:
                     Click = 0
                     imageCookieSelection.Exit = 0
+                    imageSelectButton.motion = 0
 
 
 x, y = 0, 0
@@ -218,6 +246,7 @@ def draw():
     imageShowPet.draw()
     imageCookieSelection.draw()
     imagePetSelection.draw()
+    imageSelectButton.draw()
     update_canvas()
 
 

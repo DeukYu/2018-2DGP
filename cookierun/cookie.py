@@ -25,10 +25,11 @@ class RunState:
         if event == DOWN_DOWN:
             pass
         elif event == SPACE_DOWN:
+            cookie.change_jump_bb()
             cookie.jump_saveY = cookie.y
             cookie.jump_now()
         elif event == DOWN_UP:
-            pass
+            cookie.change_run_bb()
         elif event == SPACE_UP:
             pass
 
@@ -43,7 +44,7 @@ class RunState:
     @staticmethod
     def draw(cookie):
         cookie.imageRun.clip_draw(int(cookie.frame) * 64, 0, 64, 72, cookie.x, cookie.y)
-        draw_rectangle(cookie.x - 32, cookie.y + 36, cookie.x + 32, cookie.y - 36)
+        cookie.draw_bb()
 
 
 class SlideState:
@@ -51,7 +52,7 @@ class SlideState:
     @staticmethod
     def enter(cookie, event):
         if event == DOWN_DOWN:
-            pass
+            cookie.change_slide_bb()
         elif event == SPACE_DOWN:
             pass
         elif event == DOWN_UP:
@@ -71,7 +72,7 @@ class SlideState:
     @staticmethod
     def draw(cookie):
         cookie.imageSlide.clip_draw(int(cookie.frame) * 88, 0, 88, 36, cookie.x, cookie.y)
-        draw_rectangle(cookie.x - 44, cookie.y + 18, cookie.x + 44, cookie.y - 18)
+        cookie.draw_bb()
 
 
 class JumpState:
@@ -84,8 +85,8 @@ class JumpState:
             cookie.jump_now()
         elif event == DOWN_UP:
             pass
-        elif event == DOWN_DOWN:
-            pass
+        elif event == SPACE_UP:
+            cookie.change_jump_bb()
 
     @staticmethod
     def exit(cookie, event):
@@ -99,7 +100,7 @@ class JumpState:
     @staticmethod
     def draw(cookie):
         cookie.imageJump.clip_draw(int(cookie.frame) * 64, 0, 64, 60, cookie.x, cookie.y)
-        draw_rectangle(cookie.x - 32, cookie.y + 30, cookie.x + 32, cookie.y - 30)
+        cookie.draw_bb()
 
 
 class AirJumpState:
@@ -111,6 +112,7 @@ class AirJumpState:
             if cookie.AirJump_Check == False:
                 cookie.AirJump_Check = True
                 cookie.speed = 3
+                cookie.change_airjump_bb()
         elif event == DOWN_UP:
             pass
         elif event == SPACE_UP:
@@ -128,7 +130,7 @@ class AirJumpState:
     @staticmethod
     def draw(cookie):
         cookie.imageAirJump.clip_draw(int(cookie.frame) * 72, 0, 72, 80, cookie.x, cookie.y)
-        draw_rectangle(cookie.x - 36, cookie.y + 40, cookie.x + 36, cookie.y - 40)
+        cookie.draw_bb()
 
 
 next_state_table = {
@@ -142,7 +144,7 @@ next_state_table = {
 class Cookie:
     def __init__(self):
         self.event_que = []
-        self.x, self.y = 200, 102
+        self.x, self.y = 200, 110
         self.count = 0
         self.cur_state = RunState
         self.cur_state.enter(self, None)
@@ -150,9 +152,11 @@ class Cookie:
         self.acceleration = 0.03
         self.speed = 0
         self.frame = 0
-        self.jump_saveY = 102
+        self.jump_saveY = 110
         self.AirJump_Check = False
         self.frame = 0
+        self.Left_Right = 32
+        self.Up_Down = 36
         if interface_state.CharChoice == 0:
             self.imageRun = load_image('resource/character/BraveCookie_Move.png')
             self.imageSlide = load_image('resource/character/BraveCookie_Slide.png')
@@ -164,6 +168,24 @@ class Cookie:
             pass
         elif interface_state.CharChoice == 3:
             pass
+
+    def get_bb(self):
+        return self.x - self.Left_Right, self.y - self.Up_Down, self.x + self.Left_Right, self.y + self.Up_Down
+
+    def draw_bb(self):
+        draw_rectangle(*self.get_bb())
+
+    def change_run_bb(self):
+        self.Left_Right, self.Up_Down = 32, 36
+
+    def change_slide_bb(self):
+        self.Left_Right, self.Up_Down = 44, 18
+
+    def change_jump_bb(self):
+        self.Left_Right, self.Up_Down = 32, 30
+
+    def change_airjump_bb(self):
+        self.Left_Right, self.Up_Down = 36, 40
 
     def jump_now(self):
         self.speed = 2.5
@@ -178,6 +200,7 @@ class Cookie:
             self.y = self.jump_saveY
             self.speed = 0
             self.AirJump_Check = False
+            self.change_run_bb()
             self.add_event(GROUND_IN)
 
     def add_event(self, event):

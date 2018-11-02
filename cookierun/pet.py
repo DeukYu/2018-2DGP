@@ -24,6 +24,9 @@ class Pet:
         elif interface_state.PetChoice == 3:
             self.image = load_image('resource/pet/ghost_idle.png')
 
+    def enter(self):
+        pass
+
     def update(self):
         if interface_state.PetChoice == 0 or 1:
             self.frame = (self.frame + STAR_FLOWER_FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
