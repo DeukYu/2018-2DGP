@@ -156,7 +156,7 @@ class Cookie:
         self.cur_state = RunState
         self.cur_state.enter(self, None)
         self.motion = 0
-        self.acceleration = 0.03
+        self.acceleration = 0.05
         self.speed = 0
         self.frame = 0
         self.jump_saveY = 145

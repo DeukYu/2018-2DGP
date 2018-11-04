@@ -16,7 +16,7 @@ class Stage:
         self.Bx1_1 = 400
         self.Bx1_2 = 1200
         self.Fx1_1 = 700
-        self.Fx1_2 = 2095
+        self.Fx1_2 = 2100
         self.Bottomx1_1 = 400
         self.Bottomx1_2 = 1200
         self.timer = get_time()
@@ -42,10 +42,10 @@ class Stage:
             self.Bx1_2 = 1200
 
         if self.Fx1_1 <= - 700:
-            self.Fx1_1 = 2095
+            self.Fx1_1 = 2100
 
         if self.Fx1_2 <= - 700:
-            self.Fx1_2 = 2095
+            self.Fx1_2 = 2100
 
         if self.Bottomx1_1 <= - 400:
             self.Bottomx1_1 = 1200
