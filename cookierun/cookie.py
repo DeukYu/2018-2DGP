@@ -174,7 +174,10 @@ class Cookie:
         elif interface_state.CharChoice == 2:
             pass
         elif interface_state.CharChoice == 3:
-            pass
+            self.imageRun = load_image('resource/character/ZombieCookie_Move.png')
+            self.imageSlide = load_image('resource/character/ZombieCookie_Slide.png')
+            self.imageJump = load_image('resource/character/ZombieCookie_Jump.png')
+            self.imageAirJump = load_image('resource/character/ZombieCookie_AirJump.png')
 
     def get_bb(self):
         return self.x - self.Left_Right, self.y - self.Up_Down, self.x + self.Left_Right, self.y + self.Up_Down

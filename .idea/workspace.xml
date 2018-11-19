@@ -58,12 +58,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="6709" />
+          <entry key="py" value="6721" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="6709" />
+          <entry key="Python" value="6721" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -92,11 +92,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cookierun/cookie.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2869">
-              <caret line="154" column="22" selection-start-line="154" selection-start-column="22" selection-end-line="154" selection-end-column="22" />
+            <state relative-caret-position="342">
+              <caret line="177" column="85" lean-forward="true" selection-start-line="177" selection-start-column="85" selection-end-line="177" selection-end-column="85" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -173,7 +173,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cookierun/mygame.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="152">
@@ -236,10 +236,10 @@
         <option value="$PROJECT_DIR$/cookierun/pet.py" />
         <option value="$PROJECT_DIR$/cookierun/game_framework.py" />
         <option value="$PROJECT_DIR$/cookierun/stage.py" />
-        <option value="$PROJECT_DIR$/cookierun/cookie.py" />
         <option value="$PROJECT_DIR$/cookierun/game_world.py" />
         <option value="$PROJECT_DIR$/cookierun/main_state.py" />
         <option value="$PROJECT_DIR$/cookierun/obstacles.py" />
+        <option value="$PROJECT_DIR$/cookierun/cookie.py" />
       </list>
     </option>
   </component>
@@ -419,16 +419,6 @@
     </entry>
     <entry file="file://C:/Program Files/Python37/Lib/site-packages/pico2d/pico2d.py" />
     <entry file="file://$PROJECT_DIR$/cookierun/Pause.py" />
-    <entry file="file://$PROJECT_DIR$/cookierun/cookie.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2869">
-          <caret line="154" column="22" selection-start-line="154" selection-start-column="22" selection-end-line="154" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cookierun/pet.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="475">
@@ -509,6 +499,16 @@
           <caret line="8" column="21" lean-forward="true" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cookierun/cookie.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="177" column="85" lean-forward="true" selection-start-line="177" selection-start-column="85" selection-end-line="177" selection-end-column="85" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
           </folding>
         </state>
       </provider>
