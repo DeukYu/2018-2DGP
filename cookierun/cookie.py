@@ -49,7 +49,14 @@ class RunState:
 
     @staticmethod
     def draw(cookie):
-        cookie.imageRun.clip_draw(int(cookie.frame) * 128, 0, 128, 145, cookie.x, cookie.y)
+        if interface_state.CharChoice == 0:
+            cookie.imageRun.clip_draw(int(cookie.frame) * 144, 480, 144, 160, cookie.x, cookie.y)
+        elif interface_state.CharChoice == 1:
+            cookie.imageRun.clip_draw(int(cookie.frame) * 144, 320, 144, 160, cookie.x, cookie.y)
+        elif interface_state.CharChoice == 2:
+            cookie.imageRun.clip_draw(int(cookie.frame) * 144, 160, 144, 160, cookie.x, cookie.y)
+        elif interface_state.CharChoice == 3:
+            cookie.imageRun.clip_draw(int(cookie.frame) * 144, 0, 144, 160, cookie.x, cookie.y)
         cookie.draw_bb()
 
 
@@ -106,7 +113,14 @@ class JumpState:
 
     @staticmethod
     def draw(cookie):
-        cookie.imageJump.clip_draw(int(cookie.frame) * 128, 0, 128, 120, cookie.x, cookie.y)
+        if interface_state.CharChoice == 0:
+            cookie.imageJump.clip_draw(int(cookie.frame) * 160, 576, 160, 192, cookie.x, cookie.y)
+        elif interface_state.CharChoice == 1:
+            cookie.imageJump.clip_draw(int(cookie.frame) * 160, 384, 160, 192, cookie.x, cookie.y)
+        elif interface_state.CharChoice == 2:
+            cookie.imageJump.clip_draw(int(cookie.frame) * 160, 192, 160, 192, cookie.x, cookie.y)
+        elif interface_state.CharChoice == 3:
+            cookie.imageJump.clip_draw(int(cookie.frame) * 160, 0, 160, 192, cookie.x, cookie.y)
         cookie.draw_bb()
 
 
@@ -161,23 +175,20 @@ class Cookie:
         self.frame = 0
         self.jump_saveY = 145
         self.AirJump_Check = False
-        self.frame = 0
-        self.Left_Right = 64
-        self.Up_Down = 72
+        self.Left_Right = 72
+        self.Up_Down = 80
+        self.imageRun = load_image('resource/character/Cookie_Run.png')
+        self.imageSlide = load_image('resource/character/Cookie_Slide.png')
+        self.imageJump = load_image('resource/character/Cookie_Jump.png')
+        self.imageAirJump = load_image('resource/character/Cookie_AirJump.png')
         if interface_state.CharChoice == 0:
-            self.imageRun = load_image('resource/character/BraveCookie_Move.png')
-            self.imageSlide = load_image('resource/character/BraveCookie_Slide.png')
-            self.imageJump = load_image('resource/character/BraveCookie_Jump.png')
-            self.imageAirJump = load_image('resource/character/BraveCookie_AirJump.png')
+            pass
         elif interface_state.CharChoice == 1:
             pass
         elif interface_state.CharChoice == 2:
             pass
         elif interface_state.CharChoice == 3:
-            self.imageRun = load_image('resource/character/ZombieCookie_Move.png')
-            self.imageSlide = load_image('resource/character/ZombieCookie_Slide.png')
-            self.imageJump = load_image('resource/character/ZombieCookie_Jump.png')
-            self.imageAirJump = load_image('resource/character/ZombieCookie_AirJump.png')
+            pass
 
     def get_bb(self):
         return self.x - self.Left_Right, self.y - self.Up_Down, self.x + self.Left_Right, self.y + self.Up_Down
