@@ -85,7 +85,14 @@ class SlideState:
 
     @staticmethod
     def draw(cookie):
-        cookie.imageSlide.clip_draw(int(cookie.frame) * 176, 0, 176, 72, cookie.x, cookie.y)
+        if interface_state.CharChoice == 0:
+            cookie.imageSlide.clip_draw(int(cookie.frame) * 192, 366, 192, 122, cookie.x, cookie.y)
+        elif interface_state.CharChoice == 1:
+            cookie.imageSlide.clip_draw(int(cookie.frame) * 192, 244, 192, 122, cookie.x, cookie.y)
+        elif interface_state.CharChoice == 2:
+            cookie.imageSlide.clip_draw(int(cookie.frame) * 192, 122, 192, 122, cookie.x, cookie.y)
+        elif interface_state.CharChoice == 3:
+            cookie.imageSlide.clip_draw(int(cookie.frame) * 192, 0, 192, 122, cookie.x, cookie.y)
         cookie.draw_bb()
 
 
@@ -150,7 +157,14 @@ class AirJumpState:
 
     @staticmethod
     def draw(cookie):
-        cookie.imageAirJump.clip_draw(int(cookie.frame) * 144, 0, 144, 160, cookie.x, cookie.y)
+        if interface_state.CharChoice == 0:
+            cookie.imageAirJump.clip_draw(int(cookie.frame) * 160, 630, 160, 210, cookie.x, cookie.y)
+        elif interface_state.CharChoice == 1:
+            cookie.imageAirJump.clip_draw(int(cookie.frame) * 160, 420, 160, 210, cookie.x, cookie.y)
+        elif interface_state.CharChoice == 2:
+            cookie.imageAirJump.clip_draw(int(cookie.frame) * 160, 210, 160, 210, cookie.x, cookie.y)
+        elif interface_state.CharChoice == 3:
+            cookie.imageAirJump.clip_draw(int(cookie.frame) * 160, 0, 160, 210, cookie.x, cookie.y)
         cookie.draw_bb()
 
 
@@ -209,7 +223,7 @@ class Cookie:
         self.Left_Right, self.Up_Down = 72, 80
 
     def jump_now(self):
-        self.speed = 3
+        self.speed = 5
 
     def gravity(self):
         self.y += self.speed
