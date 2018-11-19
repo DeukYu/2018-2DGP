@@ -3,6 +3,7 @@ from pico2d import *
 import cookie
 import game_framework
 import game_world
+import main_state
 import random
 
 
@@ -55,7 +56,7 @@ class Items:
         if self.select == 1 or self.select == 2 or self.select == 3 or self.select == 4:
             self.frame = (self.frame + cookie.FRAMES_PER_ACTION4 * cookie.ACTION_PER_TIME1 * game_framework.frame_time) % 4
 
-        if self.x + self.Left_Right < 0:
+        if self.x + self.Left_Right < 0 or main_state.collide(self, main_state.cookie):
             game_world.remove_object(self)
 
     def draw(self):
