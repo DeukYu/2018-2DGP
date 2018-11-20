@@ -35,7 +35,7 @@ class RunState:
             cookie.jump_now()
         elif event == DOWN_UP:
             cookie.change_run_bb()
-            cookie.y += 40
+            cookie.y += 30
         elif event == SPACE_UP:
             pass
 
@@ -66,7 +66,7 @@ class SlideState:
     def enter(cookie, event):
         if event == DOWN_DOWN:
             cookie.change_slide_bb()
-            cookie.y -= 40
+            cookie.y -= 30
         elif event == SPACE_DOWN:
             pass
         elif event == DOWN_UP:
