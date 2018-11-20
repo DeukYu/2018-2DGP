@@ -35,7 +35,7 @@ class RunState:
             cookie.jump_now()
         elif event == DOWN_UP:
             cookie.change_run_bb()
-            cookie.y += 30
+            cookie.y += 10
         elif event == SPACE_UP:
             pass
 
@@ -66,7 +66,7 @@ class SlideState:
     def enter(cookie, event):
         if event == DOWN_DOWN:
             cookie.change_slide_bb()
-            cookie.y -= 30
+            cookie.y -= 10
         elif event == SPACE_DOWN:
             pass
         elif event == DOWN_UP:
@@ -179,7 +179,7 @@ next_state_table = {
 class Cookie:
     def __init__(self):
         self.event_que = []
-        self.x, self.y = 250, 145
+        self.x, self.y = 250, 155
         self.count = 0
         self.cur_state = RunState
         self.cur_state.enter(self, None)
@@ -187,10 +187,11 @@ class Cookie:
         self.acceleration = 0.05
         self.speed = 0
         self.frame = 0
-        self.jump_saveY = 145
+        self.jump_saveY = 155
         self.AirJump_Check = False
         self.Left_Right = 72
         self.Up_Down = 80
+        self.HP = 100
         self.imageRun = load_image('resource/character/Cookie_Run.png')
         self.imageSlide = load_image('resource/character/Cookie_Slide.png')
         self.imageJump = load_image('resource/character/Cookie_Jump.png')
