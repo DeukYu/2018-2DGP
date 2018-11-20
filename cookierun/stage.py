@@ -8,6 +8,7 @@ import time
 
 from pico2d import *
 
+
 class Stage:
     def __init__(self):
         self.image_Stage2_BackGround = load_image('resource/stage/Second_Background.png')
