@@ -14,7 +14,7 @@ class Obstacles:
             self.image = load_image('resource/obstacles/stage2/jump_obstacle.png')
             self.y = 125
             self.Left_Right = 40
-            self.Up_Down = 51
+            self.Up_Down = 40
 
         elif self.select == 1: # 이중점프
             self.image = load_image('resource/obstacles/stage2/airjump_obstacle1.png')

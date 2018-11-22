@@ -2,6 +2,7 @@ from pico2d import *
 
 import interface_state
 import game_framework
+import main_state
 
 #기본적인 액션 타이머
 TIME_PER_ACTION1 = 0.3
@@ -142,7 +143,7 @@ class AirJumpState:
         elif event == SPACE_DOWN:
             if cookie.AirJump_Check == False:
                 cookie.AirJump_Check = True
-                cookie.speed = 3
+                cookie.jump_now()
                 cookie.change_airjump_bb()
         elif event == DOWN_UP:
             pass
@@ -187,7 +188,7 @@ class Cookie:
         self.cur_state = RunState
         self.cur_state.enter(self, None)
         self.motion = 0
-        self.acceleration = 0.05
+        self.acceleration = 1600
         self.speed = 1
         self.frame = 0
         self.jump_saveY = 155
@@ -200,6 +201,12 @@ class Cookie:
         self.imageSlide = load_image('resource/character/Cookie_Slide.png')
         self.imageJump = load_image('resource/character/Cookie_Jump.png')
         self.imageAirJump = load_image('resource/character/Cookie_AirJump.png')
+        self.space_time = 0
+        self.speed_down = False
+
+        self.jelly_cnt = 0
+        self.coin_cnt = 0
+
         if interface_state.CharChoice == 0:
             self.FullHp = 110
             self.CurHp = 110
@@ -246,17 +253,22 @@ class Cookie:
         self.bb_Down = 90
 
     def change_airjump_bb(self):
-        self.bb_Left = 72
-        self.bb_Right = 72
+        self.bb_Left = 60
+        self.bb_Right = 60
         self.bb_Up = 40
-        self.bb_Down = 100
+        self.bb_Down = 80
 
     def jump_now(self):
-        self.speed = 5
+        self.speed = 800
 
     def gravity(self):
-        self.y += self.speed
-        self.speed -= self.acceleration
+        self.space_time = get_time() - main_state.game_timer
+        self.speed_down = 1 - self.speed_down
+        if self.speed_down == True:
+            self.speed -= self.acceleration * self.space_time * 2
+        self.y += self.speed * self.space_time
+        #self.y += self.speed
+        #self.speed -= self.acceleration
 
     def ground_in(self):
         self.gravity()
@@ -277,6 +289,7 @@ class Cookie:
             self.cur_state.exit(self, event)
             self.cur_state = next_state_table[self.cur_state][event]
             self.cur_state.enter(self, event)
+        main_state.game_timer = get_time()
 
     def draw(self):
         self.cur_state.draw(self)

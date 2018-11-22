@@ -18,15 +18,15 @@ cookie = None
 gameinfo = None
 background = None
 pet = None
-game_timer = None
+game_timer = 0
 
 def enter():
     global cookie, stage, pet, game_timer, gameinfo
+    game_timer = get_time()
     cookie = Cookie()
     gameinfo = GameInfo()
     stage = Stage()
     pet = Pet()
-    game_timer = get_time()
     game_world.add_object(stage, 0)
     game_world.add_object(cookie, 1)
     game_world.add_object(pet, 2)
@@ -49,6 +49,7 @@ def handle_events():
 
 
 def update():
+    game_timer = get_time()
     for game_object in game_world.all_objects():
         game_object.update()
 
