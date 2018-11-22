@@ -191,19 +191,26 @@ class Cookie:
         self.AirJump_Check = False
         self.Left_Right = 72
         self.Up_Down = 80
-        self.HP = 100
         self.imageRun = load_image('resource/character/Cookie_Run.png')
         self.imageSlide = load_image('resource/character/Cookie_Slide.png')
         self.imageJump = load_image('resource/character/Cookie_Jump.png')
         self.imageAirJump = load_image('resource/character/Cookie_AirJump.png')
         if interface_state.CharChoice == 0:
-            pass
+            self.FullHp = 110
+            self.CurHp = 110
+            self.Ability = 0
         elif interface_state.CharChoice == 1:
-            pass
+            self.FullHp = 150
+            self.CurHp = 150
+            self.Ability = 1
         elif interface_state.CharChoice == 2:
-            pass
+            self.FullHp = 160
+            self.CurHp = 160
+            self.Ability = 2
         elif interface_state.CharChoice == 3:
-            pass
+            self.FullHp = 150
+            self.CurHp = 150
+            self.Ability = 3
 
     def get_bb(self):
         return self.x - self.Left_Right, self.y - self.Up_Down, self.x + self.Left_Right, self.y + self.Up_Down

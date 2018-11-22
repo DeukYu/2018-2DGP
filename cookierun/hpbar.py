@@ -2,6 +2,7 @@ import game_framework
 import main_state
 import game_world
 import obstacles
+import cookie
 import random
 import items
 import time
@@ -18,7 +19,7 @@ class HpBar:
     def draw(self):
         self.image_HpBack.clip_draw(0, 0, 500, 70, 240, 470)
         self.image_Hp.clip_draw(0, 0, 500, 70, 240, 470)
-        self.image_HpEnd.draw_now(470, 470)
+        self.image_HpEnd.draw_now(main_state.cookie.CurHp * 4.7, 470)
 
     def update(self):
         pass
