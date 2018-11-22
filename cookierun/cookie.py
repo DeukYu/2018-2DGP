@@ -171,6 +171,30 @@ class AirJumpState:
             cookie.imageAirJump.clip_draw(int(cookie.frame) * 160, 0, 160, 210, cookie.x, cookie.y)
         cookie.draw_bb()
 
+class Hit:
+    @staticmethod
+    def enter(cookie, event):
+        pass
+
+    @staticmethod
+    def exit(cookie, event):
+        pass
+
+    @staticmethod
+    def do(cookie):
+        cookie.frame = (cookie.frame + FRAMES_PER_ACTION7 * ACTION_PER_TIME2 * game_framework.frame_time / 3.8) % 2
+
+    @staticmethod
+    def draw(cookie):
+        if interface_state.CharChoice == 0:
+            cookie.imageHit.clip_draw(int(cookie.frame) * 126, 612, 126, 204, cookie.x, cookie.y)
+        elif interface_state.CharChoice == 1:
+            cookie.imageHit.clip_draw(int(cookie.frame) * 126, 408, 126, 204, cookie.x, cookie.y)
+        elif interface_state.CharChoice == 2:
+            cookie.imageHit.clip_draw(int(cookie.frame) * 126, 204, 126, 204, cookie.x, cookie.y)
+        elif interface_state.CharChoice == 3:
+            cookie.imageHit.clip_draw(int(cookie.frame) * 126, 0, 126, 204, cookie.x, cookie.y)
+        cookie.draw_bb()
 
 next_state_table = {
     RunState: {DOWN_UP: SlideState, DOWN_DOWN: SlideState, SPACE_DOWN: JumpState, SPACE_UP: JumpState, GROUND_IN: RunState},
@@ -201,6 +225,7 @@ class Cookie:
         self.imageSlide = load_image('resource/character/Cookie_Slide.png')
         self.imageJump = load_image('resource/character/Cookie_Jump.png')
         self.imageAirJump = load_image('resource/character/Cookie_AirJump.png')
+        self.imageHit = load_image('resource/character/Cookie_Hit.png')
         self.space_time = 0
         self.speed_down = False
 

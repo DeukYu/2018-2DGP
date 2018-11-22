@@ -84,7 +84,7 @@ class Stage:
         else:
             self.Bottomx1_2 -= 250 * game_framework.frame_time
 
-        if (get_time() - self.item_timer) % 1 < 0.01:
+        if (get_time() - self.item_timer) % 1 < 0.1:
             item = items.Items(random.randint(0, 2))
             game_world.add_object(item, 1)
 

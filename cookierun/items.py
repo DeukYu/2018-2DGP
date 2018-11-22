@@ -56,11 +56,23 @@ class Items:
         if self.select == 1 or self.select == 2 or self.select == 3 or self.select == 4:
             self.frame = (self.frame + cookie.FRAMES_PER_ACTION4 * cookie.ACTION_PER_TIME1 * game_framework.frame_time) % 4
 
-        if self.x + self.Left_Right < 0 or main_state.collide(self, main_state.cookie):
+        if self.x + self.Left_Right < 0:
+            game_world.remove_object(self)
+        elif main_state.collide(self, main_state.cookie):
+            if self.select == 0:
+                main_state.cookie.jelly_cnt += 1
+            elif self.select == 1:
+                main_state.cookie.coin_cnt += 1
+            elif self.select == 2:
+                main_state.cookie.coin_cnt += 2
+            elif self.select == 3:
+                pass
+            elif self.select == 4:
+                pass
             game_world.remove_object(self)
 
     def draw(self):
-        if self.select == 0:
+        if self.select == 0: # 젤리
             self.image.clip_draw(self.frame * 0, 0, 24, 32, self.x, self.y, 24, 32)
             draw_rectangle(*self.get_bb())
         elif self.select == 1 or self.select == 2:
