@@ -3,17 +3,20 @@ from pico2d import *
 import interface_state
 import game_framework
 
+#기본적인 액션 타이머
 TIME_PER_ACTION1 = 0.3
-TIME_PER_ACTION2 = 0.5
 ACTION_PER_TIME1 = 1.0 / TIME_PER_ACTION1
+# 이중 점프시 액션 타이머
+TIME_PER_ACTION2 = 0.5
 ACTION_PER_TIME2 = 1.0 / TIME_PER_ACTION2
+
 FRAMES_PER_ACTION2 = 2
 FRAMES_PER_ACTION4 = 4
 FRAMES_PER_ACTION7 = 7
 FRAMES_PER_ACTION8 = 8
 
 # Cookie Event
-DOWN_DOWN, DOWN_UP, SPACE_DOWN, SPACE_UP, GROUND_IN = range(5)
+DOWN_DOWN, DOWN_UP, SPACE_DOWN, SPACE_UP, GROUND_IN, HIT = range(6)
 
 key_event_table = {
     (SDL_KEYDOWN, SDLK_DOWN): DOWN_DOWN,
@@ -35,7 +38,7 @@ class RunState:
             cookie.jump_now()
         elif event == DOWN_UP:
             cookie.change_run_bb()
-            cookie.y += 10
+            cookie.y += 20
         elif event == SPACE_UP:
             pass
 
@@ -66,7 +69,7 @@ class SlideState:
     def enter(cookie, event):
         if event == DOWN_DOWN:
             cookie.change_slide_bb()
-            cookie.y -= 10
+            cookie.y -= 20
         elif event == SPACE_DOWN:
             pass
         elif event == DOWN_UP:
@@ -185,12 +188,14 @@ class Cookie:
         self.cur_state.enter(self, None)
         self.motion = 0
         self.acceleration = 0.05
-        self.speed = 0
+        self.speed = 1
         self.frame = 0
         self.jump_saveY = 155
         self.AirJump_Check = False
-        self.Left_Right = 72
-        self.Up_Down = 80
+        self.bb_Left = 72
+        self.bb_Right = 72
+        self.bb_Up = 70
+        self.bb_Down = 80
         self.imageRun = load_image('resource/character/Cookie_Run.png')
         self.imageSlide = load_image('resource/character/Cookie_Slide.png')
         self.imageJump = load_image('resource/character/Cookie_Jump.png')
@@ -199,36 +204,52 @@ class Cookie:
             self.FullHp = 110
             self.CurHp = 110
             self.Ability = 0
+            self.Speed = 1
         elif interface_state.CharChoice == 1:
             self.FullHp = 150
             self.CurHp = 150
             self.Ability = 1
+            self.Speed = 1.3
         elif interface_state.CharChoice == 2:
             self.FullHp = 160
             self.CurHp = 160
             self.Ability = 2
+            self.Speed = 1
         elif interface_state.CharChoice == 3:
             self.FullHp = 150
             self.CurHp = 150
             self.Ability = 3
+            self.Speed = 1
 
     def get_bb(self):
-        return self.x - self.Left_Right, self.y - self.Up_Down, self.x + self.Left_Right, self.y + self.Up_Down
+        return self.x - self.bb_Left, self.y - self.bb_Down, self.x + self.bb_Right, self.y + self.bb_Up
 
     def draw_bb(self):
         draw_rectangle(*self.get_bb())
 
     def change_run_bb(self):
-        self.Left_Right, self.Up_Down = 64, 72
+        self.bb_Left = 72
+        self.bb_Right = 72
+        self.bb_Up = 70
+        self.bb_Down = 80
 
     def change_slide_bb(self):
-        self.Left_Right, self.Up_Down = 88, 36
+        self.bb_Left = 72
+        self.bb_Right = 72
+        self.bb_Up = 10
+        self.bb_Down = 64
 
     def change_jump_bb(self):
-        self.Left_Right, self.Up_Down = 64, 60
+        self.bb_Left = 65
+        self.bb_Right = 65
+        self.bb_Up = 10
+        self.bb_Down = 90
 
     def change_airjump_bb(self):
-        self.Left_Right, self.Up_Down = 72, 80
+        self.bb_Left = 72
+        self.bb_Right = 72
+        self.bb_Up = 40
+        self.bb_Down = 100
 
     def jump_now(self):
         self.speed = 5

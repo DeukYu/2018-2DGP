@@ -8,29 +8,29 @@ import game_world
 import pause_state
 
 from cookie import Cookie
-from hpbar import HpBar
+from gameinfo import GameInfo
 from stage import Stage
 from pet import Pet
 
 name = "MainState"
 
 cookie = None
-hpbar = None
+gameinfo = None
 background = None
 pet = None
 game_timer = None
 
 def enter():
-    global cookie, stage, pet, game_timer, hpbar
+    global cookie, stage, pet, game_timer, gameinfo
     cookie = Cookie()
-    hpbar = HpBar()
+    gameinfo = GameInfo()
     stage = Stage()
     pet = Pet()
     game_timer = get_time()
     game_world.add_object(stage, 0)
     game_world.add_object(cookie, 1)
     game_world.add_object(pet, 2)
-    game_world.add_object(hpbar, 3)
+    game_world.add_object(gameinfo, 3)
 
 
 def exit():

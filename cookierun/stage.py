@@ -5,6 +5,7 @@ import obstacles
 import random
 import items
 import time
+import cookie
 
 from pico2d import *
 
@@ -14,6 +15,7 @@ class Stage:
         self.image_Stage2_BackGround = load_image('resource/stage/Second_Background.png')
         self.image_Stage2_FrontGround = load_image('resource/stage/Second_Frontground.png')
         self.image_Stage2_BottomGround = load_image('resource/stage/Second_bottom.png')
+
         self.Bx1_1 = 400
         self.Bx1_2 = 1200
         self.Fx1_1 = 700
@@ -24,44 +26,71 @@ class Stage:
         self.Creat_timer = get_time()
         self.ob_creat = False
 
+        self.bgm = load_music('resource/sound/bgm_stage.ogg')
+        self.bgm.set_volume(128)
+        self.bgm.repeat_play()
+
         self.item_timer = get_time()
 
 
     def draw(self):
-        self.image_Stage2_BackGround.clip_draw(0, 0, 800, 500, self.Bx1_1, 250, 800, 500)
-        self.image_Stage2_BackGround.clip_draw(0, 0, 800, 500, self.Bx1_2, 250, 800, 500)
-        self.image_Stage2_FrontGround.clip_draw(0, 0, 1400, 500, self.Fx1_1, 250, 1400, 500)
-        self.image_Stage2_FrontGround.clip_draw(0, 0, 1400, 500, self.Fx1_2, 250, 1400, 500)
+        self.image_Stage2_BackGround.draw(self.Bx1_1, 250, 800, 500)
+        self.image_Stage2_BackGround.draw(self.Bx1_2, 250, 800, 500)
+        #self.image_Stage2_BackGround.clip_draw(0, 0, 800, 500, self.Bx1_1, 250, 800, 500)
+        #self.image_Stage2_BackGround.clip_draw(0, 0, 800, 500, self.Bx1_2, 250, 800, 500)
+
+        self.image_Stage2_FrontGround.draw(self.Fx1_1, 250, 1400, 500)
+        self.image_Stage2_FrontGround.draw(self.Fx1_2, 250, 1400, 500)
+        #self.image_Stage2_FrontGround.clip_draw(0, 0, 1400, 500, self.Fx1_1, 250, 1400, 500)
+        #self.image_Stage2_FrontGround.clip_draw(0, 0, 1400, 500, self.Fx1_2, 250, 1400, 500)
+
         self.image_Stage2_BottomGround.clip_draw(0, 0, 800, 500, self.Bottomx1_1, 250, 800, 500)
         self.image_Stage2_BottomGround.clip_draw(0, 0, 800, 500, self.Bottomx1_2, 250, 800, 500)
 
     def update(self):
         if self.Bx1_1 <= - 400:
             self.Bx1_1 = 1200
+            self.Bx1_1 -= (10 * main_state.cookie.speed) * game_framework.frame_time
+        else:
+            self.Bx1_1 -= (10 * main_state.cookie.speed) * game_framework.frame_time
 
         if self.Bx1_2 <= - 400:
             self.Bx1_2 = 1200
+            self.Bx1_2 -= (10 * main_state.cookie.speed) * game_framework.frame_time
+        else:
+            self.Bx1_2 -= (10 * main_state.cookie.speed) * game_framework.frame_time
 
         if self.Fx1_1 <= - 700:
-            self.Fx1_1 = 2100
+            self.Fx1_1 = self.Fx1_2 + 1400
+            self.Fx1_1 -= (350 * main_state.cookie.speed) * game_framework.frame_time
+        else:
+            self.Fx1_1 -= (350 * main_state.cookie.speed) * game_framework.frame_time
 
         if self.Fx1_2 <= - 700:
-            self.Fx1_2 = 2100
+            self.Fx1_2 = self.Fx1_1 + 1400
+            self.Fx1_2 -= (350 * main_state.cookie.speed) * game_framework.frame_time
+        else:
+            self.Fx1_2 -= (350 * main_state.cookie.speed) * game_framework.frame_time
 
         if self.Bottomx1_1 <= - 400:
             self.Bottomx1_1 = 1200
+            self.Bottomx1_1 -= (250 * main_state.cookie.speed) * game_framework.frame_time
+        else:
+            self.Bottomx1_1 -= (250 * main_state.cookie.speed) * game_framework.frame_time
 
         if self.Bottomx1_2 <= - 400:
             self.Bottomx1_2 = 1200
+            self.Bottomx1_2 -= (250 * main_state.cookie.speed) * game_framework.frame_time
+        else:
+            self.Bottomx1_2 -= (250 * main_state.cookie.speed) * game_framework.frame_time
 
-        self.Bx1_1 -= 10 * game_framework.frame_time
-        self.Bx1_2 -= 10 * game_framework.frame_time
+        if (get_time() - self.item_timer) % 1 < 0.01:
+            item = items.Items(random.randint(0, 2))
+            game_world.add_object(item, 1)
 
-        self.Fx1_1 -= 250 * game_framework.frame_time
-        self.Fx1_2 -= 250 * game_framework.frame_time
-
-        self.Bottomx1_1 -= 250 * game_framework.frame_time
-        self.Bottomx1_2 -= 250 * game_framework.frame_time
+        if (get_time() - self.item_timer) % 1 < 0.00001:
+            item = items.Items(random.randint(3, 4))
+            game_world.add_object(item, 1)
 
         if (get_time() - self.timer) % 1 < 0.00001:
             if self.ob_creat == False:
@@ -71,11 +100,3 @@ class Stage:
 
         if (get_time() - self.Creat_timer) % 10 > 9.5:
             self.ob_creat = False
-
-        if (get_time() - self.item_timer) % 1 < 0.01:
-            item = items.Items(random.randint(0, 2))
-            game_world.add_object(item, 1)
-
-        if (get_time() - self.item_timer) % 1 < 0.00001:
-            item = items.Items(random.randint(3, 4))
-            game_world.add_object(item, 1)

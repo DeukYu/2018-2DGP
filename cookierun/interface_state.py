@@ -16,6 +16,22 @@ imageShowCookie = None
 imageShowPet = None
 imagePetSelection = None
 imageSelectButton = None
+bgmLobby = None
+button_sound = None
+
+
+class ButtonSound:
+    def __init__(self):
+        self.on_sound = load_wav('resource/sound/SFX_Button_On.wav')
+        self.on_sound.set_volume(32)
+        self.off_sound = load_wav('resource/sound/SFX_Button_Off.wav')
+        self.off_sound.set_volume(32)
+
+    def button_on(self):
+        self.on_sound.play()
+
+    def button_off(self):
+        self.off_sound.play()
 
 
 class Background:
@@ -111,6 +127,13 @@ class ShowPet:
         self.image.clip_draw(80 * PetChoice, 0, 80, 80, 60, 100)
 
 
+class Bgm:
+    def __init__(self):
+        self.bgm = load_music('resource/sound/bgm_lobby.ogg')
+        self.bgm.set_volume(128)
+        self.bgm.repeat_play()
+
+
 def enter():
     global imageBackground, imageStartButton, imageCookieButton, imagePetButton, imageCookieSelection, imageShowCookie
     global imagePetSelection, imageShowPet, imageSelectButton
@@ -123,6 +146,12 @@ def enter():
     imageShowPet = ShowPet()
     imagePetSelection = PetSelectWindow()
     imageSelectButton = SelectButton()
+
+    global bgmLobby
+    bgmLobby = Bgm()
+
+    global button_sound
+    button_sound = ButtonSound()
 
 
 def exit():
@@ -138,6 +167,12 @@ def exit():
     del imagePetSelection
     del imageSelectButton
 
+    global bgmLobby
+    del bgmLobby
+
+    global button_sound
+    del button_sound
+
 def handle_events():
     global x, y, Click, CharChoice, PetChoice
     events = get_events()
@@ -151,20 +186,24 @@ def handle_events():
             if Click == 0: #Lobby
                 if 600 - 75 <= x <= 600 + 75 and 40 - 25 <= y <= 40 + 25:
                     imageStartButton.motion = 1
+                    button_sound.button_on()
                 else:
                     imageStartButton.motion = 0
                 if 625 - 55 <= x <= 625 + 55 and 200 - 25 <= y <= 200 + 25:
                     imagePetButton.motion = 1
+                    button_sound.button_on()
                 else:
                     imagePetButton.motion = 0
                 if 615 - 60 <= x <= 615 + 60 and 120 - 25 <= y <= 120 + 25:
                     imageCookieButton.motion = 1
+                    button_sound.button_on()
                 else:
                     imageCookieButton.motion = 0
             elif Click == 1: # Pet
                 if 600 - 25 <= x <= 600 - 5 and 350 - 25 <= y <= 350 - 5:
                     imagePetSelection.Exit = 1
                     imagePetSelection.ExitMotion = 1
+                    button_sound.button_on()
                 elif 150 + 10 <= y <= 150 + 33:
                     if 200 + 15 <= x <= 200 + 90:
                         PetChoice = 0
@@ -182,6 +221,7 @@ def handle_events():
                         PetChoice = 3
                         imagePetSelection.Exit = 1
                         imageSelectButton.motion = 4
+                    button_sound.button_on()
                 else:
                     imagePetSelection.Exit = 0
                     imagePetSelection.ExitMotion = 0
@@ -190,6 +230,7 @@ def handle_events():
                 if 600 - 25 <= x <= 600 - 5 and 350 - 25 <= y <= 350 - 5:
                     imageCookieSelection.Exit = 1
                     imageCookieSelection.ExitMotion = 1
+                    button_sound.button_on()
                 elif 150 + 10 <= y <= 150 + 33:
                     if 200 + 15 <= x <= 200 + 90:
                         CharChoice = 0
@@ -207,6 +248,7 @@ def handle_events():
                         CharChoice = 3
                         imageCookieSelection.Exit = 1
                         imageSelectButton.motion = 4
+                    button_sound.button_on()
                 else:
                     imageCookieSelection.Exit = 0
                     imageCookieSelection.ExitMotion = 0

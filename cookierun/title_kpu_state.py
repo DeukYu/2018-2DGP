@@ -5,6 +5,7 @@ import title_kakao_state
 
 name = "title_kpu"
 image = None
+bgm = None
 kpu_time = 0.0
 
 
@@ -12,10 +13,18 @@ def enter():
     global image
     image = load_image('resource/title/title_kpu.png')
 
+    global bgm
+    bgm = load_music('resource/sound/title.ogg')
+    bgm.set_volume(64)
+    bgm.play(1)
+
 
 def exit():
     global image
     del image
+
+    global bgm
+    del bgm
 
 
 def update():
