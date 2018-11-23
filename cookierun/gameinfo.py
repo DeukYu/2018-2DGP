@@ -20,10 +20,10 @@ class GameInfo:
         self.font = load_font('KL019.ttf', 36)
 
     def draw(self):
-        self.image_HpBack.clip_draw(0, 0, 500, 70, 260, 450)
-        self.image_HpFront.clip_draw(0, 0, 500, 70, 260, 450)
-        self.image_HpEnd.draw(490, 450)
-        self.image_HpStart.draw(260, 450, 500, 70)
+        self.image_HpBack.clip_draw(0, 0, (main_state.cookie.FullHp * 3), 26, (main_state.cookie.FullHp * 3) / 2 + 30, 450)
+        self.image_HpFront.clip_draw(0, 0, (main_state.cookie.CurHp * 3), 26, (main_state.cookie.CurHp * 3) / 2 + 30, 450)
+        self.image_HpEnd.draw((main_state.cookie.CurHp * 3) + 30, 450)
+        self.image_HpStart.draw(30, 450)
         self.image_coin.draw(370, 480)
         self.font.draw(400, 480, '%d' % main_state.cookie.coin_cnt, (255, 255, 255))
         self.image_jelly.draw(700, 480)

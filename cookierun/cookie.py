@@ -292,8 +292,6 @@ class Cookie:
         if self.speed_down == True:
             self.speed -= self.acceleration * self.space_time * 2
         self.y += self.speed * self.space_time
-        #self.y += self.speed
-        #self.speed -= self.acceleration
 
     def ground_in(self):
         self.gravity()
@@ -315,6 +313,11 @@ class Cookie:
             self.cur_state = next_state_table[self.cur_state][event]
             self.cur_state.enter(self, event)
         main_state.game_timer = get_time()
+        if get_time() - main_state.hp_time >= 1 and self.CurHp > 0:
+            self.CurHp -= 5
+            main_state.hp_time = get_time()
+        elif get_time() - main_state.hp_time >= 1 and self.CurHp <= 0:
+            pass
 
     def draw(self):
         self.cur_state.draw(self)

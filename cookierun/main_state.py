@@ -18,11 +18,12 @@ cookie = None
 gameinfo = None
 stage = None
 pet = None
-game_timer = 0
+
 
 def enter():
-    global cookie, stage, pet, game_timer, gameinfo
+    global cookie, stage, pet, game_timer, gameinfo, hp_time
     game_timer = get_time()
+    hp_time = get_time()
     cookie = Cookie()
     gameinfo = GameInfo()
     stage = Stage()
