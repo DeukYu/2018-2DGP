@@ -44,7 +44,7 @@ def handle_events():
        if event.type == SDL_QUIT:
            game_framework.quit()
        elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
-          game_framework.change_state(pause_state)
+          game_framework.push_state(pause_state)
        else:
            cookie.handle_event(event)
 
@@ -71,6 +71,12 @@ def collide(a, b):
     if bottom_a > top_b: return False
 
     return True
+
+def pause():
+    pass
+
+def resume():
+    pass
 
 
 
