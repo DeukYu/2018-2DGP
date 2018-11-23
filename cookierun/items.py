@@ -69,7 +69,9 @@ class Items:
             elif self.select == 3:
                 pass
             elif self.select == 4:
-                pass
+                main_state.cookie.CurHp += 30
+                if main_state.cookie.CurHp > main_state.cookie.FullHp:
+                    main_state.cookie.CurHp = main_state.cookie.FullHp
             game_world.remove_object(self)
 
     def draw(self):

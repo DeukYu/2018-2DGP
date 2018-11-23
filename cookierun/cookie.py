@@ -313,10 +313,10 @@ class Cookie:
             self.cur_state = next_state_table[self.cur_state][event]
             self.cur_state.enter(self, event)
         main_state.game_timer = get_time()
-        if get_time() - main_state.hp_time >= 1 and self.CurHp > 0:
-            self.CurHp -= 5
+        if get_time() - main_state.hp_time >= 0.2 and self.CurHp > 0:
+            self.CurHp -= 1
             main_state.hp_time = get_time()
-        elif get_time() - main_state.hp_time >= 1 and self.CurHp <= 0:
+        elif get_time() - main_state.hp_time >= 0.2 and self.CurHp <= 0:
             pass
 
     def draw(self):
