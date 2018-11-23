@@ -5,6 +5,7 @@ import game_framework
 import game_world
 import main_state
 import random
+import obstacles
 
 
 class Items:

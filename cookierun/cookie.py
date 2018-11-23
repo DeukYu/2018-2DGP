@@ -182,7 +182,7 @@ class Hit:
 
     @staticmethod
     def do(cookie):
-        cookie.frame = (cookie.frame + FRAMES_PER_ACTION7 * ACTION_PER_TIME2 * game_framework.frame_time / 3.8) % 2
+        cookie.frame = (cookie.frame + FRAMES_PER_ACTION2 * ACTION_PER_TIME2 * game_framework.frame_time / 3.8) % 2
 
     @staticmethod
     def draw(cookie):

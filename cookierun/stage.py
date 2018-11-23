@@ -9,7 +9,6 @@ import cookie
 
 from pico2d import *
 
-
 class Stage:
     def __init__(self):
         self.image_Stage2_BackGround = load_image('resource/stage/Second_Background.png')
@@ -36,13 +35,9 @@ class Stage:
     def draw(self):
         self.image_Stage2_BackGround.draw(self.Bx1_1, 250, 800, 500)
         self.image_Stage2_BackGround.draw(self.Bx1_2, 250, 800, 500)
-        #self.image_Stage2_BackGround.clip_draw(0, 0, 800, 500, self.Bx1_1, 250, 800, 500)
-        #self.image_Stage2_BackGround.clip_draw(0, 0, 800, 500, self.Bx1_2, 250, 800, 500)
 
         self.image_Stage2_FrontGround.draw(self.Fx1_1, 250, 1400, 500)
         self.image_Stage2_FrontGround.draw(self.Fx1_2, 250, 1400, 500)
-        #self.image_Stage2_FrontGround.clip_draw(0, 0, 1400, 500, self.Fx1_1, 250, 1400, 500)
-        #self.image_Stage2_FrontGround.clip_draw(0, 0, 1400, 500, self.Fx1_2, 250, 1400, 500)
 
         self.image_Stage2_BottomGround.clip_draw(0, 0, 800, 500, self.Bottomx1_1, 250, 800, 500)
         self.image_Stage2_BottomGround.clip_draw(0, 0, 800, 500, self.Bottomx1_2, 250, 800, 500)

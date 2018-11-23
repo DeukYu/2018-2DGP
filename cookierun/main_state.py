@@ -16,7 +16,7 @@ name = "MainState"
 
 cookie = None
 gameinfo = None
-background = None
+stage = None
 pet = None
 game_timer = 0
 
