@@ -197,14 +197,17 @@ class TimeOverState:
 
     @staticmethod
     def do(cookie):
-        cookie.frame = (cookie.frame + FRAMES_PER_ACTION5 * ACTION_PER_TIME5 * game_framework.frame_time) % 5
-        print(cookie.frame % 5)
+        if cookie.frame < 4:
+            cookie.frame = (cookie.frame + FRAMES_PER_ACTION5 * ACTION_PER_TIME5 * game_framework.frame_time) % 5
 
-        if main_state.stage.operation:
-            main_state.stage.operation = False
-        if (cookie.frame % 5) < 1:
-            delay(0.1)
-            game_framework.push_state(score_state)
+        if  cookie.frame > 4:
+            if main_state.stage.operation:
+                main_state.stage.operation = False
+            if cookie.y > 145:
+                cookie.y -= 5
+            if cookie.y <= 145:
+                delay(0.5)
+                game_framework.push_state(score_state)
 
     @staticmethod
     def draw(cookie):

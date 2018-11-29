@@ -1,6 +1,7 @@
 from pico2d import *
 
 import game_framework
+import main_state
 import game_world
 
 
@@ -51,6 +52,10 @@ class Obstacles:
 
         if self.x + self.Left_Right < 0:
             game_world.remove_object(self)
+        elif main_state.collide(main_state.cookie, self):
+            game_world.remove_object(self)
+            main_state.cookie.CurHp -= 10
+
 
     def draw(self):
         if self.select == 0:
