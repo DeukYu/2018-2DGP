@@ -59,7 +59,7 @@ def handle_events():
                     game_framework.pop_state()
                 elif Esc_Motion == 1:
                     print('esc')
-                    game_framework.pop_state()
+                    game_world.clear()
                     game_framework.change_state(interface_state)
                 else:
                     pass

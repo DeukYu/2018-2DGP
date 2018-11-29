@@ -28,6 +28,7 @@ def enter():
     gameinfo = GameInfo()
     stage = Stage()
     pet = Pet()
+    game_world.objects = [[], [], [], []]
     game_world.add_object(stage, 0)
     game_world.add_object(cookie, 1)
     game_world.add_object(pet, 2)
