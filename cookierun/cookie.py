@@ -199,6 +199,9 @@ class TimeOverState:
     def do(cookie):
         cookie.frame = (cookie.frame + FRAMES_PER_ACTION5 * ACTION_PER_TIME5 * game_framework.frame_time) % 5
         print(cookie.frame % 5)
+
+        if main_state.stage.operation:
+            main_state.stage.operation = False
         if (cookie.frame % 5) < 1:
             delay(0.1)
             game_framework.push_state(score_state)

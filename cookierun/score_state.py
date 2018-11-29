@@ -38,8 +38,8 @@ def handle_events():
             if(event.type, event.key) == (SDL_MOUSEMOTION, None):
                 x, y = event.x, 500 - event.y - 1
 
-                if 400 - 148 <= x <= 400 + 148:
-                    if 313 - 47 <= y <= 313 + 47:
+                if 405 - 81 <= x <= 405 + 81:
+                    if 115 - 26 <= y <= 115 + 26:
                         Button_Motion = 1
                     else:
                         Button_Motion = 0
@@ -58,7 +58,7 @@ def draw():
     clear_canvas()
     imageScore.draw(400, 250)
     if Button_Motion == 1:
-        Button_Motion.draw(400, 313)
+        imageButton.draw(405, 115)
     update_canvas()
 
 
