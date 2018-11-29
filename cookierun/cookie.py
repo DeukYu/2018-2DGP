@@ -2,7 +2,9 @@ from pico2d import *
 
 import interface_state
 import game_framework
+import game_world
 import main_state
+import score_state
 
 #기본적인 액션 타이머
 TIME_PER_ACTION1 = 0.3
@@ -10,14 +12,17 @@ ACTION_PER_TIME1 = 1.0 / TIME_PER_ACTION1
 # 이중 점프시 액션 타이머
 TIME_PER_ACTION2 = 0.5
 ACTION_PER_TIME2 = 1.0 / TIME_PER_ACTION2
+TIME_PER_ACTION5 = 0.5
+ACTION_PER_TIME5 = 1.0 / TIME_PER_ACTION5
 
 FRAMES_PER_ACTION2 = 2
 FRAMES_PER_ACTION4 = 4
+FRAMES_PER_ACTION5 = 5
 FRAMES_PER_ACTION7 = 7
 FRAMES_PER_ACTION8 = 8
 
 # Cookie Event
-DOWN_DOWN, DOWN_UP, SPACE_DOWN, SPACE_UP, GROUND_IN, HIT = range(6)
+DOWN_DOWN, DOWN_UP, SPACE_DOWN, SPACE_UP, GROUND_IN, HIT, TIME_OVER = range(7)
 
 key_event_table = {
     (SDL_KEYDOWN, SDLK_DOWN): DOWN_DOWN,
@@ -27,6 +32,8 @@ key_event_table = {
 }
 
 #Cookie State
+
+
 class RunState:
 
     @staticmethod
@@ -171,10 +178,54 @@ class AirJumpState:
             cookie.imageAirJump.clip_draw(int(cookie.frame) * 160, 0, 160, 210, cookie.x, cookie.y)
         cookie.draw_bb()
 
-class Hit:
+
+class TimeOverState:
     @staticmethod
     def enter(cookie, event):
+        if event == DOWN_DOWN:
+            pass
+        elif event == SPACE_DOWN:
+            pass
+        elif event == DOWN_UP:
+            pass
+        elif event == SPACE_UP:
+            pass
+
+    @staticmethod
+    def exit(cookie, event):
         pass
+
+    @staticmethod
+    def do(cookie):
+        cookie.frame = (cookie.frame + FRAMES_PER_ACTION5 * ACTION_PER_TIME5 * game_framework.frame_time) % 5
+        print(cookie.frame % 5)
+        if (cookie.frame % 5) < 1:
+            delay(0.1)
+            game_framework.push_state(score_state)
+
+    @staticmethod
+    def draw(cookie):
+        if interface_state.CharChoice == 0:
+            cookie.imageTimeOver.clip_draw(int(cookie.frame) * 320, 432, 320, 144, cookie.x, cookie.y)
+        elif interface_state.CharChoice == 1:
+            cookie.imageTimeOver.clip_draw(int(cookie.frame) * 320, 288, 320, 144, cookie.x, cookie.y)
+        elif interface_state.CharChoice == 2:
+            cookie.imageTimeOver.clip_draw(int(cookie.frame) * 320, 144, 320, 144, cookie.x, cookie.y)
+        elif interface_state.CharChoice == 3:
+            cookie.imageTimeOver.clip_draw(int(cookie.frame) * 320, 0, 320, 144, cookie.x, cookie.y)
+
+
+class HitState:
+    @staticmethod
+    def enter(cookie, event):
+        if event == DOWN_DOWN:
+            pass
+        elif event == SPACE_DOWN:
+            pass
+        elif event == DOWN_UP:
+            pass
+        elif event == SPACE_UP:
+            pass
 
     @staticmethod
     def exit(cookie, event):
@@ -197,11 +248,23 @@ class Hit:
         cookie.draw_bb()
 
 next_state_table = {
-    RunState: {DOWN_UP: SlideState, DOWN_DOWN: SlideState, SPACE_DOWN: JumpState, SPACE_UP: JumpState, GROUND_IN: RunState},
-    SlideState: {DOWN_UP: RunState, DOWN_DOWN: RunState, SPACE_DOWN: SlideState, SPACE_UP: SlideState, GROUND_IN: RunState},
-    JumpState: {DOWN_UP: JumpState, DOWN_DOWN: JumpState, SPACE_DOWN: AirJumpState, SPACE_UP: JumpState, GROUND_IN: RunState},
-    AirJumpState: {DOWN_UP: AirJumpState, DOWN_DOWN: AirJumpState, SPACE_DOWN: AirJumpState, SPACE_UP: AirJumpState, GROUND_IN: RunState}
+    RunState: {DOWN_UP: SlideState, DOWN_DOWN: SlideState, SPACE_DOWN: JumpState, SPACE_UP: JumpState,
+               GROUND_IN: RunState, TIME_OVER: TimeOverState, HIT: HitState},
+    SlideState: {DOWN_UP: RunState, DOWN_DOWN: RunState, SPACE_DOWN: SlideState, SPACE_UP: SlideState,
+                 GROUND_IN: RunState, TIME_OVER: TimeOverState, HIT: HitState},
+    JumpState: {DOWN_UP: JumpState, DOWN_DOWN: JumpState, SPACE_DOWN: AirJumpState, SPACE_UP: JumpState,
+                GROUND_IN: RunState, TIME_OVER: TimeOverState, HIT: HitState},
+    AirJumpState: {DOWN_UP: AirJumpState, DOWN_DOWN: AirJumpState, SPACE_DOWN: AirJumpState, SPACE_UP: AirJumpState,
+                   GROUND_IN: RunState, TIME_OVER: TimeOverState, HIT: TimeOverState},
+    TimeOverState: {DOWN_UP: TimeOverState, DOWN_DOWN: TimeOverState, SPACE_DOWN: TimeOverState, SPACE_UP: TimeOverState,
+                    GROUND_IN: TimeOverState, TIME_OVER: TimeOverState, HIT: HitState},
+    HitState: {DOWN_UP: HitState, DOWN_DOWN: HitState, SPACE_DOWN: HitState, SPACE_UP: HitState,
+                    GROUND_IN: HitState, TIME_OVER: TimeOverState, HIT: HitState}
+
 }
+
+#DOWN_UP: TimeOverState, DOWN_DOWN: TimeOverState, SPACE_DOWN: TimeOverState, SPACE_UP: TimeOverState,
+#                    GROUND_IN: TimeOverState, TIME_OVER: TimeOverState, HIT: HitState#
 
 
 class Cookie:
@@ -226,6 +289,7 @@ class Cookie:
         self.imageJump = load_image('resource/character/Cookie_Jump.png')
         self.imageAirJump = load_image('resource/character/Cookie_AirJump.png')
         self.imageHit = load_image('resource/character/Cookie_Hit.png')
+        self.imageTimeOver = load_image('resource/character/Cookie_Timeover.png')
         self.space_time = 0
         self.speed_down = False
 
@@ -317,7 +381,7 @@ class Cookie:
             self.CurHp -= 1
             main_state.hp_time = get_time()
         elif get_time() - main_state.hp_time >= 0.2 and self.CurHp <= 0:
-            pass
+            self.add_event(TIME_OVER)
 
     def draw(self):
         self.cur_state.draw(self)
