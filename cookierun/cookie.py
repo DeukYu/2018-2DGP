@@ -17,7 +17,7 @@ FRAMES_PER_ACTION7 = 7
 FRAMES_PER_ACTION8 = 8
 
 # Cookie Event
-DOWN_DOWN, DOWN_UP, SPACE_DOWN, SPACE_UP, GROUND_IN, HIT = range(6)
+DOWN_DOWN, DOWN_UP, SPACE_DOWN, SPACE_UP, GROUND_IN, TIME_OVER = range(6)
 
 key_event_table = {
     (SDL_KEYDOWN, SDLK_DOWN): DOWN_DOWN,
@@ -171,6 +171,33 @@ class AirJumpState:
             cookie.imageAirJump.clip_draw(int(cookie.frame) * 160, 0, 160, 210, cookie.x, cookie.y)
         cookie.draw_bb()
 
+class TIME_OVER:
+    @staticmethod
+    def enter(cookie, event):
+        pass
+
+    @staticmethod
+    def exit(cookie, event):
+        pass
+
+    @staticmethod
+    def do(cookie):
+        cookie.frame = (cookie.frame + FRAMES_PER_ACTION2 * ACTION_PER_TIME2 * game_framework.frame_time / 3.8) % 5
+        if cookie.frame == 0:
+            game_framework.change_state()
+
+    @staticmethod
+    def draw(cookie):
+        if interface_state.CharChoice == 0:
+            cookie.imageHit.clip_draw(int(cookie.frame) * 320, 432, 320, 144, cookie.x, cookie.y)
+        elif interface_state.CharChoice == 1:
+            cookie.imageHit.clip_draw(int(cookie.frame) * 320, 288, 320, 144, cookie.x, cookie.y)
+        elif interface_state.CharChoice == 2:
+            cookie.imageHit.clip_draw(int(cookie.frame) * 320, 144, 320, 144, cookie.x, cookie.y)
+        elif interface_state.CharChoice == 3:
+            cookie.imageHit.clip_draw(int(cookie.frame) * 320, 0, 320, 144, cookie.x, cookie.y)
+
+
 class Hit:
     @staticmethod
     def enter(cookie, event):
@@ -226,6 +253,7 @@ class Cookie:
         self.imageJump = load_image('resource/character/Cookie_Jump.png')
         self.imageAirJump = load_image('resource/character/Cookie_AirJump.png')
         self.imageHit = load_image('resource/character/Cookie_Hit.png')
+        self.imageTimeover = load_image('resource/character/cookie_Timeover.png')
         self.space_time = 0
         self.speed_down = False
 
