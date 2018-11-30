@@ -47,47 +47,47 @@ class Stage:
         if self.operation:
             if self.Bx1_1 <= - 400:
                 self.Bx1_1 = 1200
-                self.Bx1_1 -= 10 * game_framework.frame_time * main_state.cookie.pace
+                self.Bx1_1 -= 10 * game_framework.frame_time * (main_state.cookie.pace + main_state.pet.speed)
             else:
-                self.Bx1_1 -= 10 * game_framework.frame_time * main_state.cookie.pace
+                self.Bx1_1 -= 10 * game_framework.frame_time * (main_state.cookie.pace + main_state.pet.speed)
 
             if self.Bx1_2 <= - 400:
                 self.Bx1_2 = 1200
-                self.Bx1_2 -= 10 * game_framework.frame_time * main_state.cookie.pace
+                self.Bx1_2 -= 10 * game_framework.frame_time * (main_state.cookie.pace + main_state.pet.speed)
             else:
-                self.Bx1_2 -= 10 * game_framework.frame_time * main_state.cookie.pace
+                self.Bx1_2 -= 10 * game_framework.frame_time * (main_state.cookie.pace + main_state.pet.speed)
 
             if self.Fx1_1 <= - 700:
                 self.Fx1_1 = self.Fx1_2 + 1400
-                self.Fx1_1 -= 350 * game_framework.frame_time * main_state.cookie.pace
+                self.Fx1_1 -= 350 * game_framework.frame_time * (main_state.cookie.pace + main_state.pet.speed)
             else:
-                self.Fx1_1 -= 350 * game_framework.frame_time * main_state.cookie.pace
+                self.Fx1_1 -= 350 * game_framework.frame_time * (main_state.cookie.pace + main_state.pet.speed)
 
             if self.Fx1_2 <= - 700:
                 self.Fx1_2 = self.Fx1_1 + 1400
-                self.Fx1_2 -= 350 * game_framework.frame_time * main_state.cookie.pace
+                self.Fx1_2 -= 350 * game_framework.frame_time * (main_state.cookie.pace + main_state.pet.speed)
             else:
-                self.Fx1_2 -= 350 * game_framework.frame_time * main_state.cookie.pace
+                self.Fx1_2 -= 350 * game_framework.frame_time * (main_state.cookie.pace + main_state.pet.speed)
 
             if self.Bottomx1_1 <= - 400:
                 self.Bottomx1_1 = 1200
-                self.Bottomx1_1 -= 250 * game_framework.frame_time * main_state.cookie.pace
+                self.Bottomx1_1 -= 250 * game_framework.frame_time * (main_state.cookie.pace + main_state.pet.speed)
             else:
-                self.Bottomx1_1 -= 250 * game_framework.frame_time * main_state.cookie.pace
+                self.Bottomx1_1 -= 250 * game_framework.frame_time * (main_state.cookie.pace + main_state.pet.speed)
 
             if self.Bottomx1_2 <= - 400:
                 self.Bottomx1_2 = 1200
-                self.Bottomx1_2 -= 250 * game_framework.frame_time * main_state.cookie.pace
+                self.Bottomx1_2 -= 250 * game_framework.frame_time * (main_state.cookie.pace + main_state.pet.speed)
             else:
-                self.Bottomx1_2 -= 250 * game_framework.frame_time * main_state.cookie.pace
+                self.Bottomx1_2 -= 250 * game_framework.frame_time * (main_state.cookie.pace + main_state.pet.speed)
 
             if get_time() - self.Effect_item_Time > 0.2:
-                item = items.Items(random.randint(0, 2))
+                item = items.Items(random.randint(0, 2), 800)
                 game_world.add_object(item, 1)
                 self.Effect_item_Time = get_time()
 
             if get_time() - self.Score_item_Time > random.randint(8, 20):
-                item = items.Items(random.randint(3, 4))
+                item = items.Items(random.randint(3, 4), 800)
                 game_world.add_object(item, 1)
                 self.Score_item_Time = get_time()
 

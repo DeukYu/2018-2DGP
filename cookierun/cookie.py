@@ -327,6 +327,8 @@ class Cookie:
         self.HitCheck = False
 
         self.Revival = False
+        self.PowerUpTime = get_time()
+        self.PowerUp = 1
 
         if interface_state.CharChoice == 0:
             self.FullHp = 110

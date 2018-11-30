@@ -49,7 +49,7 @@ class Obstacles:
 
     def update(self):
         if main_state.stage.operation:
-            self.x -= (250 * main_state.cookie.pace) * game_framework.frame_time
+            self.x -= (250 * (main_state.cookie.pace + main_state.pet.speed)) * game_framework.frame_time
 
         if self.x + self.Left_Right < 0:
             game_world.remove_object(self)
@@ -63,16 +63,16 @@ class Obstacles:
     def draw(self):
         if self.select == 0:
             self.image.clip_draw(0, 0, 80, 102, self.x, self.y, 80, 102)
-            draw_rectangle(*self.get_bb())
+            #draw_rectangle(*self.get_bb())
         elif self.select == 1:
             self.image.clip_draw(0, 0, 80, 164, self.x, self.y, 80, 164)
-            draw_rectangle(*self.get_bb())
+            #draw_rectangle(*self.get_bb())
         elif self.select == 2:
             self.image.clip_draw(0, 0, 80, 164, self.x, self.y, 80, 164)
-            draw_rectangle(*self.get_bb())
+            #draw_rectangle(*self.get_bb())
         elif self.select == 3:
             self.image.clip_draw(0, 0, 120, 334, self.x, self.y, 120, 334)
-            draw_rectangle(*self.get_bb())
+            #draw_rectangle(*self.get_bb())
         elif self.select == 4:
             self.image.clip_draw(0, 0, 120, 334, self.x, self.y, 120, 334)
-            draw_rectangle(*self.get_bb())
+            #draw_rectangle(*self.get_bb())

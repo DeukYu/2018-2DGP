@@ -13,9 +13,9 @@ import math
 class Items:
     image = None
 
-    def __init__(self, select=0):
+    def __init__(self, select=0, Item_PosX=800):
         self.select = select
-        self.x = 800
+        self.x = Item_PosX
         self.frame = 0
         self.t = 0
         if self.select == 0: # 젤리
@@ -56,7 +56,7 @@ class Items:
 
     def update(self):
         if main_state.stage.operation:
-            self.x -= (250 * main_state.cookie.pace) * game_framework.frame_time
+            self.x -= (250 * (main_state.cookie.pace + main_state.pet.speed)) * game_framework.frame_time
 
         if self.select == 1 or self.select == 2 or self.select == 3 or self.select == 4:
             self.frame = (self.frame + cookie.FRAMES_PER_ACTION4 * cookie.ACTION_PER_TIME1 * game_framework.frame_time) % 4
@@ -86,10 +86,10 @@ class Items:
     def draw(self):
         if self.select == 0: # 젤리
             self.image.clip_draw(self.frame * 0, 0, 24, 32, self.x, self.y, 24, 32)
-            draw_rectangle(*self.get_bb())
+            #draw_rectangle(*self.get_bb())
         elif self.select == 1 or self.select == 2:
             self.image.clip_draw(int(self.frame) * 32, 0, 32, 32, self.x, self.y, 32, 32)
-            draw_rectangle(*self.get_bb())
+            #draw_rectangle(*self.get_bb())
         elif self.select == 3 or self.select == 4:
             self.image.clip_draw(int(self.frame) * 50, 0, 50, 50, self.x, self.y, 50, 50)
-            draw_rectangle(*self.get_bb())
+            #draw_rectangle(*self.get_bb())
