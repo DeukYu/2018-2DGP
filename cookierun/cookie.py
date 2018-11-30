@@ -5,6 +5,9 @@ import game_framework
 import game_world
 import main_state
 import score_state
+import random
+
+import stage
 
 #기본적인 액션 타이머
 TIME_PER_ACTION1 = 0.3
@@ -240,17 +243,26 @@ class HitState:
     @staticmethod
     def do(cookie):
         cookie.frame = (cookie.frame + FRAMES_PER_ACTION2 * ACTION_PER_TIME2 * game_framework.frame_time / 3.8) % 2
+        if cookie.y > 145:
+            cookie.y -= 5
+        elif cookie.y <= 145:
+            cookie.y = 145
+        if get_time() - cookie.HitTime > 5 and cookie.y <= 145:
+            main_state.stage.operation = True
+            cookie.add_event(GROUND_IN)
 
     @staticmethod
     def draw(cookie):
+        cookie.imageHit.opacify(0.1 * random.randint(1, 9))
         if interface_state.CharChoice == 0:
-            cookie.imageHit.clip_draw(int(cookie.frame) * 126, 612, 126, 204, cookie.x, cookie.y)
+            cookie.imageHit.clip_draw(int(cookie.frame) * 176, 612, 176, 204, cookie.x, cookie.y)
         elif interface_state.CharChoice == 1:
-            cookie.imageHit.clip_draw(int(cookie.frame) * 126, 408, 126, 204, cookie.x, cookie.y)
+            cookie.imageHit.clip_draw(int(cookie.frame) * 176, 408, 176, 204, cookie.x, cookie.y)
         elif interface_state.CharChoice == 2:
-            cookie.imageHit.clip_draw(int(cookie.frame) * 126, 204, 126, 204, cookie.x, cookie.y)
+            cookie.imageHit.clip_draw(int(cookie.frame) * 176, 204, 176, 204, cookie.x, cookie.y)
         elif interface_state.CharChoice == 3:
-            cookie.imageHit.clip_draw(int(cookie.frame) * 126, 0, 126, 204, cookie.x, cookie.y)
+            cookie.imageHit.clip_draw(int(cookie.frame) * 176, 0, 176, 204, cookie.x, cookie.y)
+        cookie.imageHit.opacify(1.0)
         cookie.draw_bb()
 
 next_state_table = {
@@ -265,12 +277,9 @@ next_state_table = {
     TimeOverState: {DOWN_UP: TimeOverState, DOWN_DOWN: TimeOverState, SPACE_DOWN: TimeOverState, SPACE_UP: TimeOverState,
                     GROUND_IN: TimeOverState, TIME_OVER: TimeOverState, HIT: HitState},
     HitState: {DOWN_UP: HitState, DOWN_DOWN: HitState, SPACE_DOWN: HitState, SPACE_UP: HitState,
-                    GROUND_IN: HitState, TIME_OVER: TimeOverState, HIT: HitState}
+                    GROUND_IN: RunState, TIME_OVER: TimeOverState, HIT: HitState}
 
 }
-
-#DOWN_UP: TimeOverState, DOWN_DOWN: TimeOverState, SPACE_DOWN: TimeOverState, SPACE_UP: TimeOverState,
-#                    GROUND_IN: TimeOverState, TIME_OVER: TimeOverState, HIT: HitState#
 
 
 class Cookie:
@@ -301,6 +310,9 @@ class Cookie:
 
         self.jelly_cnt = 0
         self.coin_cnt = 0
+
+        self.HitTime = 0
+        self.HitCheck = False
 
         if interface_state.CharChoice == 0:
             self.FullHp = 110
@@ -388,6 +400,10 @@ class Cookie:
             main_state.hp_time = get_time()
         elif get_time() - main_state.hp_time >= 0.2 and self.CurHp <= 0:
             self.add_event(TIME_OVER)
+
+        if self.HitCheck:
+            self.add_event(HIT)
+            self.HitCheck = False
 
     def draw(self):
         self.cur_state.draw(self)
