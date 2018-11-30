@@ -47,39 +47,39 @@ class Stage:
         if self.operation:
             if self.Bx1_1 <= - 400:
                 self.Bx1_1 = 1200
-                self.Bx1_1 -= 10 * game_framework.frame_time
+                self.Bx1_1 -= 10 * game_framework.frame_time * main_state.cookie.pace
             else:
-                self.Bx1_1 -= 10 * game_framework.frame_time
+                self.Bx1_1 -= 10 * game_framework.frame_time * main_state.cookie.pace
 
             if self.Bx1_2 <= - 400:
                 self.Bx1_2 = 1200
-                self.Bx1_2 -= 10 * game_framework.frame_time
+                self.Bx1_2 -= 10 * game_framework.frame_time * main_state.cookie.pace
             else:
-                self.Bx1_2 -= 10 * game_framework.frame_time
+                self.Bx1_2 -= 10 * game_framework.frame_time * main_state.cookie.pace
 
             if self.Fx1_1 <= - 700:
                 self.Fx1_1 = self.Fx1_2 + 1400
-                self.Fx1_1 -= 350 * game_framework.frame_time
+                self.Fx1_1 -= 350 * game_framework.frame_time * main_state.cookie.pace
             else:
-                self.Fx1_1 -= 350 * game_framework.frame_time
+                self.Fx1_1 -= 350 * game_framework.frame_time * main_state.cookie.pace
 
             if self.Fx1_2 <= - 700:
                 self.Fx1_2 = self.Fx1_1 + 1400
-                self.Fx1_2 -= 350 * game_framework.frame_time
+                self.Fx1_2 -= 350 * game_framework.frame_time * main_state.cookie.pace
             else:
-                self.Fx1_2 -= 350 * game_framework.frame_time
+                self.Fx1_2 -= 350 * game_framework.frame_time * main_state.cookie.pace
 
             if self.Bottomx1_1 <= - 400:
                 self.Bottomx1_1 = 1200
-                self.Bottomx1_1 -= 250 * game_framework.frame_time
+                self.Bottomx1_1 -= 250 * game_framework.frame_time * main_state.cookie.pace
             else:
-                self.Bottomx1_1 -= 250 * game_framework.frame_time
+                self.Bottomx1_1 -= 250 * game_framework.frame_time * main_state.cookie.pace
 
             if self.Bottomx1_2 <= - 400:
                 self.Bottomx1_2 = 1200
-                self.Bottomx1_2 -= 250 * game_framework.frame_time
+                self.Bottomx1_2 -= 250 * game_framework.frame_time * main_state.cookie.pace
             else:
-                self.Bottomx1_2 -= 250 * game_framework.frame_time
+                self.Bottomx1_2 -= 250 * game_framework.frame_time * main_state.cookie.pace
 
             if (get_time() - self.item_timer) % 1 < 0.1:
                 item = items.Items(random.randint(0, 2))

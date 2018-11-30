@@ -6,6 +6,8 @@ import game_world
 import main_state
 import random
 import obstacles
+import interface_state
+import math
 
 
 class Items:
@@ -15,6 +17,7 @@ class Items:
         self.select = select
         self.x = 800
         self.frame = 0
+        self.t = 0
         if self.select == 0: # 젤리
             self.image = load_image('resource/items/Jelly.png')
             self.y = random.randint(125, 450)
@@ -53,10 +56,15 @@ class Items:
 
     def update(self):
         if main_state.stage.operation:
-            self.x -= 250 * game_framework.frame_time
+            self.x -= (250 * main_state.cookie.pace) * game_framework.frame_time
 
         if self.select == 1 or self.select == 2 or self.select == 3 or self.select == 4:
             self.frame = (self.frame + cookie.FRAMES_PER_ACTION4 * cookie.ACTION_PER_TIME1 * game_framework.frame_time) % 4
+
+        if interface_state.CharChoice == 2 and math.sqrt((self.x - main_state.cookie.x) ** 2 + (self.y - main_state.cookie.y) ** 2) < 200:
+            self.x = (1 - self.t) * self.x + self.t * main_state.cookie.x
+            self.y = (1 - self.t) * self.y + self.t * main_state.cookie.y
+            self.t += 0.1
 
         if self.x + self.Left_Right < 0:
             game_world.remove_object(self)

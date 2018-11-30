@@ -206,9 +206,9 @@ class TimeOverState:
         if  cookie.frame > 4:
             if main_state.stage.operation:
                 main_state.stage.operation = False
-            if cookie.y > 145:
+            if cookie.y > 155:
                 cookie.y -= 5
-            if cookie.y <= 145:
+            if cookie.y <= 155:
                 delay(0.5)
                 game_framework.push_state(score_state)
 
@@ -242,11 +242,11 @@ class HitState:
 
     @staticmethod
     def do(cookie):
-        cookie.frame = (cookie.frame + FRAMES_PER_ACTION2 * ACTION_PER_TIME2 * game_framework.frame_time / 3.8) % 2
-        if cookie.y > 145:
+        cookie.frame = (cookie.frame + FRAMES_PER_ACTION2 * ACTION_PER_TIME2 * game_framework.frame_time) % 2
+        if cookie.y > 155:
             cookie.y -= 5
-        elif cookie.y <= 145:
-            cookie.y = 145
+        elif cookie.y <= 155:
+            cookie.y = 155
         if get_time() - cookie.HitTime > 2 and cookie.y <= 145:
             main_state.stage.operation = True
             cookie.add_event(DOWN_UP)
@@ -307,6 +307,7 @@ class Cookie:
         self.imageTimeOver = load_image('resource/character/Cookie_Timeover.png')
         self.space_time = 0
         self.speed_down = False
+        self.pace = 1
 
         self.jelly_cnt = 0
         self.coin_cnt = 0
@@ -318,22 +319,22 @@ class Cookie:
             self.FullHp = 110
             self.CurHp = 110
             self.Ability = 0
-            self.Speed = 1
+            self.pace = 1
         elif interface_state.CharChoice == 1:
             self.FullHp = 150
             self.CurHp = 150
             self.Ability = 1
-            self.Speed = 1.3
+            self.pace = 1.3
         elif interface_state.CharChoice == 2:
             self.FullHp = 160
             self.CurHp = 160
             self.Ability = 2
-            self.Speed = 1
+            self.pace = 1
         elif interface_state.CharChoice == 3:
             self.FullHp = 150
             self.CurHp = 150
             self.Ability = 3
-            self.Speed = 1
+            self.pace = 1
 
     def get_bb(self):
         return self.x - self.bb_Left, self.y - self.bb_Down, self.x + self.bb_Right, self.y + self.bb_Up
