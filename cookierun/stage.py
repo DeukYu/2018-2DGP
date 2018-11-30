@@ -22,8 +22,7 @@ class Stage:
         self.Bottomx1_1 = 400
         self.Bottomx1_2 = 1200
         self.timer = get_time()
-        self.Creat_timer = get_time()
-        self.ob_creat = False
+        self.Obstacle_Time = get_time()
         self.operation = True
 
         self.bgm = load_music('resource/sound/bgm_stage.ogg')
@@ -92,11 +91,7 @@ class Stage:
                 game_world.add_object(item, 1)
                 self.Score_item_Time = get_time()
 
-            if (get_time() - self.timer) % 1 < 0.01:
-                if self.ob_creat == False:
-                    obstacle = obstacles.Obstacles(random.randint(0, 4))
-                    game_world.add_object(obstacle, 1)
-                    self.ob_creat = True
-
-            if (get_time() - self.Creat_timer) % 10 > 8.0:
-                self.ob_creat = False
+            if get_time() - self.Obstacle_Time > random.randint(5, 10):
+                obstacle = obstacles.Obstacles(random.randint(0, 4))
+                game_world.add_object(obstacle, 1)
+                self.Obstacle_Time = get_time()

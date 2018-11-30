@@ -277,8 +277,8 @@ next_state_table = {
                    GROUND_IN: RunState, TIME_OVER: TimeOverState, HIT: HitState},
     TimeOverState: {DOWN_UP: TimeOverState, DOWN_DOWN: TimeOverState, SPACE_DOWN: TimeOverState, SPACE_UP: TimeOverState,
                     GROUND_IN: TimeOverState, TIME_OVER: TimeOverState, HIT: HitState},
-    HitState: {DOWN_UP: RunState, DOWN_DOWN: HitState, SPACE_DOWN: HitState, SPACE_UP: HitState,
-                    GROUND_IN: HitState, TIME_OVER: TimeOverState, HIT: HitState}
+    HitState: {DOWN_UP: HitState, DOWN_DOWN: HitState, SPACE_DOWN: HitState, SPACE_UP: HitState,
+                    GROUND_IN: RunState, TIME_OVER: TimeOverState, HIT: HitState}
 
 }
 
