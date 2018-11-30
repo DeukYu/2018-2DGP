@@ -69,6 +69,9 @@ class Pet:
             self.image.clip_draw(int(self.frame) * 48, 0, 48, 64, self.x, self.y)
             #draw_rectangle(self.x - 24, self.y + 32, self.x + 24, self.y - 32)
 
+        elif interface_state.PetChoice == 2:
+            self.image.clip_draw(int(self.frame) * 100, 0, 100, 100, self.x, self.y)
+
         elif interface_state.PetChoice == 3:
             self.image.clip_draw(int(self.frame) * 48, 0, 48, 48, self.x, self.y)
             #draw_rectangle(self.x - 24, self.y + 24, self.x + 24, self.y - 24)

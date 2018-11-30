@@ -424,6 +424,10 @@ class Cookie:
             self.add_event(HIT)
             self.HitCheck = False
 
+        if self.PowerUp == 2 and get_time() - self.PowerUpTime > 2:
+            self.PowerUp = 1
+
+
     def draw(self):
         self.cur_state.draw(self)
 

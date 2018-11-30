@@ -76,7 +76,8 @@ class Items:
             elif self.select == 2:
                 main_state.cookie.coin_cnt += 2
             elif self.select == 3:
-                pass
+                main_state.cookie.PowerUp = 2
+                main_state.cookie.PowerUpTime = get_time()
             elif self.select == 4:
                 main_state.cookie.CurHp += 30
                 if main_state.cookie.CurHp > main_state.cookie.FullHp:
