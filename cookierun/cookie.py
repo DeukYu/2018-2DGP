@@ -203,14 +203,24 @@ class TimeOverState:
         if cookie.frame < 4:
             cookie.frame = (cookie.frame + FRAMES_PER_ACTION5 * ACTION_PER_TIME5 * game_framework.frame_time) % 5
 
-        if cookie.frame > 4:
-            if main_state.stage.operation:
-                main_state.stage.operation = False
-            if cookie.y > 155:
-                cookie.y -= 5
-            if cookie.y <= 155:
-                delay(0.5)
+        if cookie.y > 155:
+            cookie.y -= 5
+
+        if main_state.stage.operation:
+            main_state.stage.operation = False
+
+        if cookie.frame > 4 and cookie.y <= 155:
+            cookie.y = 155
+
+            if cookie.Revival:
+                cookie.CurHp += 100
+                main_state.stage.operation = True
+                cookie.add_event(GROUND_IN)
+            else:
                 game_framework.push_state(score_state)
+
+            cookie.Revival = False
+
 
     @staticmethod
     def draw(cookie):
@@ -276,9 +286,9 @@ next_state_table = {
     AirJumpState: {DOWN_UP: AirJumpState, DOWN_DOWN: AirJumpState, SPACE_DOWN: AirJumpState, SPACE_UP: AirJumpState,
                    GROUND_IN: RunState, TIME_OVER: TimeOverState, HIT: HitState},
     TimeOverState: {DOWN_UP: TimeOverState, DOWN_DOWN: TimeOverState, SPACE_DOWN: TimeOverState, SPACE_UP: TimeOverState,
-                    GROUND_IN: TimeOverState, TIME_OVER: TimeOverState, HIT: HitState},
-    HitState: {DOWN_UP: HitState, DOWN_DOWN: HitState, SPACE_DOWN: HitState, SPACE_UP: HitState,
-                    GROUND_IN: RunState, TIME_OVER: TimeOverState, HIT: HitState}
+                    GROUND_IN: RunState, TIME_OVER: TimeOverState, HIT: TimeOverState},
+    HitState: {DOWN_UP: HitState, DOWN_DOWN: HitState, SPACE_DOWN: HitState, SPACE_UP: HitState, GROUND_IN: RunState,
+               TIME_OVER: TimeOverState, HIT: HitState}
 
 }
 
@@ -399,7 +409,9 @@ class Cookie:
             self.cur_state.exit(self, event)
             self.cur_state = next_state_table[self.cur_state][event]
             self.cur_state.enter(self, event)
+
         main_state.game_timer = get_time()
+
         if get_time() - main_state.hp_time >= 0.2 and self.CurHp > 0:
             self.CurHp -= 1
             main_state.hp_time = get_time()
