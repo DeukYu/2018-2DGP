@@ -247,9 +247,9 @@ class HitState:
             cookie.y -= 5
         elif cookie.y <= 145:
             cookie.y = 145
-        if get_time() - cookie.HitTime > 5 and cookie.y <= 145:
+        if get_time() - cookie.HitTime > 2 and cookie.y <= 145:
             main_state.stage.operation = True
-            cookie.add_event(GROUND_IN)
+            cookie.add_event(DOWN_UP)
 
     @staticmethod
     def draw(cookie):
@@ -276,8 +276,8 @@ next_state_table = {
                    GROUND_IN: RunState, TIME_OVER: TimeOverState, HIT: TimeOverState},
     TimeOverState: {DOWN_UP: TimeOverState, DOWN_DOWN: TimeOverState, SPACE_DOWN: TimeOverState, SPACE_UP: TimeOverState,
                     GROUND_IN: TimeOverState, TIME_OVER: TimeOverState, HIT: HitState},
-    HitState: {DOWN_UP: HitState, DOWN_DOWN: HitState, SPACE_DOWN: HitState, SPACE_UP: HitState,
-                    GROUND_IN: RunState, TIME_OVER: TimeOverState, HIT: HitState}
+    HitState: {DOWN_UP: RunState, DOWN_DOWN: HitState, SPACE_DOWN: HitState, SPACE_UP: HitState,
+                    GROUND_IN: HitState, TIME_OVER: TimeOverState, HIT: HitState}
 
 }
 
