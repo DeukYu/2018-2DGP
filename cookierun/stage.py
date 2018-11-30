@@ -86,7 +86,7 @@ class Stage:
                 game_world.add_object(item, 1)
                 self.Effect_item_Time = get_time()
 
-            if get_time() - self.Score_item_Time > 10:
+            if get_time() - self.Score_item_Time > random.randint(8, 20):
                 item = items.Items(random.randint(3, 4))
                 game_world.add_object(item, 1)
                 self.Score_item_Time = get_time()

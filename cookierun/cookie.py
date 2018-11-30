@@ -248,7 +248,7 @@ class HitState:
         elif cookie.y <= 155:
             cookie.y = 155
 
-        if get_time() - cookie.HitTime > 2 and cookie.y <= 155:
+        if get_time() - cookie.HitTime > 1 and cookie.y <= 155:
             main_state.stage.operation = True
             cookie.add_event(GROUND_IN)
 
@@ -316,6 +316,8 @@ class Cookie:
         self.HitTime = 0
         self.HitCheck = False
 
+        self.Revival = False
+
         if interface_state.CharChoice == 0:
             self.FullHp = 110
             self.CurHp = 110
@@ -336,6 +338,7 @@ class Cookie:
             self.CurHp = 150
             self.Ability = 3
             self.pace = 1
+            self.Revival = True
 
     def get_bb(self):
         return self.x - self.bb_Left, self.y - self.bb_Down, self.x + self.bb_Right, self.y + self.bb_Up
