@@ -71,7 +71,7 @@ class RunState:
             cookie.imageRun.clip_draw(int(cookie.frame) * 144, 160, 144, 160, cookie.x, cookie.y)
         elif interface_state.CharChoice == 3:
             cookie.imageRun.clip_draw(int(cookie.frame) * 144, 0, 144, 160, cookie.x, cookie.y)
-        cookie.draw_bb()
+        #cookie.draw_bb()
 
 
 class SlideState:
