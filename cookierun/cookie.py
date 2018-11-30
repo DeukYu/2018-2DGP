@@ -203,7 +203,7 @@ class TimeOverState:
         if cookie.frame < 4:
             cookie.frame = (cookie.frame + FRAMES_PER_ACTION5 * ACTION_PER_TIME5 * game_framework.frame_time) % 5
 
-        if  cookie.frame > 4:
+        if cookie.frame > 4:
             if main_state.stage.operation:
                 main_state.stage.operation = False
             if cookie.y > 155:
@@ -247,9 +247,10 @@ class HitState:
             cookie.y -= 5
         elif cookie.y <= 155:
             cookie.y = 155
-        if get_time() - cookie.HitTime > 2 and cookie.y <= 145:
+
+        if get_time() - cookie.HitTime > 2 and cookie.y <= 155:
             main_state.stage.operation = True
-            cookie.add_event(DOWN_UP)
+            cookie.add_event(GROUND_IN)
 
     @staticmethod
     def draw(cookie):
@@ -273,7 +274,7 @@ next_state_table = {
     JumpState: {DOWN_UP: JumpState, DOWN_DOWN: JumpState, SPACE_DOWN: AirJumpState, SPACE_UP: JumpState,
                 GROUND_IN: RunState, TIME_OVER: TimeOverState, HIT: HitState},
     AirJumpState: {DOWN_UP: AirJumpState, DOWN_DOWN: AirJumpState, SPACE_DOWN: AirJumpState, SPACE_UP: AirJumpState,
-                   GROUND_IN: RunState, TIME_OVER: TimeOverState, HIT: TimeOverState},
+                   GROUND_IN: RunState, TIME_OVER: TimeOverState, HIT: HitState},
     TimeOverState: {DOWN_UP: TimeOverState, DOWN_DOWN: TimeOverState, SPACE_DOWN: TimeOverState, SPACE_UP: TimeOverState,
                     GROUND_IN: TimeOverState, TIME_OVER: TimeOverState, HIT: HitState},
     HitState: {DOWN_UP: RunState, DOWN_DOWN: HitState, SPACE_DOWN: HitState, SPACE_UP: HitState,
@@ -372,7 +373,7 @@ class Cookie:
     def gravity(self):
         self.space_time = get_time() - main_state.game_timer
         self.speed_down = 1 - self.speed_down
-        if self.speed_down == True:
+        if self.speed_down:
             self.speed -= self.acceleration * self.space_time * 2
         self.y += self.speed * self.space_time
 

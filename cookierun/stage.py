@@ -30,7 +30,8 @@ class Stage:
         self.bgm.set_volume(128)
         self.bgm.repeat_play()
 
-        self.item_timer = get_time()
+        self.Effect_item_Time = get_time()
+        self.Score_item_Time = get_time()
 
 
     def draw(self):
@@ -81,13 +82,15 @@ class Stage:
             else:
                 self.Bottomx1_2 -= 250 * game_framework.frame_time * main_state.cookie.pace
 
-            if (get_time() - self.item_timer) % 1 < 0.1:
+            if get_time() - self.Effect_item_Time > 0.2:
                 item = items.Items(random.randint(0, 2))
                 game_world.add_object(item, 1)
+                self.Effect_item_Time = get_time()
 
-            if (get_time() - self.item_timer) % 1 < 0.00001:
+            if get_time() - self.Score_item_Time > 10:
                 item = items.Items(random.randint(3, 4))
                 game_world.add_object(item, 1)
+                self.Score_item_Time = get_time()
 
             if (get_time() - self.timer) % 1 < 0.01:
                 if self.ob_creat == False:
