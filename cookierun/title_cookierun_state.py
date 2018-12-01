@@ -14,7 +14,7 @@ def enter():
 
     global bgm
     bgm = load_music('resource/sound/bgm_main.ogg')
-    bgm.set_volume(128)
+    bgm.set_volume(64)
     bgm.repeat_play()
 
 

@@ -12,12 +12,14 @@ import math
 
 class Items:
     image = None
+    Sound = None
 
     def __init__(self, select=0, Item_PosX=800):
         self.select = select
         self.x = Item_PosX
         self.frame = 0
         self.t = 0
+        self.Sound_On_Off = False
         if self.select == 0: # 젤리
             self.image = load_image('resource/items/Jelly.png')
             self.y = random.randint(125, 450)
@@ -68,27 +70,33 @@ class Items:
 
         if self.x + self.Left_Right < 0:
             game_world.remove_object(self)
+
         elif main_state.collide(self, main_state.cookie):
             if self.select == 0:
+                main_state.cookie.Eat_Jelly.play()
                 if main_state.cookie.PowerUp:
                     main_state.cookie.jelly_cnt += 5
                 else:
                     main_state.cookie.jelly_cnt += 1
             elif self.select == 1:
+                main_state.cookie.Eat_Coin.play()
                 if main_state.cookie.PowerUp:
                     main_state.cookie.coin_cnt += 5
                 else:
                     main_state.cookie.coin_cnt += 1
             elif self.select == 2:
+                main_state.cookie.Eat_Coin.play()
                 if main_state.cookie.PowerUp:
                     main_state.cookie.coin_cnt += 10
                 else:
                     main_state.cookie.coin_cnt += 2
             elif self.select == 3:
+                main_state.cookie.Eat_Power.play()
                 main_state.cookie.PowerUp = True
                 main_state.cookie.pace += 0.3
                 main_state.cookie.PowerUpTime = get_time()
             elif self.select == 4:
+                main_state.cookie.Eat_Hp.play()
                 main_state.cookie.CurHp += 30
                 if main_state.cookie.CurHp > main_state.cookie.FullHp:
                     main_state.cookie.CurHp = main_state.cookie.FullHp

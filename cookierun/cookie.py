@@ -248,22 +248,21 @@ class TimeOverState:
         if cookie.frame < 4:
             cookie.frame = (cookie.frame + FRAMES_PER_ACTION5 * ACTION_PER_TIME5 * game_framework.frame_time) % 5
 
-        if cookie.y > 155:
-            cookie.y -= 5
-
         if main_state.stage.operation:
             main_state.stage.operation = False
 
-        if cookie.frame > 4 and cookie.y <= 155:
+        if cookie.y > 155:
+            cookie.y -= 5
+
+        elif cookie.frame > 4 and cookie.y <= 155:
             cookie.y = 155
 
             if cookie.Revival:
                 cookie.CurHp += 100
                 main_state.stage.operation = True
                 cookie.add_event(GROUND_IN)
-            else:
+            elif not cookie.Revival:
                 game_framework.push_state(score_state)
-
             cookie.Revival = False
 
 
@@ -369,6 +368,17 @@ class Cookie:
         self.imageBigHit = load_image('resource/character/Big_Cookie_Hit.png')
         self.imageBigTimeOver = load_image('resource/character/Big_Cookie_Timeover.png')
 
+        self.Eat_Jelly = load_wav('resource/sound/jelly.wav')
+        self.Eat_Jelly.set_volume(128)
+
+        self.Eat_Coin = load_wav('resource/sound/coin.wav')
+        self.Eat_Coin.set_volume(128)
+
+        self.Eat_Power = load_wav('resource/sound/powerup.wav')
+        self.Eat_Power.set_volume(128)
+
+        self.Eat_Hp = load_wav('resource/sound/hpup.wav')
+        self.Eat_Hp.set_volume(128)
 
         self.space_time = 0
         self.speed_down = False
