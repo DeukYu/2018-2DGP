@@ -142,7 +142,7 @@ class JumpState:
             cookie.imageJump.clip_draw(int(cookie.frame) * 160, 192, 160, 192, cookie.x, cookie.y)
         elif interface_state.CharChoice == 3:
             cookie.imageJump.clip_draw(int(cookie.frame) * 160, 0, 160, 192, cookie.x, cookie.y)
-        cookie.draw_bb()
+        #cookie.draw_bb()
 
 
 class AirJumpState:
@@ -179,7 +179,7 @@ class AirJumpState:
             cookie.imageAirJump.clip_draw(int(cookie.frame) * 160, 210, 160, 210, cookie.x, cookie.y)
         elif interface_state.CharChoice == 3:
             cookie.imageAirJump.clip_draw(int(cookie.frame) * 160, 0, 160, 210, cookie.x, cookie.y)
-        cookie.draw_bb()
+        #cookie.draw_bb()
 
 
 class TimeOverState:
@@ -274,7 +274,7 @@ class HitState:
         elif interface_state.CharChoice == 3:
             cookie.imageHit.clip_draw(int(cookie.frame) * 176, 0, 176, 204, cookie.x, cookie.y)
         cookie.imageHit.opacify(1.0)
-        cookie.draw_bb()
+        #cookie.draw_bb()
 
 next_state_table = {
     RunState: {DOWN_UP: SlideState, DOWN_DOWN: SlideState, SPACE_DOWN: JumpState, SPACE_UP: JumpState,
