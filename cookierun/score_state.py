@@ -11,6 +11,7 @@ ImageButton = None
 Button_Motion = None
 ScoreFont = None
 Coin_Jelly_Font = None
+Sound = None
 
 
 def enter():

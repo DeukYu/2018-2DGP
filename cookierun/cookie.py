@@ -89,6 +89,7 @@ class SlideState:
 
     @staticmethod
     def enter(cookie, event):
+        cookie.Slide_Sound.play()
         if event == DOWN_DOWN:
             cookie.change_slide_bb()
             cookie.y -= 20
@@ -136,6 +137,7 @@ class JumpState:
 
     @staticmethod
     def enter(cookie, event):
+        cookie.Jump_Sound.play()
         if event == DOWN_DOWN:
             pass
         elif event == SPACE_DOWN:
@@ -181,10 +183,11 @@ class JumpState:
 class AirJumpState:
     @staticmethod
     def enter(cookie, event):
+        cookie.Jump_Sound.play()
         if event == DOWN_DOWN:
             pass
         elif event == SPACE_DOWN:
-            if cookie.AirJump_Check == False:
+            if not cookie.AirJump_Check:
                 cookie.AirJump_Check = True
                 cookie.jump_now()
                 cookie.change_airjump_bb()
@@ -248,7 +251,7 @@ class TimeOverState:
         if cookie.frame < 4:
             cookie.frame = (cookie.frame + FRAMES_PER_ACTION5 * ACTION_PER_TIME5 * game_framework.frame_time) % 5
 
-        if main_state.stage.operation:
+        if main_state.stage.operation and cookie.CurHp <= 0:
             main_state.stage.operation = False
 
         if cookie.y > 155:
@@ -257,13 +260,15 @@ class TimeOverState:
         elif cookie.frame > 4 and cookie.y <= 155:
             cookie.y = 155
 
-            if cookie.Revival:
+            if not cookie.Revival and cookie.CurHp <= 0:
+                game_framework.push_state(score_state)
+            elif cookie.Revival:
                 cookie.CurHp += 100
                 main_state.stage.operation = True
                 cookie.add_event(GROUND_IN)
-            elif not cookie.Revival:
-                game_framework.push_state(score_state)
-            cookie.Revival = False
+                cookie.Revival = False
+
+            #cookie.Revival = False
 
 
     @staticmethod
@@ -380,6 +385,12 @@ class Cookie:
         self.Eat_Hp = load_wav('resource/sound/hpup.wav')
         self.Eat_Hp.set_volume(128)
 
+        self.Slide_Sound = load_wav('resource/sound/slide.wav')
+        self.Slide_Sound.set_volume(128)
+
+        self.Jump_Sound = load_wav('resource/sound/jump.wav')
+        self.Jump_Sound.set_volume(128)
+
         self.space_time = 0
         self.speed_down = False
         self.pace = 1
@@ -390,7 +401,6 @@ class Cookie:
         self.HitTime = 0
         self.HitCheck = False
 
-        self.Revival = False
         self.PowerUpTime = get_time()
         self.PowerUp = False
 
@@ -401,16 +411,19 @@ class Cookie:
             self.CurHp = 110
             self.Ability = 0
             self.pace = 1
+            self.Revival = False
         elif interface_state.CharChoice == 1:
             self.FullHp = 150
             self.CurHp = 150
             self.Ability = 1
             self.pace = 1.3
+            self.Revival = False
         elif interface_state.CharChoice == 2:
             self.FullHp = 160
             self.CurHp = 160
             self.Ability = 2
             self.pace = 1
+            self.Revival = False
         elif interface_state.CharChoice == 3:
             self.FullHp = 150
             self.CurHp = 150
