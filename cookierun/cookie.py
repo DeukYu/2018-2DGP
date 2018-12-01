@@ -60,18 +60,29 @@ class RunState:
     @staticmethod
     def do(cookie):
         cookie.frame = (cookie.frame + FRAMES_PER_ACTION4 * ACTION_PER_TIME1 * game_framework.frame_time) % 4
+        cookie.change_run_bb()
 
     @staticmethod
     def draw(cookie):
-        if interface_state.CharChoice == 0:
-            cookie.imageRun.clip_draw(int(cookie.frame) * 144, 480, 144, 160, cookie.x, cookie.y)
-        elif interface_state.CharChoice == 1:
-            cookie.imageRun.clip_draw(int(cookie.frame) * 144, 320, 144, 160, cookie.x, cookie.y)
-        elif interface_state.CharChoice == 2:
-            cookie.imageRun.clip_draw(int(cookie.frame) * 144, 160, 144, 160, cookie.x, cookie.y)
-        elif interface_state.CharChoice == 3:
-            cookie.imageRun.clip_draw(int(cookie.frame) * 144, 0, 144, 160, cookie.x, cookie.y)
-        #cookie.draw_bb()
+        if cookie.PowerUp:
+            if interface_state.CharChoice == 0:
+                cookie.imageBigRun.clip_draw(int(cookie.frame) * 216, 720, 216, 240, cookie.x, cookie.y + 35)
+            elif interface_state.CharChoice == 1:
+                cookie.imageBigRun.clip_draw(int(cookie.frame) * 216, 480, 216, 240, cookie.x, cookie.y + 35)
+            elif interface_state.CharChoice == 2:
+                cookie.imageBigRun.clip_draw(int(cookie.frame) * 216, 240, 216, 240, cookie.x, cookie.y + 35)
+            elif interface_state.CharChoice == 3:
+                cookie.imageBigRun.clip_draw(int(cookie.frame) * 216, 0, 216, 240, cookie.x, cookie.y + 35)
+        else:
+            if interface_state.CharChoice == 0:
+                cookie.imageRun.clip_draw(int(cookie.frame) * 144, 480, 144, 160, cookie.x, cookie.y)
+            elif interface_state.CharChoice == 1:
+                cookie.imageRun.clip_draw(int(cookie.frame) * 144, 320, 144, 160, cookie.x, cookie.y)
+            elif interface_state.CharChoice == 2:
+                cookie.imageRun.clip_draw(int(cookie.frame) * 144, 160, 144, 160, cookie.x, cookie.y)
+            elif interface_state.CharChoice == 3:
+                cookie.imageRun.clip_draw(int(cookie.frame) * 144, 0, 144, 160, cookie.x, cookie.y)
+        cookie.draw_bb()
 
 
 class SlideState:
@@ -96,17 +107,28 @@ class SlideState:
     @staticmethod
     def do(cookie):
         cookie.frame = (cookie.frame + FRAMES_PER_ACTION2 * ACTION_PER_TIME1 * game_framework.frame_time) % 2
+        cookie.change_slide_bb()
 
     @staticmethod
     def draw(cookie):
-        if interface_state.CharChoice == 0:
-            cookie.imageSlide.clip_draw(int(cookie.frame) * 192, 366, 192, 122, cookie.x, cookie.y)
-        elif interface_state.CharChoice == 1:
-            cookie.imageSlide.clip_draw(int(cookie.frame) * 192, 244, 192, 122, cookie.x, cookie.y)
-        elif interface_state.CharChoice == 2:
-            cookie.imageSlide.clip_draw(int(cookie.frame) * 192, 122, 192, 122, cookie.x, cookie.y)
-        elif interface_state.CharChoice == 3:
-            cookie.imageSlide.clip_draw(int(cookie.frame) * 192, 0, 192, 122, cookie.x, cookie.y)
+        if cookie.PowerUp:
+            if interface_state.CharChoice == 0:
+                cookie.imageBigSlide.clip_draw(int(cookie.frame) * 288, 549, 288, 183, cookie.x, cookie.y + 30)
+            elif interface_state.CharChoice == 1:
+                cookie.imageBigSlide.clip_draw(int(cookie.frame) * 288, 366, 288, 183, cookie.x, cookie.y + 30)
+            elif interface_state.CharChoice == 2:
+                cookie.imageBigSlide.clip_draw(int(cookie.frame) * 288, 183, 288, 183, cookie.x, cookie.y + 30)
+            elif interface_state.CharChoice == 3:
+                cookie.imageBigSlide.clip_draw(int(cookie.frame) * 288, 0, 288, 183, cookie.x, cookie.y + 30)
+        else:
+            if interface_state.CharChoice == 0:
+                cookie.imageSlide.clip_draw(int(cookie.frame) * 192, 366, 192, 122, cookie.x, cookie.y)
+            elif interface_state.CharChoice == 1:
+                cookie.imageSlide.clip_draw(int(cookie.frame) * 192, 244, 192, 122, cookie.x, cookie.y)
+            elif interface_state.CharChoice == 2:
+                cookie.imageSlide.clip_draw(int(cookie.frame) * 192, 122, 192, 122, cookie.x, cookie.y)
+            elif interface_state.CharChoice == 3:
+                cookie.imageSlide.clip_draw(int(cookie.frame) * 192, 0, 192, 122, cookie.x, cookie.y)
         cookie.draw_bb()
 
 
@@ -131,17 +153,28 @@ class JumpState:
     def do(cookie):
         cookie.frame = (cookie.frame + FRAMES_PER_ACTION2 * ACTION_PER_TIME1 * game_framework.frame_time) % 2
         cookie.ground_in()
+        cookie.change_jump_bb()
 
     @staticmethod
     def draw(cookie):
-        if interface_state.CharChoice == 0:
-            cookie.imageJump.clip_draw(int(cookie.frame) * 160, 576, 160, 192, cookie.x, cookie.y)
-        elif interface_state.CharChoice == 1:
-            cookie.imageJump.clip_draw(int(cookie.frame) * 160, 384, 160, 192, cookie.x, cookie.y)
-        elif interface_state.CharChoice == 2:
-            cookie.imageJump.clip_draw(int(cookie.frame) * 160, 192, 160, 192, cookie.x, cookie.y)
-        elif interface_state.CharChoice == 3:
-            cookie.imageJump.clip_draw(int(cookie.frame) * 160, 0, 160, 192, cookie.x, cookie.y)
+        if cookie.PowerUp:
+            if interface_state.CharChoice == 0:
+                cookie.imageBigJump.clip_draw(int(cookie.frame) * 240, 864, 240, 288, cookie.x, cookie.y + 48)
+            elif interface_state.CharChoice == 1:
+                cookie.imageBigJump.clip_draw(int(cookie.frame) * 240, 576, 240, 288, cookie.x, cookie.y + 48)
+            elif interface_state.CharChoice == 2:
+                cookie.imageBigJump.clip_draw(int(cookie.frame) * 240, 288, 240, 288, cookie.x, cookie.y + 48)
+            elif interface_state.CharChoice == 3:
+                cookie.imageBigJump.clip_draw(int(cookie.frame) * 240, 0, 240, 288, cookie.x, cookie.y + 48)
+        else:
+            if interface_state.CharChoice == 0:
+                cookie.imageJump.clip_draw(int(cookie.frame) * 160, 576, 160, 192, cookie.x, cookie.y)
+            elif interface_state.CharChoice == 1:
+                cookie.imageJump.clip_draw(int(cookie.frame) * 160, 384, 160, 192, cookie.x, cookie.y)
+            elif interface_state.CharChoice == 2:
+                cookie.imageJump.clip_draw(int(cookie.frame) * 160, 192, 160, 192, cookie.x, cookie.y)
+            elif interface_state.CharChoice == 3:
+                cookie.imageJump.clip_draw(int(cookie.frame) * 160, 0, 160, 192, cookie.x, cookie.y)
         #cookie.draw_bb()
 
 
@@ -168,17 +201,29 @@ class AirJumpState:
     def do(cookie):
         cookie.frame = (cookie.frame + FRAMES_PER_ACTION7 * ACTION_PER_TIME2 * game_framework.frame_time / 3.8) % 7
         cookie.ground_in()
+        cookie.change_airjump_bb()
 
     @staticmethod
     def draw(cookie):
-        if interface_state.CharChoice == 0:
-            cookie.imageAirJump.clip_draw(int(cookie.frame) * 160, 630, 160, 210, cookie.x, cookie.y)
-        elif interface_state.CharChoice == 1:
-            cookie.imageAirJump.clip_draw(int(cookie.frame) * 160, 420, 160, 210, cookie.x, cookie.y)
-        elif interface_state.CharChoice == 2:
-            cookie.imageAirJump.clip_draw(int(cookie.frame) * 160, 210, 160, 210, cookie.x, cookie.y)
-        elif interface_state.CharChoice == 3:
-            cookie.imageAirJump.clip_draw(int(cookie.frame) * 160, 0, 160, 210, cookie.x, cookie.y)
+        if cookie.PowerUp:
+            if interface_state.CharChoice == 0:
+                cookie.imageBigAirJump.clip_draw(int(cookie.frame) * 240, 745, 240, 315, cookie.x, cookie.y + 52)
+            elif interface_state.CharChoice == 1:
+                cookie.imageBigAirJump.clip_draw(int(cookie.frame) * 240, 630, 240, 315, cookie.x, cookie.y + 52)
+            elif interface_state.CharChoice == 2:
+                cookie.imageBigAirJump.clip_draw(int(cookie.frame) * 240, 315, 240, 315, cookie.x, cookie.y + 52)
+            elif interface_state.CharChoice == 3:
+                cookie.imageBigAirJump.clip_draw(int(cookie.frame) * 240, 0, 240, 315, cookie.x, cookie.y + 52)
+        else:
+            if interface_state.CharChoice == 0:
+                cookie.imageAirJump.clip_draw(int(cookie.frame) * 160, 630, 160, 210, cookie.x, cookie.y)
+            elif interface_state.CharChoice == 1:
+                cookie.imageAirJump.clip_draw(int(cookie.frame) * 160, 420, 160, 210, cookie.x, cookie.y)
+            elif interface_state.CharChoice == 2:
+                cookie.imageAirJump.clip_draw(int(cookie.frame) * 160, 210, 160, 210, cookie.x, cookie.y)
+            elif interface_state.CharChoice == 3:
+                cookie.imageAirJump.clip_draw(int(cookie.frame) * 160, 0, 160, 210, cookie.x, cookie.y)
+
         #cookie.draw_bb()
 
 
@@ -316,6 +361,15 @@ class Cookie:
         self.imageAirJump = load_image('resource/character/Cookie_AirJump.png')
         self.imageHit = load_image('resource/character/Cookie_Hit.png')
         self.imageTimeOver = load_image('resource/character/Cookie_Timeover.png')
+
+        self.imageBigRun = load_image('resource/character/Big_Cookie_Run.png')
+        self.imageBigSlide = load_image('resource/character/Big_Cookie_Slide.png')
+        self.imageBigJump = load_image('resource/character/Big_Cookie_Jump.png')
+        self.imageBigAirJump = load_image('resource/character/Big_Cookie_AirJump.png')
+        self.imageBigHit = load_image('resource/character/Big_Cookie_Hit.png')
+        self.imageBigTimeOver = load_image('resource/character/Big_Cookie_Timeover.png')
+
+
         self.space_time = 0
         self.speed_down = False
         self.pace = 1
@@ -328,7 +382,7 @@ class Cookie:
 
         self.Revival = False
         self.PowerUpTime = get_time()
-        self.PowerUp = 1
+        self.PowerUp = False
 
         self.Game_Time = get_time()
 
@@ -361,28 +415,52 @@ class Cookie:
         draw_rectangle(*self.get_bb())
 
     def change_run_bb(self):
-        self.bb_Left = 72
-        self.bb_Right = 72
-        self.bb_Up = 70
-        self.bb_Down = 80
+        if self.PowerUp:
+            self.bb_Left = 72 + 30
+            self.bb_Right = 72 + 30
+            self.bb_Up = 70 + 30
+            self.bb_Down = 80 + 30
+        else:
+            self.bb_Left = 72
+            self.bb_Right = 72
+            self.bb_Up = 70
+            self.bb_Down = 80
 
     def change_slide_bb(self):
-        self.bb_Left = 72
-        self.bb_Right = 72
-        self.bb_Up = 10
-        self.bb_Down = 64
+        if self.PowerUp:
+            self.bb_Left = 72 + 30
+            self.bb_Right = 72 + 30
+            self.bb_Up = 10 + 30
+            self.bb_Down = 64 + 30
+        else:
+            self.bb_Left = 72
+            self.bb_Right = 72
+            self.bb_Up = 10
+            self.bb_Down = 64
 
     def change_jump_bb(self):
-        self.bb_Left = 65
-        self.bb_Right = 65
-        self.bb_Up = 10
-        self.bb_Down = 90
+        if self.PowerUp:
+            self.bb_Left = 65 + 30
+            self.bb_Right = 65 + 30
+            self.bb_Up = 10 + 30
+            self.bb_Down = 90 + 30
+        else:
+            self.bb_Left = 65
+            self.bb_Right = 65
+            self.bb_Up = 10
+            self.bb_Down = 90
 
     def change_airjump_bb(self):
-        self.bb_Left = 60
-        self.bb_Right = 60
-        self.bb_Up = 40
-        self.bb_Down = 80
+        if self.PowerUp:
+            self.bb_Left = 60 + 30
+            self.bb_Right = 60 + 30
+            self.bb_Up = 40 + 30
+            self.bb_Down = 80 + 30
+        else:
+            self.bb_Left = 60
+            self.bb_Right = 60
+            self.bb_Up = 40
+            self.bb_Down = 80
 
     def change_PowerUp_bb(self):
         pass
@@ -435,6 +513,11 @@ class Cookie:
         if get_time() - self.Game_Time > 10:
             self.pace += 0.1
             self.Game_Time = get_time()
+
+        if self.PowerUp and get_time() - self.PowerUpTime > 3:
+            self.PowerUp = False
+            self.pace -= 0.3
+
 
 
 

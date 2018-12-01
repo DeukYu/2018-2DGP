@@ -70,13 +70,23 @@ class Items:
             game_world.remove_object(self)
         elif main_state.collide(self, main_state.cookie):
             if self.select == 0:
-                main_state.cookie.jelly_cnt += 1
+                if main_state.cookie.PowerUp:
+                    main_state.cookie.jelly_cnt += 5
+                else:
+                    main_state.cookie.jelly_cnt += 1
             elif self.select == 1:
-                main_state.cookie.coin_cnt += 1
+                if main_state.cookie.PowerUp:
+                    main_state.cookie.coin_cnt += 5
+                else:
+                    main_state.cookie.coin_cnt += 1
             elif self.select == 2:
-                main_state.cookie.coin_cnt += 2
+                if main_state.cookie.PowerUp:
+                    main_state.cookie.coin_cnt += 10
+                else:
+                    main_state.cookie.coin_cnt += 2
             elif self.select == 3:
-                main_state.cookie.PowerUp = 2
+                main_state.cookie.PowerUp = True
+                main_state.cookie.pace += 0.3
                 main_state.cookie.PowerUpTime = get_time()
             elif self.select == 4:
                 main_state.cookie.CurHp += 30

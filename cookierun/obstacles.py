@@ -54,7 +54,9 @@ class Obstacles:
         if self.x + self.Left_Right < 0:
             game_world.remove_object(self)
         elif main_state.collide(main_state.cookie, self):
-            if main_state.pet.Invincibility == False:
+            if main_state.pet.Invincibility or main_state.cookie.PowerUp:
+                pass
+            else:
                 main_state.cookie.CurHp -= 10
                 main_state.stage.operation = False
                 main_state.cookie.HitTime = get_time()
