@@ -330,6 +330,8 @@ class Cookie:
         self.PowerUpTime = get_time()
         self.PowerUp = 1
 
+        self.Game_Time = get_time()
+
         if interface_state.CharChoice == 0:
             self.FullHp = 110
             self.CurHp = 110
@@ -426,6 +428,11 @@ class Cookie:
 
         if self.PowerUp == 2 and get_time() - self.PowerUpTime > 2:
             self.PowerUp = 1
+
+        if get_time() - self.Game_Time > 10:
+            self.pace += 0.1
+            self.Game_Time = get_time()
+
 
 
     def draw(self):
