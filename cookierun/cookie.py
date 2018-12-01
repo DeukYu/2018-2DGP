@@ -384,6 +384,9 @@ class Cookie:
         self.bb_Up = 40
         self.bb_Down = 80
 
+    def change_PowerUp_bb(self):
+        pass
+
     def jump_now(self):
         self.speed = 800
 
